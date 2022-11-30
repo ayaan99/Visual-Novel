@@ -1,5 +1,5 @@
 namespace Template {
-  export async function Scene1(): ƒS.SceneReturn {
+  export async function Scene1_1(): ƒS.SceneReturn {
     console.log("FudgeStory Template Scene starting");
 
     //scene intro:
@@ -11,7 +11,6 @@ namespace Template {
     //bonny appears:
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.sleepy, rightToLeft()); 
     await ƒS.Character.hide(characters.bonny);
-    await ƒS.update();
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 110)); //alternativ: ƒS.positions.bottomcenter 
     await ƒS.update();
 
@@ -24,11 +23,11 @@ namespace Template {
     //bo appears:
     await ƒS.Character.animate(characters.unknown, characters.unknown.pose.irritated, boIntro());
     await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0000);
-    await ƒS.update();
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated2, ƒS.positionPercent(30, 110));
     await ƒS.update();
+    
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0005);
     await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0001);
     await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0002);
@@ -45,18 +44,32 @@ namespace Template {
       iSayC: "What happened to me?"
     };
 
-    let dialogElement = await ƒS.Menu.getInput(dialog, "choicesCSSClass");
+    let pickedA: boolean;
+    let pickedB: boolean;
+    let pickedC: boolean;
 
-    switch (dialogElement) {
+    do {
+      if (pickedA && pickedB && pickedC) {
+        dataForSave.pickedChoice = true;
+        return Scene1_2();
+      }
+
+      let dialogElement = await ƒS.Menu.getInput(dialog, "choicesCSSClass");
+
+      switch (dialogElement) {
       case dialog.iSayA:
+        pickedA = true;
         await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0004);
         break;
       case dialog.iSayB:
+        pickedB = true;
         await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0005);
         break;
       case dialog.iSayC:
+        pickedC = true;
         await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0006);
         break;
-    }
+      }
+    } while (!dataForSave.pickedChoice);
   }
 }

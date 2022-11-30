@@ -11,7 +11,7 @@ namespace Template {
       edge: 0.1
     },
     bigWipe: {
-      duration: 1,
+      duration: 1.5,
       alpha: "Images/Transitions/bigWipe.png",
       edge: 0.2
     },
@@ -22,7 +22,7 @@ namespace Template {
     },
     wipes: {
       duration: 1,
-      alpha: "Images/Transitions/wipes.png",
+      alpha: "Images/Transitions/wipes.jpg",
       edge: 0.2
     }
   };
@@ -43,6 +43,18 @@ namespace Template {
       name: "Bonny's Room",
       background: "Images/Backgrounds/bonnysRoom.png"
       // foreground: ""
+    },
+    toDoList: {
+      name: "To-Do-List",
+      background: "Images/Backgrounds/toDoList_empty.png"
+    },
+    studyScene: {
+      name: "Study Cut-Scene",
+      background: "Images/Backgrounds/study_cutScene.png"
+    },
+    cookingScene: {
+      name: "Cooking Cut-Scene",
+      background: "Images/Backgrounds/cooking_CutScene.png"
     }
   };
 
@@ -91,7 +103,8 @@ namespace Template {
   };
 
   export let dataForSave = {
-    nameProtagonist: ""
+    nameProtagonist: "",
+    pickedChoice: false
     };
 
   export function rightToLeft(): ƒS.AnimationDefinition {
@@ -124,14 +137,27 @@ namespace Template {
     };
   }
 
-  export function fade(): ƒS.AnimationDefinition {
+  export function fadeIn(): ƒS.AnimationDefinition {
     return {
       start: {
-        translation: ƒS.positionPercent(30, 110),
+        translation: ƒS.positionPercent(30, 100),
+        color: ƒS.Color.CSS("white", 0)
+      },
+      end: {
+        translation: ƒS.positionPercent(30, 100),
+        color: ƒS.Color.CSS("white", 1)
+      },
+      duration: 3,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+    };
+  }
+
+  export function fadeOut(): ƒS.AnimationDefinition {
+    return {
+      start: {
         color: ƒS.Color.CSS("white", 1)
       },
       end: {
-        translation: ƒS.positionPercent(30, 110),
         color: ƒS.Color.CSS("white", 0)
       },
       duration: 3,
@@ -206,8 +232,10 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenuCSSClass");
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      // { scene: Scene1, name: "Scene1" },
-      { scene: Scene2, name: "Scene2" }
+      // { scene: Scene1_1, name: "Scene1_1" },
+      // { scene: Scene1_2, name: "Scene1_2" },
+      { scene: Scene2, name: "Scene2"},
+      { scene: Scene3, name: "Scene3"}
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
