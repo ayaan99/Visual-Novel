@@ -26,7 +26,7 @@ namespace Template {
                 T0005: "I wish Bo was still here to help me.",
                 T0006: "How am I supposed to figure this out on my own? ",
                 T0007: "Out of all the possibilities, why did I got send back to this memory?",
-                T0008: "Oh my god! Leo!",
+                T0008: "Oh my god! Nat!",
                 T0009: "Of course! I have to find him!",
                 T0010: "I need to tell him that I love him. That I need him.",
                 T0011: "Maybe I haven't told him that as much lately and that's why I ended up in this mess.",
@@ -44,7 +44,7 @@ namespace Template {
                 T0023: "This seems very important. I should get to work now!",
                 T0024: "That was a lot of work! I hope it was worth it!",
                 T0025: "I am really hungry right now. Good thing, that this is on the list as well!",
-                T0026: "Mhh.. that was really delicious. I needed that really badly right now."
+                T0026: "Mhh.. that was delicious. I needed that really badly right now."
           },
           scene3_1: {
                 T0001: "Alright! I guess I'll just grab those few things on my shopping list and return back home then.",
@@ -53,7 +53,7 @@ namespace Template {
                 T0004: "As she arrived back to her room, Bonny started ticking off the tasks of her To-Do-List. Trusting Bo in the decisions that were made, she began to work on her project for school and started cooking something delicious. After a long day of living her life as usual, she fell into bed. Exhausted from the work that she did, she forgot what brought her here in the first place. And so, she began to drift off into her dreams. Dreams of bright and happy memories - hoping that they'll last forever."
           },
           scene3_2: {
-                T0001: "Those things won't matter anyway, if I don't find Leo soon.",
+                T0001: "Those things won't matter anyway, if I don't find Nat soon.",
                 T0002: "I feel like I am running out of time. I should hurry!",
                 T0003: "I'm sorry. I didn't see you there...",
                 T0004: "Oh my god! Is that you?",
@@ -61,10 +61,10 @@ namespace Template {
                 T0006: "I don't remember bumping into him like that in the past... did I miss something?",
                 T0007: "Did I do something wrong... Why would-",
                 T0008: "Oh, I didn't mean to say those things out loud.",
-                T0009: "Anyway... you are Leo, right?",
-                T0010: "Oh... mhh... right!",
-                T0011: "I know you from university!",
-                T0012: "We take the same courses.",
+                T0009: "Anyway... you are Nathan, right?",
+                T0010: "Oh... mhh... ehh...",
+                T0011: "Ah right! I know you from university!",
+                T0012: "We're both in this one class! It's called...",
                 T0013: "No! Don't worry! I am sorry. I should've watched out...",
                 T0014: "Yes! Sounds good, I would love that!",
                 T0015: "We could go to our favourite place and-",
@@ -72,13 +72,13 @@ namespace Template {
                 T0017: "I'm sorry... how about you choose a place where we could go to?",
                 T0018: "Yes sure!",
                 T0019: "See you!",
-                T0020: "Alright, that was weird!",
+                T0020: "Alright, that was nice... but also weird!",
                 T0021: "How come that he doesn't know me?! Is that a memory from the time before we were friends?",
                 T0022: "Maybe... from the time when I first moved to this city?",
                 T0023: "Ugh, I hate that I don't remember my past!",
                 T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
-                T0025: "Okay, I should get back home now and prepare myself for the evening with Leo.",
-                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Leo did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Leo again."
+                T0025: "Okay, I should get back home now and prepare myself for the evening with Nat.",
+                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Nat again."
           },
           scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
@@ -122,6 +122,26 @@ namespace Template {
                 T0015: "Alright, as soon as you are in the memory, you can't communicate with me anymore. Just live your life like you would usually do.",
                 T0016: "As soon as we find the mistake, I will bring you back to me.",
                 T0017: "See you soon!"
+            }
+        },
+        unknownNat: {
+            scene3_1: {
+                T0001: "Ouch! You should watch where you're going!",
+                T0002: "What? Do I know you?",
+                T0003: "Hello? What are you talking about?!"
+            }
+        },
+        nat: {
+            scene3_1: {
+                T0001: "Yes, I am… but everyone just calls me Nat.",
+                T0002: "How do you know that?! I've never met you?!",
+                T0003: "Mhh okay… ",
+                T0004: "Well, sorry… I don't remember you. ",
+                T0005: "But must be true than!",
+                T0006: "Listen, I didn't mean to be rude to you… I-",
+                T0007: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
+                T0008: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
+                T0009: "'Kay, see ya!"
             }
         }
     };

@@ -4,105 +4,88 @@ var Template;
     Template.ƒ = FudgeCore;
     Template.ƒS = FudgeStory;
     console.log("FudgeStory template starting");
-    // transition und sounds evtl in eigene Datei auslagen
-    Template.transitions = {
-        lightbeam: {
-            duration: 2.5,
-            alpha: "Images/Transitions/lightbeam.jpg",
-            edge: 0.1
-        },
-        bigWipe: {
-            duration: 1.5,
-            alpha: "Images/Transitions/bigWipe.png",
-            edge: 0.2
-        },
-        noise: {
-            duration: 1,
-            alpha: "Images/Transitions/noise.jpg",
-            edge: 0.2
-        },
-        wipes: {
-            duration: 1,
-            alpha: "Images/Transitions/wipes.jpg",
-            edge: 0.2
-        }
-    };
-    Template.sounds = {
-        // themes
-        // SFX
-        afterlifeSoundBeginning: "Audio/afterlife_beginning.mp3"
-    };
-    Template.locations = {
-        afterlife: {
-            name: "Afterlife",
-            background: "Images/Backgrounds/afterlife.png"
-        },
-        bonnysRoom: {
-            name: "Bonny's Room",
-            background: "Images/Backgrounds/bonnysRoom.png"
-            // foreground: ""
-        },
-        toDoList: {
-            name: "To-Do-List",
-            background: "Images/Backgrounds/toDoList_empty.png"
-        },
-        studyScene: {
-            name: "Study Cut-Scene",
-            background: "Images/Backgrounds/study_cutScene.png"
-        },
-        cookingScene: {
-            name: "Cooking Cut-Scene",
-            background: "Images/Backgrounds/cooking_CutScene.png"
-        }
-    };
-    Template.characters = {
-        narrator: {
-            name: ""
-        },
-        protagonist: {
-            name: ""
-        },
-        bonny: {
-            name: "Bonny",
-            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                neutral: "Images/Characters/bonny.png",
-                happy: "Images/Characters/bonny_happy.png",
-                sleepy: "Images/Characters/bonny_sleepy.png",
-                irritated: "Images/Characters/bonny_irritated.png",
-                irritated2: "Images/Characters/bonny_irritated2.png",
-                shocked: "Images/Characters/bonny_shocked.png",
-                angry: "Images/Characters/bonny_angry.png",
-                upset: "Images/Characters/bonny_upset.png",
-                sad: "Images/Characters/bonny_sad.png",
-                crying: "Images/Characters/bonny_crying.png"
-            }
-        },
-        unknown: {
-            name: "???",
-            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                neutral: "Images/Characters/bo.png",
-                irritated: "Images/Characters/bo_irritated.png"
-            }
-        },
-        bo: {
-            name: "Bo",
-            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                neutral: "Images/Characters/bo.png",
-                happy: "Images/Characters/bo_happy.png",
-                irritated: "Images/Characters/bo_irritated.png",
-                upset: "Images/Characters/bo_upset.png",
-                frustrated: "Images/Characters/bo_frustrated.png"
-            }
-        }
-    };
     Template.dataForSave = {
         nameProtagonist: "",
         pickedChoice: false
     };
-    function rightToLeft() {
+    let inGameMenuButtons = {
+        save: "Save",
+        load: "Load",
+        credits: "Credits",
+        close: "Close"
+    };
+    let gameMenu;
+    let menuIsOpen = true; //true entspricht Menü ist offen, false = Menü ist zu
+    function credits() {
+        Template.ƒS.Text.print("");
+    }
+    async function buttonFunctionalities(_option) {
+        console.log(_option);
+        switch (_option) {
+            case inGameMenuButtons.save:
+                await Template.ƒS.Progress.save();
+                break;
+            case inGameMenuButtons.load:
+                await Template.ƒS.Progress.load();
+                break;
+            case inGameMenuButtons.close:
+                gameMenu.close();
+                menuIsOpen = false;
+                break;
+            case inGameMenuButtons.credits:
+                credits();
+        }
+    }
+    //Menu shortcuts
+    document.addEventListener("keydown", hndKeyPress);
+    async function hndKeyPress(_event) {
+        switch (_event.code) {
+            case Template.ƒ.KEYBOARD_CODE.F8:
+                console.log("Save");
+                await Template.ƒS.Progress.save();
+                break;
+            case Template.ƒ.KEYBOARD_CODE.F9:
+                console.log("Load");
+                await Template.ƒS.Progress.load();
+                break;
+            case Template.ƒ.KEYBOARD_CODE.M:
+                if (menuIsOpen) {
+                    console.log("close");
+                    gameMenu.close();
+                    menuIsOpen = false;
+                }
+                else {
+                    console.log("Open");
+                    gameMenu.open();
+                    menuIsOpen = true;
+                }
+                break;
+            case Template.ƒ.KEYBOARD_CODE.I:
+                await Template.ƒS.Inventory.open();
+                break;
+        }
+    }
+    window.addEventListener("load", start);
+    function start(_event) {
+        gameMenu = Template.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
+        buttonFunctionalities("Close");
+        let scenes = [
+            // { scene: Scene1_1, name: "Scene1_1" },
+            // { scene: Scene1_2, name: "Scene1_2" },
+            // { scene: Scene2, name: "Scene2_1"},
+            { scene: Template.Scene3_1, name: "Scene3_1" },
+            { scene: Template.Scene3_2, name: "Scene3_2" },
+            { scene: Template.Scene3_3, name: "Scene3_3" }
+        ];
+        let uiElement = document.querySelector("[type=interface]");
+        Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
+        // start the sequence
+        Template.ƒS.Progress.go(scenes);
+    }
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    function bonnyIntro() {
         return {
             start: {
                 translation: Template.ƒS.positions.bottomright,
@@ -116,7 +99,7 @@ var Template;
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
     }
-    Template.rightToLeft = rightToLeft;
+    Template.bonnyIntro = bonnyIntro;
     function boIntro() {
         return {
             start: {
@@ -132,6 +115,19 @@ var Template;
         };
     }
     Template.boIntro = boIntro;
+    function leftToRight() {
+        return {
+            start: {
+                translation: Template.ƒS.positions.bottomleft
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(30, 100)
+            },
+            duration: 3,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.leftToRight = leftToRight;
     function fadeIn() {
         return {
             start: {
@@ -168,70 +164,66 @@ var Template;
     //   playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
     //   };
     //   }
-    let inGameMenuButtons = {
-        save: "Save",
-        load: "Load",
-        // credits: "Credits",
-        close: "Close"
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    Template.characters = {
+        narrator: {
+            name: ""
+        },
+        protagonist: {
+            name: ""
+        },
+        bonny: {
+            name: "Bonny",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "Images/Characters/bonny.png",
+                happy: "Images/Characters/bonny_happy.png",
+                sleepy: "Images/Characters/bonny_sleepy.png",
+                irritated: "Images/Characters/bonny_irritated.png",
+                irritated2: "Images/Characters/bonny_irritated2.png",
+                shocked: "Images/Characters/bonny_shocked.png",
+                angry: "Images/Characters/bonny_angry.png",
+                upset: "Images/Characters/bonny_upset.png",
+                sad: "Images/Characters/bonny_sad.png",
+                crying: "Images/Characters/bonny_crying.png"
+            }
+        },
+        unknownBo: {
+            name: "???",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "Images/Characters/bo.png",
+                irritated: "Images/Characters/bo_irritated.png"
+            }
+        },
+        bo: {
+            name: "Bo",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "Images/Characters/bo.png",
+                happy: "Images/Characters/bo_happy.png",
+                irritated: "Images/Characters/bo_irritated.png",
+                upset: "Images/Characters/bo_upset.png",
+                frustrated: "Images/Characters/bo_frustrated.png"
+            }
+        },
+        unknownNat: {
+            name: "???",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "Images/Characters/nat.png"
+            }
+        },
+        nat: {
+            name: "Nat",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "Images/Characters/nat.png"
+            }
+        }
     };
-    let gameMenu;
-    let menuIsOpen = true; //true entspricht Menü ist offen, false = Menü ist zu
-    async function buttonFunctionalities(_option) {
-        console.log(_option);
-        switch (_option) {
-            case inGameMenuButtons.save:
-                await Template.ƒS.Progress.save();
-                break;
-            case inGameMenuButtons.load:
-                await Template.ƒS.Progress.load();
-                break;
-            case inGameMenuButtons.close:
-                gameMenu.close();
-                menuIsOpen = false;
-                break;
-        }
-    }
-    //Menu shortcuts
-    document.addEventListener("keydown", hndKeyPress);
-    async function hndKeyPress(_event) {
-        switch (_event.code) {
-            case Template.ƒ.KEYBOARD_CODE.F8:
-                console.log("Save");
-                await Template.ƒS.Progress.save();
-                break;
-            case Template.ƒ.KEYBOARD_CODE.F9:
-                console.log("Load");
-                await Template.ƒS.Progress.load();
-                break;
-            case Template.ƒ.KEYBOARD_CODE.M:
-                if (menuIsOpen) {
-                    console.log("close");
-                    gameMenu.close();
-                    menuIsOpen = false;
-                }
-                else {
-                    console.log("Open");
-                    gameMenu.open();
-                    menuIsOpen = true;
-                }
-                break;
-        }
-    }
-    window.addEventListener("load", start);
-    function start(_event) {
-        gameMenu = Template.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenuCSSClass");
-        buttonFunctionalities("Close");
-        let scenes = [
-            // { scene: Scene1_1, name: "Scene1_1" },
-            // { scene: Scene1_2, name: "Scene1_2" },
-            { scene: Template.Scene2, name: "Scene2" },
-            { scene: Template.Scene3, name: "Scene3" }
-        ];
-        let uiElement = document.querySelector("[type=interface]");
-        Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
-        // start the sequence
-        Template.ƒS.Progress.go(scenes);
-    }
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -262,7 +254,7 @@ var Template;
                 T0005: "I wish Bo was still here to help me.",
                 T0006: "How am I supposed to figure this out on my own? ",
                 T0007: "Out of all the possibilities, why did I got send back to this memory?",
-                T0008: "Oh my god! Leo!",
+                T0008: "Oh my god! Nat!",
                 T0009: "Of course! I have to find him!",
                 T0010: "I need to tell him that I love him. That I need him.",
                 T0011: "Maybe I haven't told him that as much lately and that's why I ended up in this mess.",
@@ -280,7 +272,7 @@ var Template;
                 T0023: "This seems very important. I should get to work now!",
                 T0024: "That was a lot of work! I hope it was worth it!",
                 T0025: "I am really hungry right now. Good thing, that this is on the list as well!",
-                T0026: "Mhh.. that was really delicious. I needed that really badly right now."
+                T0026: "Mhh.. that was delicious. I needed that really badly right now."
             },
             scene3_1: {
                 T0001: "Alright! I guess I'll just grab those few things on my shopping list and return back home then.",
@@ -289,7 +281,7 @@ var Template;
                 T0004: "As she arrived back to her room, Bonny started ticking off the tasks of her To-Do-List. Trusting Bo in the decisions that were made, she began to work on her project for school and started cooking something delicious. After a long day of living her life as usual, she fell into bed. Exhausted from the work that she did, she forgot what brought her here in the first place. And so, she began to drift off into her dreams. Dreams of bright and happy memories - hoping that they'll last forever."
             },
             scene3_2: {
-                T0001: "Those things won't matter anyway, if I don't find Leo soon.",
+                T0001: "Those things won't matter anyway, if I don't find Nat soon.",
                 T0002: "I feel like I am running out of time. I should hurry!",
                 T0003: "I'm sorry. I didn't see you there...",
                 T0004: "Oh my god! Is that you?",
@@ -297,10 +289,10 @@ var Template;
                 T0006: "I don't remember bumping into him like that in the past... did I miss something?",
                 T0007: "Did I do something wrong... Why would-",
                 T0008: "Oh, I didn't mean to say those things out loud.",
-                T0009: "Anyway... you are Leo, right?",
-                T0010: "Oh... mhh... right!",
-                T0011: "I know you from university!",
-                T0012: "We take the same courses.",
+                T0009: "Anyway... you are Nathan, right?",
+                T0010: "Oh... mhh... ehh...",
+                T0011: "Ah right! I know you from university!",
+                T0012: "We're both in this one class! It's called...",
                 T0013: "No! Don't worry! I am sorry. I should've watched out...",
                 T0014: "Yes! Sounds good, I would love that!",
                 T0015: "We could go to our favourite place and-",
@@ -308,13 +300,13 @@ var Template;
                 T0017: "I'm sorry... how about you choose a place where we could go to?",
                 T0018: "Yes sure!",
                 T0019: "See you!",
-                T0020: "Alright, that was weird!",
+                T0020: "Alright, that was nice... but also weird!",
                 T0021: "How come that he doesn't know me?! Is that a memory from the time before we were friends?",
                 T0022: "Maybe... from the time when I first moved to this city?",
                 T0023: "Ugh, I hate that I don't remember my past!",
                 T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
-                T0025: "Okay, I should get back home now and prepare myself for the evening with Leo.",
-                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Leo did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Leo again."
+                T0025: "Okay, I should get back home now and prepare myself for the evening with Nat.",
+                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Nat again."
             },
             scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
@@ -359,6 +351,111 @@ var Template;
                 T0016: "As soon as we find the mistake, I will bring you back to me.",
                 T0017: "See you soon!"
             }
+        },
+        unknownNat: {
+            scene3_1: {
+                T0001: "Ouch! You should watch where you're going!",
+                T0002: "What? Do I know you?",
+                T0003: "Hello? What are you talking about?!"
+            }
+        },
+        nat: {
+            scene3_1: {
+                T0001: "Yes, I am… but everyone just calls me Nat.",
+                T0002: "How do you know that?! I've never met you?!",
+                T0003: "Mhh okay… ",
+                T0004: "Well, sorry… I don't remember you. ",
+                T0005: "But must be true than!",
+                T0006: "Listen, I didn't mean to be rude to you… I-",
+                T0007: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
+                T0008: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
+                T0009: "'Kay, see ya!"
+            }
+        }
+    };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    Template.locations = {
+        afterlife: {
+            name: "Afterlife",
+            background: "Images/Backgrounds/afterlife.png"
+        },
+        bonnysRoom: {
+            name: "Bonny's Room",
+            background: "Images/Backgrounds/bonnysRoom.png"
+            // foreground: ""
+        },
+        toDoList_empty: {
+            name: "To-Do-List",
+            background: "Images/Backgrounds/toDoList_empty.png"
+        },
+        toDoList_projectCheck: {
+            name: "To-Do-List_ProjectCheck",
+            background: "Images/Backgrounds/toDoList_project.png"
+        },
+        toDoList_cookingCheck: {
+            name: "To-Do-List Cooking Check",
+            background: "Images/Backgrounds/toDoList_cooking.png"
+        },
+        toDoList_projectAndCookingCheck: {
+            name: "To-Do-List Project and Cooking Check",
+            background: "Images/Backgrounds/toDoList_project+cooking.png"
+        },
+        studyScene: {
+            name: "Study Cut-Scene",
+            background: "Images/Backgrounds/study_cutScene.png"
+        },
+        cookingScene: {
+            name: "Cooking Cut-Scene",
+            background: "Images/Backgrounds/cooking_CutScene.png"
+        },
+        supermarket: {
+            name: "Supermarket",
+            background: "Images/Backgrounds/supermarket.png"
+        }
+    };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    Template.sounds = {
+        // themes
+        afterlifeSoundBeginning: "Audio/afterlife_beginning.mp3"
+        // SFX
+    };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    Template.transitions = {
+        lightbeam: {
+            duration: 2.5,
+            alpha: "Images/Transitions/lightbeam.jpg",
+            edge: 0.1
+        },
+        bigWipe: {
+            duration: 1.5,
+            alpha: "Images/Transitions/bigWipe.png",
+            edge: 0.2
+        },
+        bigWipe2: {
+            duration: 1.5,
+            alpha: "Images/Transitions/bigWipe2.png",
+            edge: 0.2
+        },
+        noise: {
+            duration: 1,
+            alpha: "Images/Transitions/noise.jpg",
+            edge: 0.2
+        },
+        wipes: {
+            duration: 1,
+            alpha: "Images/Transitions/wipes.jpg",
+            edge: 0.2
+        },
+        wet: {
+            duration: 1.5,
+            alpha: "Images/Transitions/wet.jpg",
+            edge: 0.2
         }
     };
 })(Template || (Template = {}));
@@ -372,7 +469,7 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.afterlife);
         await Template.ƒS.update(Template.transitions.lightbeam.duration, Template.transitions.lightbeam.alpha, Template.transitions.lightbeam.edge);
         //bonny appears:
-        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.rightToLeft());
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.bonnyIntro());
         await Template.ƒS.Character.hide(Template.characters.bonny);
         await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(30, 110)); //alternativ: ƒS.positions.bottomcenter 
         await Template.ƒS.update();
@@ -382,44 +479,44 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene1.T0004);
         await Template.ƒS.update(0.5);
         //bo appears:
-        await Template.ƒS.Character.animate(Template.characters.unknown, Template.characters.unknown.pose.irritated, Template.boIntro());
-        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0000);
+        await Template.ƒS.Character.animate(Template.characters.unknownBo, Template.characters.unknownBo.pose.irritated, Template.boIntro());
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0000);
         await Template.ƒS.Character.hide(Template.characters.bonny);
         await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated2, Template.ƒS.positionPercent(30, 110));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene1.T0005);
-        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0003);
-        await Template.ƒS.Character.hide(Template.characters.unknown);
-        await Template.ƒS.Character.show(Template.characters.unknown, Template.characters.unknown.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0003);
+        await Template.ƒS.Character.hide(Template.characters.unknownBo);
+        await Template.ƒS.Character.show(Template.characters.unknownBo, Template.characters.unknownBo.pose.neutral, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update();
-        let dialog = {
-            iSayA: "Why shouldn't you see me?",
-            iSayB: "Who are you?",
-            iSayC: "What happened to me?"
+        let questions = {
+            iSayWhy: "Why shouldn't you see me?",
+            iSayWho: "Who are you?",
+            iSayWhat: "What happened to me?"
         };
-        let pickedA;
-        let pickedB;
-        let pickedC;
+        let pickedWhy;
+        let pickedWho;
+        let pickedWhat;
         do {
-            if (pickedA && pickedB && pickedC) {
+            if (pickedWhy && pickedWho && pickedWhat) {
                 Template.dataForSave.pickedChoice = true;
                 return Template.Scene1_2();
             }
-            let dialogElement = await Template.ƒS.Menu.getInput(dialog, "choicesCSSClass");
-            switch (dialogElement) {
-                case dialog.iSayA:
-                    pickedA = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0004);
+            let questionsElement = await Template.ƒS.Menu.getInput(questions, "choices");
+            switch (questionsElement) {
+                case questions.iSayWhy:
+                    pickedWhy = true;
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0004);
                     break;
-                case dialog.iSayB:
-                    pickedB = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0005);
+                case questions.iSayWho:
+                    pickedWho = true;
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0005);
                     break;
-                case dialog.iSayC:
-                    pickedC = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.unknown.scene1.T0006);
+                case questions.iSayWhat:
+                    pickedWhat = true;
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0006);
                     break;
             }
         } while (!Template.dataForSave.pickedChoice);
@@ -433,7 +530,7 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.afterlife);
         await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated2, Template.ƒS.positionPercent(30, 110));
         //name change "???" to "bo":
-        await Template.ƒS.Character.hide(Template.characters.unknown);
+        await Template.ƒS.Character.hide(Template.characters.unknownBo);
         await Template.ƒS.Character.show(Template.characters.bo, Template.characters.bo.pose.neutral, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene1.T0006);
@@ -512,7 +609,7 @@ var Template;
 var Template;
 (function (Template) {
     async function Scene2() {
-        console.log("Scene2 starting");
+        console.log("Scene2_1 starting");
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
         await Template.ƒS.Location.show(Template.locations.bonnysRoom);
@@ -568,12 +665,12 @@ var Template;
             else if (pickedDesk) {
                 delete roomChoices.lookAtDesk;
             }
-            let roomChoiceElement = await Template.ƒS.Menu.getInput(roomChoices, "choicesCSSClass");
+            let roomChoiceElement = await Template.ƒS.Menu.getInput(roomChoices, "choices");
             switch (roomChoiceElement) {
                 case roomChoices.lookAtDesk:
                     Template.ƒS.Speech.hide();
                     await Template.ƒS.Character.hide(Template.characters.bonny);
-                    await Template.ƒS.Location.show(Template.locations.toDoList);
+                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0015);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0016);
@@ -598,44 +695,109 @@ var Template;
             finishProject: "finish school project",
             cooking: "cooking"
         };
-        let toDoListChoiceElements = await Template.ƒS.Menu.getInput(toDoListChoices, "choicesCSSClass");
-        switch (toDoListChoiceElements) {
-            case toDoListChoices.runErrands:
-                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0022);
-                return Template.Scene3();
-            case toDoListChoices.finishProject:
-                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0023);
-                Template.ƒS.Speech.hide();
-                await Template.ƒS.Location.show(Template.locations.studyScene);
-                await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
-                await Template.ƒS.Progress.delay(7);
-                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0024);
-                //return to do list
-                break;
-            case toDoListChoices.cooking:
-                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0025);
-                Template.ƒS.Speech.hide();
-                await Template.ƒS.Location.show(Template.locations.cookingScene);
-                await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
-                await Template.ƒS.Progress.delay(7);
-                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0026);
-                //return to do list
-                break;
-        }
+        let pickedErrands;
+        let pickedProject;
+        let pickedCooking;
+        do {
+            if (pickedErrands && !pickedProject && !pickedCooking) {
+                Template.dataForSave.pickedChoice = true;
+                return Template.Scene3_1();
+            }
+            else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
+                Template.dataForSave.pickedChoice = true;
+                return Template.Scene3_2();
+            }
+            else if (pickedErrands && pickedProject && pickedCooking) {
+                Template.dataForSave.pickedChoice = true;
+                return Template.Scene3_3();
+            }
+            let toDoListChoiceElements = await Template.ƒS.Menu.getInput(toDoListChoices, "choices");
+            switch (toDoListChoiceElements) {
+                case toDoListChoices.runErrands:
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0022);
+                    pickedErrands = true;
+                    break;
+                case toDoListChoices.finishProject:
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0023);
+                    Template.ƒS.Speech.hide();
+                    await Template.ƒS.Location.show(Template.locations.studyScene);
+                    await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+                    await Template.ƒS.Progress.delay(7);
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0024);
+                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
+                    await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, "What should I do next?");
+                    pickedProject = true;
+                    break;
+                case toDoListChoices.cooking:
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0025);
+                    Template.ƒS.Speech.hide();
+                    await Template.ƒS.Location.show(Template.locations.cookingScene);
+                    await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+                    await Template.ƒS.Progress.delay(7);
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0026);
+                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
+                    await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+                    await Template.ƒS.Speech.tell(Template.characters.bonny, "What else do I have to finish?");
+                    pickedCooking = true;
+                    break;
+            }
+        } while (!Template.dataForSave.pickedChoice);
     }
     Template.Scene2 = Scene2;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function Scene3() {
-        console.log("Scene3 starting");
+    async function Scene3_1() {
+        console.log("Scene3_1 starting");
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
-        await Template.ƒS.Location.show(Template.locations.toDoList);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.neutral, ƒS.positionPercent(30, 100));
+        await Template.ƒS.Location.show(Template.locations.supermarket);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRight());
         await Template.ƒS.update();
-        await Template.ƒS.Speech.tell(Template.characters.bonny, "test scene 3");
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0003);
+        await Template.ƒS.Text.print(Template.text.bonny.scene3_1.T0004);
     }
-    Template.Scene3 = Scene3;
+    Template.Scene3_1 = Scene3_1;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene3_2() {
+        console.log("Scene3_2 starting");
+        Template.ƒS.Speech.hide();
+        // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.supermarket);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRight());
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0003);
+        await Template.ƒS.Text.print(Template.text.bonny.scene3_2.T0026);
+    }
+    Template.Scene3_2 = Scene3_2;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene3_3() {
+        console.log("Scene3_3 starting");
+        Template.ƒS.Speech.hide();
+        // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.supermarket);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.upset, Template.leftToRight());
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0005);
+    }
+    Template.Scene3_3 = Scene3_3;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

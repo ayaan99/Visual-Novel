@@ -9,7 +9,7 @@ namespace Template {
     await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
     
     //bonny appears:
-    await ƒS.Character.animate(characters.bonny, characters.bonny.pose.sleepy, rightToLeft()); 
+    await ƒS.Character.animate(characters.bonny, characters.bonny.pose.sleepy, bonnyIntro()); 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 110)); //alternativ: ƒS.positions.bottomcenter 
     await ƒS.update();
@@ -21,53 +21,53 @@ namespace Template {
     await ƒS.update(0.5);
 
     //bo appears:
-    await ƒS.Character.animate(characters.unknown, characters.unknown.pose.irritated, boIntro());
-    await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0000);
+    await ƒS.Character.animate(characters.unknownBo, characters.unknownBo.pose.irritated, boIntro());
+    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0000);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated2, ƒS.positionPercent(30, 110));
     await ƒS.update();
     
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0005);
-    await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0001);
-    await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0002);
-    await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0003);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0001);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0002);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0003);
     
-    await ƒS.Character.hide(characters.unknown);
-    await ƒS.Character.show(characters.unknown, characters.unknown.pose.neutral, ƒS.positionPercent(70, 100));
+    await ƒS.Character.hide(characters.unknownBo);
+    await ƒS.Character.show(characters.unknownBo, characters.unknownBo.pose.neutral, ƒS.positionPercent(70, 100));
     await ƒS.update();
 
 
-    let dialog = {
-      iSayA: "Why shouldn't you see me?",
-      iSayB: "Who are you?",
-      iSayC: "What happened to me?"
+    let questions = {
+      iSayWhy: "Why shouldn't you see me?",
+      iSayWho: "Who are you?",
+      iSayWhat: "What happened to me?"
     };
 
-    let pickedA: boolean;
-    let pickedB: boolean;
-    let pickedC: boolean;
+    let pickedWhy: boolean;
+    let pickedWho: boolean;
+    let pickedWhat: boolean;
 
     do {
-      if (pickedA && pickedB && pickedC) {
+      if (pickedWhy && pickedWho && pickedWhat) {
         dataForSave.pickedChoice = true;
         return Scene1_2();
       }
 
-      let dialogElement = await ƒS.Menu.getInput(dialog, "choicesCSSClass");
+      let questionsElement = await ƒS.Menu.getInput(questions, "choices");
 
-      switch (dialogElement) {
-      case dialog.iSayA:
-        pickedA = true;
-        await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0004);
+      switch (questionsElement) {
+      case questions.iSayWhy:
+        pickedWhy = true;
+        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0004);
         break;
-      case dialog.iSayB:
-        pickedB = true;
-        await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0005);
+      case questions.iSayWho:
+        pickedWho = true;
+        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0005);
         break;
-      case dialog.iSayC:
-        pickedC = true;
-        await ƒS.Speech.tell(characters.unknown, text.unknown.scene1.T0006);
+      case questions.iSayWhat:
+        pickedWhat = true;
+        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0006);
         break;
       }
     } while (!dataForSave.pickedChoice);

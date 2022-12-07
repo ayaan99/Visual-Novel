@@ -1,6 +1,6 @@
 namespace Template {
     export async function Scene2(): ƒS.SceneReturn {
-    console.log("Scene2 starting");
+    console.log("Scene2_1 starting");
 
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
@@ -70,14 +70,13 @@ namespace Template {
             delete roomChoices.lookAtDesk;
         }
   
-        let roomChoiceElement = await ƒS.Menu.getInput(roomChoices, "choicesCSSClass");
-  
+        let roomChoiceElement = await ƒS.Menu.getInput(roomChoices, "choices");
    
         switch (roomChoiceElement) {
         case roomChoices.lookAtDesk:
             ƒS.Speech.hide();
             await ƒS.Character.hide(characters.bonny);
-            await ƒS.Location.show(locations.toDoList);
+            await ƒS.Location.show(locations.toDoList_empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0015);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0016);
@@ -104,12 +103,31 @@ namespace Template {
         cooking: "cooking"
     };
 
-    let toDoListChoiceElements = await ƒS.Menu.getInput(toDoListChoices, "choicesCSSClass");
+    let pickedErrands: boolean;
+    let pickedProject: boolean;
+    let pickedCooking: boolean;
+
+    do {
+    if (pickedErrands && !pickedProject && !pickedCooking) {
+        dataForSave.pickedChoice = true;
+        return Scene3_1();
+    } 
+    else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
+        dataForSave.pickedChoice = true;
+        return Scene3_2();
+    }
+    else if (pickedErrands && pickedProject && pickedCooking) {
+        dataForSave.pickedChoice = true;
+        return Scene3_3();
+    } 
+
+    let toDoListChoiceElements = await ƒS.Menu.getInput(toDoListChoices, "choices");
 
     switch (toDoListChoiceElements) {
         case toDoListChoices.runErrands:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0022);
-            return Scene3();
+            pickedErrands = true;
+            break;
         case toDoListChoices.finishProject:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0023);
             ƒS.Speech.hide();
@@ -117,20 +135,25 @@ namespace Template {
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Progress.delay(7);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0024);
-            //return to do list
+            await ƒS.Location.show(locations.toDoList_empty);
+            await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+            await ƒS.Speech.tell(characters.bonny, "What should I do next?");
+            pickedProject = true;
             break;
         case toDoListChoices.cooking:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0025);
             ƒS.Speech.hide();
-
             await ƒS.Location.show(locations.cookingScene);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Progress.delay(7);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0026);
-            //return to do list
+            await ƒS.Location.show(locations.toDoList_empty);
+            await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+            await ƒS.Speech.tell(characters.bonny, "What else do I have to finish?");
+            pickedCooking = true;
             break;
-
     }
+    } while (!dataForSave.pickedChoice);
     
     }
 }

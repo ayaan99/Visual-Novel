@@ -85,13 +85,13 @@ speech content {
   margin-left: 3%;
 }
 
-.choicesCSSClass, .gameMenuCSSClass {
+.choices, .gameMenu {
   border: none;
   border-radius: 20px;
   background-color: rgb(243, 231, 211);
 }
 
-.choicesCSSClass button, .gameMenuCSSClass button {
+.choices button, .gameMenu button {
   cursor: pointer;
   border: none;
   color: white;

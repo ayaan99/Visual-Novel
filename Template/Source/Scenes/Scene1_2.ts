@@ -6,7 +6,7 @@ namespace Template {
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated2, ƒS.positionPercent(30, 110));
 
     //name change "???" to "bo":
-    await ƒS.Character.hide(characters.unknown);
+    await ƒS.Character.hide(characters.unknownBo);
     await ƒS.Character.show(characters.bo, characters.bo.pose.neutral, ƒS.positionPercent(70, 100));
     await ƒS.update();
 

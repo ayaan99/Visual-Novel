@@ -1,53 +1,19 @@
 declare namespace Template {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    let transitions: {
-        lightbeam: {
-            duration: number;
-            alpha: string;
-            edge: number;
-        };
-        bigWipe: {
-            duration: number;
-            alpha: string;
-            edge: number;
-        };
-        noise: {
-            duration: number;
-            alpha: string;
-            edge: number;
-        };
-        wipes: {
-            duration: number;
-            alpha: string;
-            edge: number;
-        };
+    let dataForSave: {
+        nameProtagonist: string;
+        pickedChoice: boolean;
     };
-    let sounds: {
-        afterlifeSoundBeginning: string;
-    };
-    let locations: {
-        afterlife: {
-            name: string;
-            background: string;
-        };
-        bonnysRoom: {
-            name: string;
-            background: string;
-        };
-        toDoList: {
-            name: string;
-            background: string;
-        };
-        studyScene: {
-            name: string;
-            background: string;
-        };
-        cookingScene: {
-            name: string;
-            background: string;
-        };
-    };
+}
+declare namespace Template {
+    function bonnyIntro(): ƒS.AnimationDefinition;
+    function boIntro(): ƒS.AnimationDefinition;
+    function leftToRight(): ƒS.AnimationDefinition;
+    function fadeIn(): ƒS.AnimationDefinition;
+    function fadeOut(): ƒS.AnimationDefinition;
+}
+declare namespace Template {
     let characters: {
         narrator: {
             name: string;
@@ -71,7 +37,7 @@ declare namespace Template {
                 crying: string;
             };
         };
-        unknown: {
+        unknownBo: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
@@ -90,15 +56,21 @@ declare namespace Template {
                 frustrated: string;
             };
         };
+        unknownNat: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+            };
+        };
+        nat: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+            };
+        };
     };
-    let dataForSave: {
-        nameProtagonist: string;
-        pickedChoice: boolean;
-    };
-    function rightToLeft(): ƒS.AnimationDefinition;
-    function boIntro(): ƒS.AnimationDefinition;
-    function fadeIn(): ƒS.AnimationDefinition;
-    function fadeOut(): ƒS.AnimationDefinition;
 }
 declare namespace Template {
     let text: {
@@ -226,6 +198,107 @@ declare namespace Template {
                 T0017: string;
             };
         };
+        unknownNat: {
+            scene3_1: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+            };
+        };
+        nat: {
+            scene3_1: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+            };
+        };
+    };
+}
+declare namespace Template {
+}
+declare namespace Template {
+    let locations: {
+        afterlife: {
+            name: string;
+            background: string;
+        };
+        bonnysRoom: {
+            name: string;
+            background: string;
+        };
+        toDoList_empty: {
+            name: string;
+            background: string;
+        };
+        toDoList_projectCheck: {
+            name: string;
+            background: string;
+        };
+        toDoList_cookingCheck: {
+            name: string;
+            background: string;
+        };
+        toDoList_projectAndCookingCheck: {
+            name: string;
+            background: string;
+        };
+        studyScene: {
+            name: string;
+            background: string;
+        };
+        cookingScene: {
+            name: string;
+            background: string;
+        };
+        supermarket: {
+            name: string;
+            background: string;
+        };
+    };
+}
+declare namespace Template {
+    let sounds: {
+        afterlifeSoundBeginning: string;
+    };
+}
+declare namespace Template {
+    let transitions: {
+        lightbeam: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        bigWipe: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        bigWipe2: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        noise: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        wipes: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        wet: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
     };
 }
 declare namespace Template {
@@ -238,5 +311,11 @@ declare namespace Template {
     function Scene2(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Scene3(): ƒS.SceneReturn;
+    function Scene3_1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene3_2(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene3_3(): ƒS.SceneReturn;
 }
