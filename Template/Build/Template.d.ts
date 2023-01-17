@@ -2,7 +2,6 @@ declare namespace Template {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
-        nameProtagonist: string;
         pickedChoice: boolean;
         progressBar: number;
         pickedMeterScene: boolean;
@@ -17,7 +16,7 @@ declare namespace Template {
 }
 declare namespace Template {
     let characters: {
-        narrator: {
+        unknown: {
             name: string;
         };
         protagonist: {
@@ -40,14 +39,6 @@ declare namespace Template {
                 flustered: string;
                 frustrated: string;
                 thinking: string;
-            };
-        };
-        unknownBo: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                irritated: string;
             };
         };
         bo: {
@@ -136,7 +127,6 @@ declare namespace Template {
                 T0001: string;
                 T0002: string;
                 T0003: string;
-                T0004: string;
             };
             scene3_2: {
                 T0001: string;
@@ -204,7 +194,7 @@ declare namespace Template {
                 T0028: string;
             };
         };
-        unknownBo: {
+        bo: {
             scene1: {
                 T0000: string;
                 T0001: string;
@@ -213,31 +203,27 @@ declare namespace Template {
                 T0004: string;
                 T0005: string;
                 T0006: string;
-            };
-        };
-        bo: {
-            scene1: {
-                T0001: string;
-                T0002: string;
-                T0003_1: string;
-                T0003_2: string;
-                T0003_3: string;
-                T0004: string;
-                T0005: string;
-                T0006: string;
-                T0007_1: string;
-                T0007_2: string;
+                T0007: string;
                 T0008: string;
                 T0009: string;
                 T0010: string;
                 T0011: string;
                 T0012: string;
                 T0013: string;
-                T0014_1: string;
-                T0014_2: string;
+                T0014: string;
                 T0015: string;
                 T0016: string;
                 T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+                T0023: string;
+                T0024: string;
+                T0025: string;
+                T0026: string;
+                T0027: string;
             };
         };
         unknownNat: {
@@ -271,6 +257,9 @@ declare namespace Template {
                 T0009: string;
                 T0010: string;
             };
+        };
+        novelPage: {
+            scene3_1: string;
         };
     };
 }
@@ -332,6 +321,30 @@ declare namespace Template {
                 background: string;
             };
         };
+        sidewalk: {
+            name: string;
+            background: string;
+        };
+        school: {
+            name: string;
+            background: string;
+        };
+        park: {
+            name: string;
+            background: string;
+        };
+        library: {
+            name: string;
+            background: string;
+        };
+        hospital: {
+            name: string;
+            background: string;
+        };
+        bar: {
+            name: string;
+            background: string;
+        };
         cutScenes: {
             study: {
                 name: string;
@@ -342,6 +355,14 @@ declare namespace Template {
                 background: string;
             };
             shopping: {
+                name: string;
+                background: string;
+            };
+            class: {
+                name: string;
+                background: string;
+            };
+            library: {
                 name: string;
                 background: string;
             };
@@ -404,4 +425,7 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene3_3(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Test(): ƒS.SceneReturn;
 }

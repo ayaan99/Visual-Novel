@@ -2,7 +2,8 @@ namespace Template {
     export async function Scene3_1(): ƒS.SceneReturn {
     console.log("Scene3_1 starting");
 
-    // dataForSave.progressBar += 50;
+    dataForSave.progressBar += 8.333;
+
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
     await ƒS.Location.show(locations.emptyStreet.normal);
@@ -39,6 +40,6 @@ namespace Template {
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
 
     await ƒS.Progress.delay(2); //increase time
-    await ƒS.Text.print(text.bonny.scene3_1.T0004);
+    await ƒS.Text.print(text.novelPage.scene3_1);
     }
 }

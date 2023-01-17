@@ -4,11 +4,8 @@ namespace Template {
   console.log("FudgeStory template starting");
 
   export let dataForSave = {
-    nameProtagonist: "",
+    // nameProtagonist: "",
     pickedChoice: false,
-    // Protagonist: {
-    //   name: "Player"
-    // }
     progressBar: 0,
     pickedMeterScene: false
     };
@@ -87,10 +84,10 @@ namespace Template {
     let scenes: ƒS.Scenes = [
       // { scene: Scene1_1, name: "Scene1_1" },
       // { scene: Scene1_2, name: "Scene1_2" },
-      // { scene: Scene2, name: "Scene2_1"},
-      { scene: Scene3_1, name: "Scene3_1"},
-      { scene: Scene3_2, name: "Scene3_2"},
-      { scene: Scene3_3, name: "Scene3_3"}
+      // { scene: Scene2, name: "Scene2"},
+      { scene: Scene3_1, name: "Scene3_1"}
+      // { scene: Scene3_2, name: "Scene3_2"},
+      // { scene: Scene3_3, name: "Scene3_3"}
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

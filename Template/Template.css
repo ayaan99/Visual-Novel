@@ -52,12 +52,20 @@ dialog[type=text] {
   padding: 25px 35px;
   border-radius: 15px;
   border-color:rgb(108, 86, 67);
-  border-width: 15px;
+  border-width: 25px;
   background-color: antiquewhite;
   color: black;
-  box-shadow: 2px 3px rgb(80, 63, 47);
+  box-shadow: 5px 4px rgb(65, 52, 39);
   font-size: 3.25vh;
   line-height: 150%;
+  background: linear-gradient(
+    to bottom,
+    antiquewhite,
+    antiquewhite 50%,
+    rgb(255, 241, 223) 50%,
+    rgb(255, 241, 223)
+  );
+  background-size: 100% 30px;
 }
 
 #welcomeText {

@@ -1,7 +1,7 @@
 namespace Template {
     export let characters = {
-        narrator: {
-          name: ""
+        unknown: {
+          name: "???"
         },
         protagonist: {
           name: ""
@@ -25,14 +25,14 @@ namespace Template {
             thinking: "Images/Characters/bonny_thinking.png"
           }
         },
-        unknownBo: {
-          name: "???",
-          origin: ƒS.ORIGIN.BOTTOMCENTER,
-          pose: {
-            neutral: "Images/Characters/bo.png",
-            irritated: "Images/Characters/bo_irritated.png"
-          }
-        },
+        // unknownBo: {
+        //   name: "???",
+        //   origin: ƒS.ORIGIN.BOTTOMCENTER,
+        //   pose: {
+        //     neutral: "Images/Characters/bo.png",
+        //     irritated: "Images/Characters/bo_irritated.png"
+        //   }
+        // },
         bo: {
           name: "Bo",
           origin: ƒS.ORIGIN.BOTTOMCENTER,

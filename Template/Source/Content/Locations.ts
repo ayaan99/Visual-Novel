@@ -30,7 +30,6 @@ namespace Template {
             background: "Images/Backgrounds/toDoList_project+cooking.png" 
             }
         },
-               
         supermarket: {
           name: "Supermarket",
           background: "Images/Backgrounds/supermarket.png"
@@ -38,7 +37,7 @@ namespace Template {
         emptyStreet: {
           normal: {
           name: "Empty Street",
-          background: "Images/Backgrounds/emptyStreet_lightsOn.png"
+          background: "Images/Backgrounds/emptyStreet_lightsOn_cutScene.png"
           },
           rain: {
           name: "empty street with rain",
@@ -48,12 +47,36 @@ namespace Template {
         busyStreet: {
           normal: {
           name: "busy street",
-          background: "Images/Backgrounds/busyStreet.png"
+          background: "Images/Backgrounds/busyStreet_cutScene.png"
         },
           rain: {
             name: "busy street with rain",
-            background: "Images/Backgrounds/busyStreet_rain.png"
+            background: "Images/Backgrounds/busyStreet_rain_cutScene.png"
           }
+        },
+        sidewalk: {
+            name: "sidewalk",
+            background: "Images/Backgrounds/street.png"
+        },
+        school: {
+          name: "school",
+          background: "Images/Backgrounds/school.png"
+        },
+        park: {
+          name: "park",
+          background: "Images/Backgrounds/park.png"
+        },
+        library: {
+          name: "library",
+          background: "Images/Backgrounds/library.png"
+        },
+        hospital: {
+          name: "hospital",
+          background: "Images/Backgrounds/hospital.png"
+        },
+        bar: {
+          name: "bar",
+          background: "Images/Backgrounds/bar.png"
         },
         cutScenes: {
           study: {
@@ -67,6 +90,14 @@ namespace Template {
           shopping: {
             name: "Shopping Cut-Scene",
             background: "Images/Backgrounds/shopping_cutScene.png"
+          },
+          class: {
+            name: "class",
+            background: "Images/Backgrounds/classroom_cutScene.png"
+          },
+          library: {
+            name: "library",
+            background: "Images/Backgrounds/library_cutScene.png"
           }
         }
 };

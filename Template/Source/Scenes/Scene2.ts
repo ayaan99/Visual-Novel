@@ -2,6 +2,8 @@ namespace Template {
     export async function Scene2(): ƒS.SceneReturn {
     console.log("Scene2_1 starting");
 
+    dataForSave.progressBar += 8.333;
+
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
     await ƒS.Location.show(locations.bonnysRoom);
@@ -97,27 +99,29 @@ namespace Template {
       }
     } while (!dataForSave.pickedChoice);
 
+    
     let toDoListChoices = {
         runErrands: "run errands",
         finishProject: "finish school project",
         cooking: "cooking"
     };
 
+    //pickedChoice == true;
     let pickedErrands: boolean;
     let pickedProject: boolean;
     let pickedCooking: boolean;
 
     do {
     if (pickedErrands && !pickedProject && !pickedCooking) {
-        dataForSave.pickedChoice = true;
+        dataForSave.pickedChoice = false;
         return Scene3_1();
     } 
     else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
-        dataForSave.pickedChoice = true;
+        dataForSave.pickedChoice = false;
         return Scene3_2();
     }
     else if (pickedErrands && pickedProject && pickedCooking) {
-        dataForSave.pickedChoice = true;
+        dataForSave.pickedChoice = false;
         return Scene3_3();
     } 
 
@@ -133,7 +137,7 @@ namespace Template {
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.cutScenes.study);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            await ƒS.Progress.delay(7);
+            await ƒS.Progress.delay(5);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0024);
             await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
@@ -145,7 +149,7 @@ namespace Template {
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.cutScenes.cooking);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            await ƒS.Progress.delay(7);
+            await ƒS.Progress.delay(5);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0026);
             await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
@@ -153,7 +157,7 @@ namespace Template {
             pickedCooking = true;
             break;
     }
-    } while (!dataForSave.pickedChoice);
+    } while (dataForSave.pickedChoice); //pickedChoices == false
     
     }
 }
