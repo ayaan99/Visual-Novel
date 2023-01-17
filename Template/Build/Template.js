@@ -6,8 +6,16 @@ var Template;
     console.log("FudgeStory template starting");
     Template.dataForSave = {
         nameProtagonist: "",
-        pickedChoice: false
+        pickedChoice: false,
+        // Protagonist: {
+        //   name: "Player"
+        // }
+        progressBar: 0,
+        pickedMeterScene: false
     };
+    // dataForSave.Protagonist.name = await ƒS.Speech.getInput();
+    // console.log(dataForSave.Protagonist.name);
+    // await ƒS.Speech.tell(characters.Doctor, "Hallo, " + dataForSave.Protagonist.name + ".");
     let inGameMenuButtons = {
         save: "Save",
         load: "Load",
@@ -187,7 +195,10 @@ var Template;
                 angry: "Images/Characters/bonny_angry.png",
                 upset: "Images/Characters/bonny_upset.png",
                 sad: "Images/Characters/bonny_sad.png",
-                crying: "Images/Characters/bonny_crying.png"
+                crying: "Images/Characters/bonny_crying.png",
+                flustered: "Images/Characters/bonny_flustered.png",
+                frustrated: "Images/Characters/bonny_frustrated.png",
+                thinking: "Images/Characters/bonny_thinking.png"
             }
         },
         unknownBo: {
@@ -213,14 +224,21 @@ var Template;
             name: "???",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/Characters/nat.png"
+                angry: "Images/Characters/nat_angry.png",
+                irritated: "Images/Characters/nat_irritated.png"
             }
         },
         nat: {
             name: "Nat",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "Images/Characters/nat.png"
+                neutral: "Images/Characters/nat.png",
+                angry: "Images/Characters/nat_angry.png",
+                flustered: "Images/Characters/nat_flustered.png",
+                happy: "Images/Characters/nat_happy.png",
+                irritated: "Images/Characters/nat_irritated.png",
+                laughing: "Images/Characters/nat_laughing.png",
+                smiling: "Images/Characters/nat_smiling.png"
             }
         }
     };
@@ -306,7 +324,7 @@ var Template;
                 T0023: "Ugh, I hate that I don't remember my past!",
                 T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
                 T0025: "Okay, I should get back home now and prepare myself for the evening with Nat.",
-                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Nat again."
+                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments again."
             },
             scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
@@ -314,9 +332,39 @@ var Template;
                 T0003: "I should hurry to get inside!",
                 T0004: "Just quickly across the street...",
                 T0005: "AHHH!!!"
+            },
+            scene4: {
+                T0001: "*zzz* *zzz*",
+                T0002: "Oh, is it the next day already?",
+                T0003: "Am I still in a memory?",
+                T0004: "I think so right?",
+                T0005: "Bo didn't bring me back to him. What am I supposed to do now?",
+                T0006: "...",
+                T0007: "“Living my life as I would usually do.”",
+                T0008: "That means I have to go to school, right?",
+                T0009: "...",
+                T0010: "Oh my god! I have to go to school!",
+                T0011: "I'm already late!",
+                T0012: "I'm just grabbing everything I need and then I gotta...",
+                T0013: "Alright, since school isn't so far away, I'll just run over there.",
+                T0014: "I don't want to waste any more time. I'll grab the bike and drive to school real quick!",
+                T0015: "Oh shoot! The first half of the lecture is already over!",
+                T0016: "I need to hurry up before I-",
+                T0017: "I'm sorry. I didn't see you there… ",
+                T0018: "Oh my god! Is that you?",
+                T0019: "It has to be, right? But why would he not recognize me? ",
+                T0020: "I don't remember bumping into him like that… did I miss something? ",
+                T0021: "Did I do something wrong… Why would-",
+                T0022: "Oh, I didn't mean to say those things out loud.",
+                T0023: "Oh… yes… of course!",
+                T0024: "I'm sorry. I should have watched out. ",
+                T0025: "I'm just stressed because I'm to late to my class.",
+                T0026: "Oh I think it's called...",
+                T0027: "Oh really?! I didn't notice that.",
+                T0028: "Yes! That would be great!"
             }
         },
-        unknown: {
+        unknownBo: {
             scene1: {
                 T0000: "...",
                 T0001: "Oh yes, of course I can see you.",
@@ -370,6 +418,18 @@ var Template;
                 T0007: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
                 T0008: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
                 T0009: "'Kay, see ya!"
+            },
+            scene4: {
+                T0001: "I'm Nathan… But well everyone calls me Nat, if that clears things up for you.",
+                T0002: "And yes, I don't recognize you, because I don't know you.",
+                T0003: "And at least you could apologize for running into me like that.",
+                T0004: "Oh really? ",
+                T0005: "Then you don't need to be sorry, because I'm running late to my class as well!",
+                T0006: "Which class are you taking?",
+                T0007: "You're kidding right?",
+                T0008: "That's the one I'm supposed to have right now!",
+                T0009: "But it looks like you were walking in the totally wrong direction.",
+                T0010: "'Kay, before we waste any more time… How 'bout we rush over there together?"
             }
         }
     };
@@ -377,6 +437,10 @@ var Template;
 var Template;
 (function (Template) {
     Template.locations = {
+        blackScreen: {
+            name: "Black Screen",
+            background: "Images/Backgrounds/blackScreen.png"
+        },
         afterlife: {
             name: "Afterlife",
             background: "Images/Backgrounds/afterlife.png"
@@ -384,35 +448,62 @@ var Template;
         bonnysRoom: {
             name: "Bonny's Room",
             background: "Images/Backgrounds/bonnysRoom.png"
-            // foreground: ""
         },
-        toDoList_empty: {
-            name: "To-Do-List",
-            background: "Images/Backgrounds/toDoList_empty.png"
-        },
-        toDoList_projectCheck: {
-            name: "To-Do-List_ProjectCheck",
-            background: "Images/Backgrounds/toDoList_project.png"
-        },
-        toDoList_cookingCheck: {
-            name: "To-Do-List Cooking Check",
-            background: "Images/Backgrounds/toDoList_cooking.png"
-        },
-        toDoList_projectAndCookingCheck: {
-            name: "To-Do-List Project and Cooking Check",
-            background: "Images/Backgrounds/toDoList_project+cooking.png"
-        },
-        studyScene: {
-            name: "Study Cut-Scene",
-            background: "Images/Backgrounds/study_cutScene.png"
-        },
-        cookingScene: {
-            name: "Cooking Cut-Scene",
-            background: "Images/Backgrounds/cooking_CutScene.png"
+        toDoList: {
+            empty: {
+                name: "To-Do-List",
+                background: "Images/Backgrounds/toDoList_empty.png"
+            },
+            projectCheck: {
+                name: "Project Check",
+                background: "Images/Backgrounds/toDoList_project.png"
+            },
+            cookingCheck: {
+                name: "To-Do-List Cooking Check",
+                background: "Images/Backgrounds/toDoList_cooking.png"
+            },
+            projectAndCookingCheck: {
+                name: "To-Do-List Project and Cooking Check",
+                background: "Images/Backgrounds/toDoList_project+cooking.png"
+            }
         },
         supermarket: {
             name: "Supermarket",
             background: "Images/Backgrounds/supermarket.png"
+        },
+        emptyStreet: {
+            normal: {
+                name: "Empty Street",
+                background: "Images/Backgrounds/emptyStreet_lightsOn.png"
+            },
+            rain: {
+                name: "empty street with rain",
+                background: "Images/Backgrounds/emptyStreet_rain.png"
+            }
+        },
+        busyStreet: {
+            normal: {
+                name: "busy street",
+                background: "Images/Backgrounds/busyStreet.png"
+            },
+            rain: {
+                name: "busy street with rain",
+                background: "Images/Backgrounds/busyStreet_rain.png"
+            }
+        },
+        cutScenes: {
+            study: {
+                name: "Study Cut-Scene",
+                background: "Images/Backgrounds/study_cutScene.png"
+            },
+            cooking: {
+                name: "Cooking Cut-Scene",
+                background: "Images/Backgrounds/cooking_CutScene.png"
+            },
+            shopping: {
+                name: "Shopping Cut-Scene",
+                background: "Images/Backgrounds/shopping_cutScene.png"
+            }
         }
     };
 })(Template || (Template = {}));
@@ -480,14 +571,14 @@ var Template;
         await Template.ƒS.update(0.5);
         //bo appears:
         await Template.ƒS.Character.animate(Template.characters.unknownBo, Template.characters.unknownBo.pose.irritated, Template.boIntro());
-        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0000);
         await Template.ƒS.Character.hide(Template.characters.bonny);
         await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated2, Template.ƒS.positionPercent(30, 110));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene1.T0005);
-        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0003);
         await Template.ƒS.Character.hide(Template.characters.unknownBo);
         await Template.ƒS.Character.show(Template.characters.unknownBo, Template.characters.unknownBo.pose.neutral, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.update();
@@ -508,15 +599,15 @@ var Template;
             switch (questionsElement) {
                 case questions.iSayWhy:
                     pickedWhy = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0004);
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0004);
                     break;
                 case questions.iSayWho:
                     pickedWho = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0005);
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0005);
                     break;
                 case questions.iSayWhat:
                     pickedWhat = true;
-                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknown.scene1.T0006);
+                    await Template.ƒS.Speech.tell(Template.characters.unknownBo, Template.text.unknownBo.scene1.T0006);
                     break;
             }
         } while (!Template.dataForSave.pickedChoice);
@@ -670,7 +761,7 @@ var Template;
                 case roomChoices.lookAtDesk:
                     Template.ƒS.Speech.hide();
                     await Template.ƒS.Character.hide(Template.characters.bonny);
-                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
+                    await Template.ƒS.Location.show(Template.locations.toDoList.empty);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0015);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0016);
@@ -720,11 +811,11 @@ var Template;
                 case toDoListChoices.finishProject:
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0023);
                     Template.ƒS.Speech.hide();
-                    await Template.ƒS.Location.show(Template.locations.studyScene);
+                    await Template.ƒS.Location.show(Template.locations.cutScenes.study);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Progress.delay(7);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0024);
-                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
+                    await Template.ƒS.Location.show(Template.locations.toDoList.empty);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, "What should I do next?");
                     pickedProject = true;
@@ -732,11 +823,11 @@ var Template;
                 case toDoListChoices.cooking:
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0025);
                     Template.ƒS.Speech.hide();
-                    await Template.ƒS.Location.show(Template.locations.cookingScene);
+                    await Template.ƒS.Location.show(Template.locations.cutScenes.cooking);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Progress.delay(7);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene2.T0026);
-                    await Template.ƒS.Location.show(Template.locations.toDoList_empty);
+                    await Template.ƒS.Location.show(Template.locations.toDoList.empty);
                     await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
                     await Template.ƒS.Speech.tell(Template.characters.bonny, "What else do I have to finish?");
                     pickedCooking = true;
@@ -750,15 +841,35 @@ var Template;
 (function (Template) {
     async function Scene3_1() {
         console.log("Scene3_1 starting");
+        // dataForSave.progressBar += 50;
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.emptyStreet.normal);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+        await Template.ƒS.Progress.delay(1); //increase time
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
         await Template.ƒS.Location.show(Template.locations.supermarket);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
         await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRight());
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        Template.ƒS.Speech.clear();
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Location.show(Template.locations.cutScenes.shopping);
+        await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        await Template.ƒS.Progress.delay(2); //increase time
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0003);
+        Template.ƒS.Speech.clear();
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Progress.delay(2); //increase time
         await Template.ƒS.Text.print(Template.text.bonny.scene3_1.T0004);
     }
     Template.Scene3_1 = Scene3_1;

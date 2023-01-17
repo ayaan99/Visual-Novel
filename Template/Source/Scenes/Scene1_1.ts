@@ -22,16 +22,16 @@ namespace Template {
 
     //bo appears:
     await ƒS.Character.animate(characters.unknownBo, characters.unknownBo.pose.irritated, boIntro());
-    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0000);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0000);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated2, ƒS.positionPercent(30, 110));
     await ƒS.update();
     
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0005);
-    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0001);
-    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0002);
-    await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0003);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0001);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0002);
+    await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0003);
     
     await ƒS.Character.hide(characters.unknownBo);
     await ƒS.Character.show(characters.unknownBo, characters.unknownBo.pose.neutral, ƒS.positionPercent(70, 100));
@@ -59,15 +59,15 @@ namespace Template {
       switch (questionsElement) {
       case questions.iSayWhy:
         pickedWhy = true;
-        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0004);
+        await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0004);
         break;
       case questions.iSayWho:
         pickedWho = true;
-        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0005);
+        await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0005);
         break;
       case questions.iSayWhat:
         pickedWhat = true;
-        await ƒS.Speech.tell(characters.unknownBo, text.unknown.scene1.T0006);
+        await ƒS.Speech.tell(characters.unknownBo, text.unknownBo.scene1.T0006);
         break;
       }
     } while (!dataForSave.pickedChoice);

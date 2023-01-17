@@ -19,7 +19,10 @@ namespace Template {
             angry: "Images/Characters/bonny_angry.png",
             upset: "Images/Characters/bonny_upset.png",
             sad: "Images/Characters/bonny_sad.png",
-            crying: "Images/Characters/bonny_crying.png"
+            crying: "Images/Characters/bonny_crying.png",
+            flustered: "Images/Characters/bonny_flustered.png",
+            frustrated: "Images/Characters/bonny_frustrated.png",
+            thinking: "Images/Characters/bonny_thinking.png"
           }
         },
         unknownBo: {
@@ -45,14 +48,21 @@ namespace Template {
           name: "???",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            neutral: "Images/Characters/nat.png"
+            angry: "Images/Characters/nat_angry.png",
+            irritated: "Images/Characters/nat_irritated.png"
           }
         },
         nat: {
           name: "Nat",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            neutral: "Images/Characters/nat.png"
+            neutral: "Images/Characters/nat.png",
+            angry: "Images/Characters/nat_angry.png",
+            flustered: "Images/Characters/nat_flustered.png",
+            happy: "Images/Characters/nat_happy.png",
+            irritated: "Images/Characters/nat_irritated.png",
+            laughing: "Images/Characters/nat_laughing.png",
+            smiling: "Images/Characters/nat_smiling.png"
           }
         }
       };

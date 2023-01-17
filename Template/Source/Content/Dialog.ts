@@ -78,7 +78,7 @@ namespace Template {
                 T0023: "Ugh, I hate that I don't remember my past!",
                 T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
                 T0025: "Okay, I should get back home now and prepare myself for the evening with Nat.",
-                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments with Nat again."
+                T0026: "As she arrived back home, Bonny tossed her new bought groceries into the kitchen and started to get ready for the evening. Nat did message her the location and it was in fact the place they both used to visit a lot together. Bonny started to feel like Bo only had good intentions in mind, by letting her relive these precious moments again."
           },
           scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
@@ -86,9 +86,39 @@ namespace Template {
                 T0003: "I should hurry to get inside!",
                 T0004: "Just quickly across the street...",
                 T0005: "AHHH!!!"
+          },
+          scene4: {
+                T0001: "*zzz* *zzz*",
+                T0002: "Oh, is it the next day already?",
+                T0003: "Am I still in a memory?",
+                T0004: "I think so right?",
+                T0005: "Bo didn't bring me back to him. What am I supposed to do now?",
+                T0006: "...",
+                T0007: "“Living my life as I would usually do.”",
+                T0008: "That means I have to go to school, right?",
+                T0009: "...",
+                T0010: "Oh my god! I have to go to school!",
+                T0011: "I'm already late!",
+                T0012: "I'm just grabbing everything I need and then I gotta...",
+                T0013: "Alright, since school isn't so far away, I'll just run over there.",
+                T0014: "I don't want to waste any more time. I'll grab the bike and drive to school real quick!",
+                T0015: "Oh shoot! The first half of the lecture is already over!",
+                T0016: "I need to hurry up before I-",
+                T0017: "I'm sorry. I didn't see you there… ",
+                T0018: "Oh my god! Is that you?",
+                T0019: "It has to be, right? But why would he not recognize me? ",
+                T0020: "I don't remember bumping into him like that… did I miss something? ",
+                T0021: "Did I do something wrong… Why would-",
+                T0022: "Oh, I didn't mean to say those things out loud.",
+                T0023: "Oh… yes… of course!",
+                T0024: "I'm sorry. I should have watched out. ",
+                T0025: "I'm just stressed because I'm to late to my class.",
+                T0026: "Oh I think it's called...",
+                T0027: "Oh really?! I didn't notice that.",
+                T0028: "Yes! That would be great!"
           }
         },
-        unknown: {
+        unknownBo: {
             scene1: {
                 T0000: "...",
                 T0001: "Oh yes, of course I can see you.",
@@ -142,6 +172,18 @@ namespace Template {
                 T0007: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
                 T0008: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
                 T0009: "'Kay, see ya!"
+            },
+            scene4: {
+                T0001: "I'm Nathan… But well everyone calls me Nat, if that clears things up for you.",
+                T0002: "And yes, I don't recognize you, because I don't know you.",
+                T0003: "And at least you could apologize for running into me like that.",
+                T0004: "Oh really? ",
+                T0005: "Then you don't need to be sorry, because I'm running late to my class as well!",
+                T0006: "Which class are you taking?",
+                T0007: "You're kidding right?",
+                T0008: "That's the one I'm supposed to have right now!",
+                T0009: "But it looks like you were walking in the totally wrong direction.",
+                T0010: "'Kay, before we waste any more time… How 'bout we rush over there together?"
             }
         }
     };

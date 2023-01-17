@@ -4,6 +4,8 @@ declare namespace Template {
     let dataForSave: {
         nameProtagonist: string;
         pickedChoice: boolean;
+        progressBar: number;
+        pickedMeterScene: boolean;
     };
 }
 declare namespace Template {
@@ -35,6 +37,9 @@ declare namespace Template {
                 upset: string;
                 sad: string;
                 crying: string;
+                flustered: string;
+                frustrated: string;
+                thinking: string;
             };
         };
         unknownBo: {
@@ -60,7 +65,8 @@ declare namespace Template {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                neutral: string;
+                angry: string;
+                irritated: string;
             };
         };
         nat: {
@@ -68,6 +74,12 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
+                angry: string;
+                flustered: string;
+                happy: string;
+                irritated: string;
+                laughing: string;
+                smiling: string;
             };
         };
     };
@@ -161,8 +173,38 @@ declare namespace Template {
                 T0004: string;
                 T0005: string;
             };
+            scene4: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+                T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+                T0023: string;
+                T0024: string;
+                T0025: string;
+                T0026: string;
+                T0027: string;
+                T0028: string;
+            };
         };
-        unknown: {
+        unknownBo: {
             scene1: {
                 T0000: string;
                 T0001: string;
@@ -217,6 +259,18 @@ declare namespace Template {
                 T0008: string;
                 T0009: string;
             };
+            scene4: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+            };
         };
     };
 }
@@ -224,6 +278,10 @@ declare namespace Template {
 }
 declare namespace Template {
     let locations: {
+        blackScreen: {
+            name: string;
+            background: string;
+        };
         afterlife: {
             name: string;
             background: string;
@@ -232,33 +290,61 @@ declare namespace Template {
             name: string;
             background: string;
         };
-        toDoList_empty: {
-            name: string;
-            background: string;
-        };
-        toDoList_projectCheck: {
-            name: string;
-            background: string;
-        };
-        toDoList_cookingCheck: {
-            name: string;
-            background: string;
-        };
-        toDoList_projectAndCookingCheck: {
-            name: string;
-            background: string;
-        };
-        studyScene: {
-            name: string;
-            background: string;
-        };
-        cookingScene: {
-            name: string;
-            background: string;
+        toDoList: {
+            empty: {
+                name: string;
+                background: string;
+            };
+            projectCheck: {
+                name: string;
+                background: string;
+            };
+            cookingCheck: {
+                name: string;
+                background: string;
+            };
+            projectAndCookingCheck: {
+                name: string;
+                background: string;
+            };
         };
         supermarket: {
             name: string;
             background: string;
+        };
+        emptyStreet: {
+            normal: {
+                name: string;
+                background: string;
+            };
+            rain: {
+                name: string;
+                background: string;
+            };
+        };
+        busyStreet: {
+            normal: {
+                name: string;
+                background: string;
+            };
+            rain: {
+                name: string;
+                background: string;
+            };
+        };
+        cutScenes: {
+            study: {
+                name: string;
+                background: string;
+            };
+            cooking: {
+                name: string;
+                background: string;
+            };
+            shopping: {
+                name: string;
+                background: string;
+            };
         };
     };
 }

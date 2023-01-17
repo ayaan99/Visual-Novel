@@ -76,7 +76,7 @@ namespace Template {
         case roomChoices.lookAtDesk:
             ƒS.Speech.hide();
             await ƒS.Character.hide(characters.bonny);
-            await ƒS.Location.show(locations.toDoList_empty);
+            await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0015);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0016);
@@ -131,11 +131,11 @@ namespace Template {
         case toDoListChoices.finishProject:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0023);
             ƒS.Speech.hide();
-            await ƒS.Location.show(locations.studyScene);
+            await ƒS.Location.show(locations.cutScenes.study);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Progress.delay(7);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0024);
-            await ƒS.Location.show(locations.toDoList_empty);
+            await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, "What should I do next?");
             pickedProject = true;
@@ -143,11 +143,11 @@ namespace Template {
         case toDoListChoices.cooking:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0025);
             ƒS.Speech.hide();
-            await ƒS.Location.show(locations.cookingScene);
+            await ƒS.Location.show(locations.cutScenes.cooking);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Progress.delay(7);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0026);
-            await ƒS.Location.show(locations.toDoList_empty);
+            await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, "What else do I have to finish?");
             pickedCooking = true;

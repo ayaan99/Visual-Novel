@@ -5,8 +5,18 @@ namespace Template {
 
   export let dataForSave = {
     nameProtagonist: "",
-    pickedChoice: false
+    pickedChoice: false,
+    // Protagonist: {
+    //   name: "Player"
+    // }
+    progressBar: 0,
+    pickedMeterScene: false
     };
+
+    // dataForSave.Protagonist.name = await ƒS.Speech.getInput();
+    // console.log(dataForSave.Protagonist.name);
+
+    // await ƒS.Speech.tell(characters.Doctor, "Hallo, " + dataForSave.Protagonist.name + ".");
 
   let inGameMenuButtons = {
     save: "Save",

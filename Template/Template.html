@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/mvs4sal.css">
   <link rel="stylesheet" href="Template.css">
   <script src="Fudge/FudgeCore.js"></script>
   <script src="FudgeStory/FudgeStory.js"></script>
@@ -14,16 +15,6 @@
 
 <body>
   <scene>
-
-    <dialog type="splash" open>
-      <img id="FudgeStoryLogo" theme="light" /> <!-- use "light" or "dark" -->
-      <div>
-        <p id="welcomeText">
-        This is my visual novel. Have fun :>
-      </p>
-      </div>
-    </dialog>
-
     <canvas></canvas>
 
 
@@ -47,7 +38,20 @@
       </ul>
     </dialog>
 
+    <div type="interface">
+      <!-- <input id="progressBar" type="text" value="Progress" disabled> -->
+      <meter id="progress" name="progressBar" min="0" max="100" disabled></meter>
+    </div>
   </scene>
+  
+  <dialog type="splash" open>
+      <img id="FudgeStoryLogo" theme="light" /> <!-- use "light" or "dark" -->
+      <div>
+        <p id="welcomeText">
+        This is my visual novel. Have fun :>
+      </p>
+      </div>
+    </dialog>
 </body>
 
 </html>
