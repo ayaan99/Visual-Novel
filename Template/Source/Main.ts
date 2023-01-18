@@ -4,16 +4,10 @@ namespace Template {
   console.log("FudgeStory template starting");
 
   export let dataForSave = {
-    // nameProtagonist: "",
     pickedChoice: false,
     progressBar: 0,
     pickedMeterScene: false
     };
-
-    // dataForSave.Protagonist.name = await ƒS.Speech.getInput();
-    // console.log(dataForSave.Protagonist.name);
-
-    // await ƒS.Speech.tell(characters.Doctor, "Hallo, " + dataForSave.Protagonist.name + ".");
 
   let inGameMenuButtons = {
     save: "Save",

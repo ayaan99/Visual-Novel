@@ -68,6 +68,18 @@ dialog[type=text] {
   background-size: 100% 30px;
 }
 
+dialog[type=inventory]>ul>li>description, dialog[type=inventory]>ul>li>amount {
+  display: none;
+}
+
+dialog[type=inventory] {
+  background-color: antiquewhite;
+  padding: 15px 15px;
+  border-radius: 15px;
+  border-color:rgb(108, 86, 67);
+  border-width: 5px;
+}
+
 #welcomeText {
   text-align: center;
   width: 50%;
@@ -121,7 +133,7 @@ speech content {
   background-color: rgb(243, 231, 211);
 }
 
-.choices button, .gameMenu button {
+.choices button, .gameMenu button, dialog[type=inventory]>button {
   cursor: pointer;
   border: none;
   color: white;

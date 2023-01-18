@@ -154,7 +154,6 @@ declare namespace Template {
                 T0023: string;
                 T0024: string;
                 T0025: string;
-                T0026: string;
             };
             scene3_3: {
                 T0001: string;
@@ -163,7 +162,7 @@ declare namespace Template {
                 T0004: string;
                 T0005: string;
             };
-            scene4: {
+            scene4_1: {
                 T0001: string;
                 T0002: string;
                 T0003: string;
@@ -192,6 +191,147 @@ declare namespace Template {
                 T0026: string;
                 T0027: string;
                 T0028: string;
+                T0029: string;
+                T0030: string;
+                T0031: string;
+            };
+            scene4_2: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+            };
+            scene5: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+                T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+            };
+            scene6: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+            };
+            scene7: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+            };
+            ending: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+                T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+                T0023: string;
+                T0024: string;
+                T0025: string;
+                T0026: string;
+                T0027: string;
+                T0028: string;
+                T0029: string;
+                T0030: string;
+                T0031: string;
+                T0032: string;
+                T0033: string;
+                T0034: string;
+                T0035: string;
+                T0036: string;
+                T0037: string;
+                T0038: string;
+                T0039: string;
+                T0040: string;
+                T0041: string;
+                T0042: string;
+            };
+            ending2: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+                T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+                T0023: string;
+                T0024: string;
+                T0025: string;
+                T0026: string;
+                T0027: string;
             };
         };
         bo: {
@@ -226,13 +366,6 @@ declare namespace Template {
                 T0027: string;
             };
         };
-        unknownNat: {
-            scene3_1: {
-                T0001: string;
-                T0002: string;
-                T0003: string;
-            };
-        };
         nat: {
             scene3_1: {
                 T0001: string;
@@ -244,8 +377,71 @@ declare namespace Template {
                 T0007: string;
                 T0008: string;
                 T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
             };
-            scene4: {
+            scene4_1: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+            };
+            scene4_2: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+            };
+            scene5: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+            };
+            scene6: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+            };
+        };
+        drSherp: {
+            scene5: {
                 T0001: string;
                 T0002: string;
                 T0003: string;
@@ -260,10 +456,88 @@ declare namespace Template {
         };
         novelPage: {
             scene3_1: string;
+            scene3_2: string;
+            scene4_1: string;
         };
     };
 }
 declare namespace Template {
+}
+declare namespace Template {
+    let items: {
+        bar: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        barOutside: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        classromm: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        cooking: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        hospital: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        library: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        park: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        shopping: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        street: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        busyStreetRain: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        busyStreet: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        study: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+    };
 }
 declare namespace Template {
     let locations: {
@@ -342,6 +616,10 @@ declare namespace Template {
             background: string;
         };
         bar: {
+            name: string;
+            background: string;
+        };
+        barInside: {
             name: string;
             background: string;
         };

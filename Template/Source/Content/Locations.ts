@@ -78,6 +78,10 @@ namespace Template {
           name: "bar",
           background: "Images/Backgrounds/bar.png"
         },
+        barInside: {
+          name: "bar inside",
+          background: "Images/Backgrounds/barInside.png"
+        },
         cutScenes: {
           study: {
           name: "Study Cut-Scene",
