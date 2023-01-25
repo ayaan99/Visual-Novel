@@ -7,7 +7,9 @@ var Template;
     Template.dataForSave = {
         pickedChoice: false,
         progressBar: 0,
-        pickedMeterScene: false
+        pickedMeterScene: false,
+        class: "",
+        accidentScene: 0
     };
     let inGameMenuButtons = {
         save: "Save",
@@ -71,12 +73,14 @@ var Template;
         gameMenu = Template.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
         buttonFunctionalities("Close");
         let scenes = [
+            // { scene: Test, name: "test"},
             // { scene: Scene1_1, name: "Scene1_1" },
             // { scene: Scene1_2, name: "Scene1_2" },
             // { scene: Scene2, name: "Scene2"},
-            { scene: Template.Scene3_1, name: "Scene3_1" }
+            // { scene: Scene3_1, name: "Scene3_1"},
             // { scene: Scene3_2, name: "Scene3_2"},
-            // { scene: Scene3_3, name: "Scene3_3"}
+            // { scene: Scene3_3, name: "Scene3_3"},
+            { scene: Template.Scene4_1, name: "Scene4" }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -116,7 +120,7 @@ var Template;
         };
     }
     Template.boIntro = boIntro;
-    function leftToRight() {
+    function introLeftBorder() {
         return {
             start: {
                 translation: Template.ƒS.positions.bottomleft
@@ -128,7 +132,85 @@ var Template;
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
     }
-    Template.leftToRight = leftToRight;
+    Template.introLeftBorder = introLeftBorder;
+    function outroLeftBorder() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(30, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(-30, 100)
+            },
+            duration: 3,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.outroLeftBorder = outroLeftBorder;
+    function outroRightBorder() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(70, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(110, 100)
+            },
+            duration: 2,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.outroRightBorder = outroRightBorder;
+    function leftToRightBorder() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(30, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(110, 100)
+            },
+            duration: 3,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.leftToRightBorder = leftToRightBorder;
+    function outroRightToLeftBorder() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(70, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(-30, 100)
+            },
+            duration: 3,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.outroRightToLeftBorder = outroRightToLeftBorder;
+    function bumpingAnimationBonny() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(30, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(70, 100)
+            },
+            duration: 1.5,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.bumpingAnimationBonny = bumpingAnimationBonny;
+    function bumpingAnimationNat() {
+        return {
+            start: {
+                translation: Template.ƒS.positionPercent(110, 100)
+            },
+            end: {
+                translation: Template.ƒS.positionPercent(30, 100)
+            },
+            duration: 1.5,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.bumpingAnimationNat = bumpingAnimationNat;
     function fadeIn() {
         return {
             start: {
@@ -171,6 +253,9 @@ var Template;
     Template.characters = {
         unknown: {
             name: "???"
+        },
+        narrator: {
+            name: "narrator"
         },
         protagonist: {
             name: ""
@@ -314,14 +399,14 @@ var Template;
                 T0021: "How come that he doesn't know me?! Is that a memory from the time before we were friends?",
                 T0022: "Maybe... from the time when I first moved to this city?",
                 T0023: "Ugh, I hate that I don't remember my past!",
-                T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
-                T0025: "Okay, I should get back home now and prepare myself for the evening with Nat."
+                T0024: "How am I supposed to find the mistake, when I don't know if I am making the right decisions?",
+                T0025: "Okay nevermind... I should get back home now and prepare myself for the evening with Nat."
             },
             scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
                 T0002: "I hate the rain!",
                 T0003: "I should hurry to get inside!",
-                T0004: "Just quickly across the street...",
+                T0004: "Just quickly cross the street...",
                 T0005: "AHHH!!!"
             },
             scene4_1: {
@@ -331,7 +416,7 @@ var Template;
                 T0004: "I think so right?",
                 T0005: "Bo didn't bring me back to him. What am I supposed to do now?",
                 T0006: "...",
-                T0007: "“Living my life as I would usually do.”",
+                T0007: "<i>“Just live your life like you would usually do.”<i>",
                 T0008: "That means I have to go to school, right?",
                 T0009: "...",
                 T0010: "Oh my god! I have to go to school!",
@@ -342,15 +427,15 @@ var Template;
                 T0015: "Oh shoot! The first half of the lecture is already over!",
                 T0016: "I need to hurry up before I-",
                 T0017: "I'm sorry. I didn't see you there… ",
-                T0018: "Oh my god! Is that you?",
-                T0019: "It has to be, right? But why would he not recognize me? ",
+                T0018: "Oh my god! This can't be true!",
+                T0019: "It has to be him, right? But why would he not recognize me? ",
                 T0020: "I don't remember bumping into him like that… did I miss something? ",
                 T0021: "Did I do something wrong… Why would-",
                 T0022: "Oh, I didn't mean to say those things out loud.",
                 T0023: "Oh… yes… of course!",
                 T0024: "I'm sorry. I should have watched out. ",
                 T0025: "I'm just stressed because I'm to late to my class.",
-                T0026: "Oh I think it's called...",
+                T0026: "Oh ehm... I think it's called...",
                 T0027: "Oh really?! I didn't notice that.",
                 T0028: "Yes! That would be great!",
                 T0029: "No, it's fine! Don't worry! ",
@@ -529,7 +614,7 @@ var Template;
             }
         },
         nat: {
-            scene3_1: {
+            scene3_2: {
                 T0001: "Ouch! You should watch where you're going!",
                 T0002: "What? Do I know you?",
                 T0003: "Hello? What are you talking about?!",
@@ -537,13 +622,14 @@ var Template;
                 T0005: "How do you know that?! I've never met you?!",
                 T0006: "Mhh okay… ",
                 T0007: "Well, sorry… I don't remember you. ",
-                T0008: "But must be true than!",
+                T0008: "But must be true then!",
                 T0009: "Listen, I didn't mean to be rude to you… I-",
-                T0010: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
+                T0010: "Hey, how about we stop being sorry for each other and make it right by grabbing something to drink later tonight?",
                 T0011: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
                 T0012: "'Kay, see ya!"
             },
             scene4_1: {
+                T0000: "Ehm anyway...",
                 T0001: "I'm Nathan… But well everyone calls me Nat, if that clears things up for you.",
                 T0002: "And yes, I don't recognize you, because I don't know you.",
                 T0003: "And at least you could apologize for running into me like that.",
@@ -556,7 +642,7 @@ var Template;
                 T0010: "'Kay, before we waste any more time… How 'bout we rush over there together?",
                 T0011: "Hey, was nice meeting you!",
                 T0012: "I'm sorry for being rude to you earlier. I didn't want –",
-                T0013: "Hey, how 'bout we're not being sorry for each other and just grab something to eat at the cafeteria together?"
+                T0013: "Hey, how 'bout we'll stop being sorry for each other and just grab something to eat at the cafeteria together?"
             },
             scene4_2: {
                 T0001: "Heya! How's it goin'?",
@@ -618,8 +704,8 @@ var Template;
         },
         novelPage: {
             scene3_1: "Dear diary, <br><br> At first, I didn't know what to do today. Luckily, I found my To-Do-List. I thought, it would be the best to just stick to the tasks I would have done anyways. <br> Since I'm trusting Bo in his decisions, I will live my life as usually. But now I'm so exhausted from all the work, that I can't really search for Nat anymore. I hope that I'll still be in the memory tomorrow and get the chance of finally meeting him.",
-            scene3_2: "Dear diary, <br><br> You will never guess what just happened to me! I thought it would be best to stick to my To-Do-List for the day. So, I went grocery shopping as usually and I randomly run into Nat! He didn't recognize me unfortunately, but asked me out to grab a drink later. I'm so glad that Bo lets me relive those precious moments with Nat again. I believe that everything will turn out to be great from now on!",
-            scene4_1: "Dear diary, <br><br> Today I finally run into Nat while speeding to school. He asked me to go to the cafeteria with him and gave me his phone number. He wants to meet up so that we could study for our class together. It's a bit strange meeting him like that, because it doesn't feel like the way we met in my past life. But in the end, I don't care – as long as Bo would let me make more of those memories."
+            scene3_2: "Dear diary, <br><br> You will never guess what just happened to me! I thought it would be best to stick to my To-Do-List for the day. So, I went grocery shopping as usually and I randomly run into Nat! He didn't recognize me unfortunately, but asked me out to grab a drink later. I'm so glad that Bo lets me relive those precious moments with Nat again. I believe that everything will turn out great from now on!",
+            scene4_1: "Dear diary, <br><br> Today I finally ran into Nat while speeding to school. He asked me to go to the cafeteria with him and gave me his phone number. He wants to meet up so that we could study for our class together. It's a bit strange meeting him like that, because it doesn't feel like the way we met in my past life. But in the end, I don't care – as long as Bo would let me make more of those memories."
         }
     };
 })(Template || (Template = {}));
@@ -1006,8 +1092,8 @@ var Template;
         await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.fadeOut());
         await Template.ƒS.update(0.5);
         await Template.ƒS.Character.animate(Template.characters.bo, Template.characters.bo.pose.happy, Template.fadeOut());
-        await Template.ƒS.update();
         Template.ƒS.Character.hideAll();
+        await Template.ƒS.update();
         return Template.Scene2();
     }
     Template.Scene1_2 = Scene1_2;
@@ -1163,31 +1249,38 @@ var Template;
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
         await Template.ƒS.Location.show(Template.locations.emptyStreet.normal);
         await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
-        await Template.ƒS.Progress.delay(1); //increase time
+        await Template.ƒS.Progress.delay(3); //increase time
         await Template.ƒS.Location.show(Template.locations.blackScreen);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
         await Template.ƒS.Location.show(Template.locations.supermarket);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
-        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRight());
+        // await ƒS.update();
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.introLeftBorder());
+        Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
-        await Template.ƒS.Character.hide(Template.characters.bonny);
-        Template.ƒS.Speech.clear();
         Template.ƒS.Speech.hide();
-        await Template.ƒS.update(0.5);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRightBorder());
+        Template.ƒS.Character.hide(Template.characters.bonny);
+        // await ƒS.update();
         await Template.ƒS.Location.show(Template.locations.cutScenes.shopping);
         await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
-        await Template.ƒS.Progress.delay(2); //increase time
+        await Template.ƒS.Progress.delay(5); //increase time
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0003);
         Template.ƒS.Speech.clear();
         Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.emptyStreet.normal);
+        await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        await Template.ƒS.Progress.delay(3);
         await Template.ƒS.Location.show(Template.locations.blackScreen);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
         await Template.ƒS.Location.show(Template.locations.bonnysRoom);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
-        await Template.ƒS.Progress.delay(2); //increase time
+        await Template.ƒS.Progress.delay(2);
         await Template.ƒS.Text.print(Template.text.novelPage.scene3_1);
+        //return Scene4_1();
     }
     Template.Scene3_1 = Scene3_1;
 })(Template || (Template = {}));
@@ -1195,18 +1288,135 @@ var Template;
 (function (Template) {
     async function Scene3_2() {
         console.log("Scene3_2 starting");
+        Template.dataForSave.progressBar += 8.333;
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.busyStreet.normal);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+        await Template.ƒS.Progress.delay(3);
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
         await Template.ƒS.Location.show(Template.locations.supermarket);
         await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
-        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.leftToRight());
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.introLeftBorder());
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0002);
+        //bonny and nat bumping into each other
+        Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.bumpingAnimationBonny());
+        Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.neutral, Template.bumpingAnimationNat());
+        await Template.ƒS.Progress.delay(1.25);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.angry, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene3_2.T0001);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0003);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.thinking, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0004);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene3_2.T0002);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene3_2.T0003);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0008);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.flustered, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0009);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0005);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0010);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0011);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0012);
+        Template.dataForSave.class = await Template.ƒS.Speech.getInput();
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.nat, "Well, sorry… I don't remember you or a class called " + Template.dataForSave.class + ".");
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0008);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "...");
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.flustered, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0009);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0013);
+        await Template.ƒS.Speech.tell(Template.characters.narrator, "...");
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.happy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0010);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0014);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0015);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0016);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0017);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0011);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0018);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene3_2.T0012);
+        Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.happy, Template.outroLeftBorder());
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0019);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0020);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0021);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0022);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sad, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0023);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0024);
+        await Template.ƒS.update();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0025);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.outroRightBorder());
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.busyStreet.rain);
+        await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        await Template.ƒS.Progress.delay(3); //increase time
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Progress.delay(2);
         await Template.ƒS.Text.print(Template.text.novelPage.scene3_2);
+        //return Scene6();
     }
     Template.Scene3_2 = Scene3_2;
 })(Template || (Template = {}));
@@ -1214,19 +1424,209 @@ var Template;
 (function (Template) {
     async function Scene3_3() {
         console.log("Scene3_3 starting");
+        switch (Template.dataForSave.accidentScene) {
+            case 0:
+                break;
+            case 1:
+                Template.ƒS.Speech.hide();
+                await Template.ƒS.Location.show(Template.locations.busyStreet.normal);
+                await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "I just need to quickly cross the street...");
+                Template.ƒS.Speech.hide();
+                await Template.ƒS.Progress.delay(2);
+                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0005);
+                Template.ƒS.Speech.hide();
+                await Template.ƒS.Location.show(Template.locations.blackScreen);
+                await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+                await Template.ƒS.Progress.delay(3);
+                return Template.Scene5();
+        }
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
-        await Template.ƒS.Location.show(Template.locations.supermarket);
-        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
-        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.upset, Template.leftToRight());
-        await Template.ƒS.update();
+        await Template.ƒS.Location.show(Template.locations.busyStreet.rain);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0001);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0002);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0003);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0004);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(2);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_3.T0005);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Progress.delay(3);
+        return Template.Scene5();
     }
     Template.Scene3_3 = Scene3_3;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene4_1() {
+        console.log("Scene4 starting");
+        Template.ƒS.Speech.hide();
+        // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(Template.transitions.lightbeam.duration, Template.transitions.lightbeam.alpha, Template.transitions.lightbeam.edge);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0004);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0008);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(1.5);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0010);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0011);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0012);
+        await Template.ƒS.update();
+        let transportChoice = {
+            runToSchool: "run to school",
+            takeTheBike: "take the bike"
+        };
+        let choiceElement = await Template.ƒS.Menu.getInput(transportChoice, "choices");
+        switch (choiceElement) {
+            case transportChoice.runToSchool:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0013);
+                break;
+            case transportChoice.takeTheBike:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0014);
+                await Template.ƒS.Character.hide(Template.characters.bonny);
+                Template.ƒS.Speech.hide();
+                Template.ƒS.update(2);
+                Template.dataForSave.accidentScene += 1;
+                return Template.Scene3_3();
+        }
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.sidewalk);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.introLeftBorder());
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0015);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0016);
+        Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.bumpingAnimationBonny());
+        Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.neutral, Template.bumpingAnimationNat());
+        await Template.ƒS.Progress.delay(1.25);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.angry, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene3_2.T0001);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0003);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.thinking, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0018);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, "What do you mean?");
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0019);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0020);
+        await Template.ƒS.Speech.tell(Template.characters.unknown, "Hello?! What are you talking about?!");
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0022);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene4_1.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0003);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0023);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0024);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0025);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0004);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.laughing, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0006);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0026);
+        Template.dataForSave.class = await Template.ƒS.Speech.getInput();
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0007);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.laughing, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, "I'm supposed to be in" + Template.dataForSave.class + " right now!");
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0009);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0027);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0010);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0028);
+        Template.ƒS.Speech.hide();
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.update();
+        Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.happy, Template.outroLeftBorder());
+        Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.outroRightToLeftBorder());
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.Progress.delay(4);
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.cutScenes.class);
+        await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        await Template.ƒS.Progress.delay(2); //increase time
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.school);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.ƒS.positionPercent(75, 100));
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.happy, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0011);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0012);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0029);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0030);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0013);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0031);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Progress.delay(3);
+        await Template.ƒS.Text.print(Template.text.novelPage.scene4_1);
+        //return Scene4_2();
+    }
+    Template.Scene4_1 = Scene4_1;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene5() {
+        console.log("Scene5 starting");
+        Template.ƒS.Speech.hide();
+        // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(Template.transitions.lightbeam.duration, Template.transitions.lightbeam.alpha, Template.transitions.lightbeam.edge);
+    }
+    Template.Scene5 = Scene5;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1238,12 +1638,29 @@ var Template;
         // dataForSave.Protagonist.name = await ƒS.Speech.getInput();
         // console.log(dataForSave.Protagonist.name);
         // await ƒS.Speech.tell(characters.Doctor, "Hallo, " + dataForSave.Protagonist.name + ".");
-        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.bonny.scene3_1.T0001);
+        await Template.ƒS.Location.show(Template.locations.bar);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.ƒS.positions.bottomcenter);
         await Template.ƒS.update();
-        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_1.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0001);
-        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0003);
+        // await ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, rightFrame());
+        // await ƒS.Speech.tell(characters.unknown, text.bonny.scene3_1.T0001);
+        // ƒS.Speech.clear();
+        // ƒS.Speech.hide(); 
+        // await ƒS.update(5);
+        // await ƒS.Progress.delay(6); //increase time
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Location.show(Template.locations.busyStreet.rain);
+        await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        await Template.ƒS.update(0);
+        await Template.ƒS.Progress.delay(5); //increase time
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        // await ƒS.update();
+        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_1.T0002);
+        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0001);
+        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0002);
+        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0003);
         // await ƒS.Text.print(text.bonny.scene3_2.T0026);
     }
     Template.Test = Test;

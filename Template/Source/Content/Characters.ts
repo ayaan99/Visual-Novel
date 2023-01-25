@@ -3,6 +3,9 @@ namespace Template {
         unknown: {
           name: "???"
         },
+        narrator: {
+          name: "narrator"
+        },
         protagonist: {
           name: ""
         },

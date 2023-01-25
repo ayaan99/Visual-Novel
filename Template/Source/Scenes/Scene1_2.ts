@@ -95,9 +95,10 @@ namespace Template {
     await ƒS.update(0.5);
 
     await ƒS.Character.animate(characters.bo, characters.bo.pose.happy, fadeOut()); 
+    
+    ƒS.Character.hideAll();
     await ƒS.update();
 
-    ƒS.Character.hideAll();
     return Scene2();
     }
 }

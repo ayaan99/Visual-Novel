@@ -47,8 +47,9 @@ dialog[type=text] {
   font-family: tekton-pro,sans-serif;
   font-weight: 700;
   font-style: normal;
+  word-spacing: 2px;
   width: 25%;
-  height: 75%;
+  max-height: 700px;
   padding: 25px 35px;
   border-radius: 15px;
   border-color:rgb(108, 86, 67);
@@ -119,6 +120,15 @@ speech.Bonny name {
 speech.Nat name {
   background-color: rgb(21, 107, 174);
 }
+speech.narrator name {
+  display: none;
+}
+
+speech.narrator content {
+  position: relative;
+  top: 30px;
+  left: 15px;
+}
 
 speech content {
   font-size: 2.55vh;
@@ -158,4 +168,22 @@ meter[id="progress"] {
 
 meter[id="progress"]::-webkit-meter-optimum-value {
   background-color: rgb(128, 104, 84);
+}
+
+input {
+  height: 10px;
+  width: 150px;
+  padding: 12px 10px;
+  border-color: antiquewhite;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  outline: none;
+}
+
+input:focus {
+  border: 2px;
+  border-color: antiquewhite;
+  background-color: rgb(128, 104, 84);
+  color: antiquewhite;
+  font-size: 18px;
 }

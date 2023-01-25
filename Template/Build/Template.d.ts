@@ -5,18 +5,29 @@ declare namespace Template {
         pickedChoice: boolean;
         progressBar: number;
         pickedMeterScene: boolean;
+        class: string;
+        accidentScene: number;
     };
 }
 declare namespace Template {
     function bonnyIntro(): ƒS.AnimationDefinition;
     function boIntro(): ƒS.AnimationDefinition;
-    function leftToRight(): ƒS.AnimationDefinition;
+    function introLeftBorder(): ƒS.AnimationDefinition;
+    function outroLeftBorder(): ƒS.AnimationDefinition;
+    function outroRightBorder(): ƒS.AnimationDefinition;
+    function leftToRightBorder(): ƒS.AnimationDefinition;
+    function outroRightToLeftBorder(): ƒS.AnimationDefinition;
+    function bumpingAnimationBonny(): ƒS.AnimationDefinition;
+    function bumpingAnimationNat(): ƒS.AnimationDefinition;
     function fadeIn(): ƒS.AnimationDefinition;
     function fadeOut(): ƒS.AnimationDefinition;
 }
 declare namespace Template {
     let characters: {
         unknown: {
+            name: string;
+        };
+        narrator: {
             name: string;
         };
         protagonist: {
@@ -367,7 +378,7 @@ declare namespace Template {
             };
         };
         nat: {
-            scene3_1: {
+            scene3_2: {
                 T0001: string;
                 T0002: string;
                 T0003: string;
@@ -382,6 +393,7 @@ declare namespace Template {
                 T0012: string;
             };
             scene4_1: {
+                T0000: string;
                 T0001: string;
                 T0002: string;
                 T0003: string;
@@ -703,6 +715,12 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene3_3(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene4_1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene5(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Test(): ƒS.SceneReturn;

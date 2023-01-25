@@ -6,7 +6,9 @@ namespace Template {
   export let dataForSave = {
     pickedChoice: false,
     progressBar: 0,
-    pickedMeterScene: false
+    pickedMeterScene: false,
+    class: "",
+    accidentScene: 0
     };
 
   let inGameMenuButtons = {
@@ -76,12 +78,14 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
+      // { scene: Test, name: "test"},
       // { scene: Scene1_1, name: "Scene1_1" },
       // { scene: Scene1_2, name: "Scene1_2" },
       // { scene: Scene2, name: "Scene2"},
-      { scene: Scene3_1, name: "Scene3_1"}
+      // { scene: Scene3_1, name: "Scene3_1"},
       // { scene: Scene3_2, name: "Scene3_2"},
-      // { scene: Scene3_3, name: "Scene3_3"}
+      // { scene: Scene3_3, name: "Scene3_3"},
+      { scene: Scene4_1, name: "Scene4"}
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

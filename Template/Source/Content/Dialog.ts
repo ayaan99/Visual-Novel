@@ -75,14 +75,14 @@ namespace Template {
                 T0021: "How come that he doesn't know me?! Is that a memory from the time before we were friends?",
                 T0022: "Maybe... from the time when I first moved to this city?",
                 T0023: "Ugh, I hate that I don't remember my past!",
-                T0024: "How am I supposed to find the mistake, when I don't know if I am doing the right things here either?",
-                T0025: "Okay, I should get back home now and prepare myself for the evening with Nat."
+                T0024: "How am I supposed to find the mistake, when I don't know if I am making the right decisions?",
+                T0025: "Okay nevermind... I should get back home now and prepare myself for the evening with Nat."
           }, 
           scene3_3: {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
                 T0002: "I hate the rain!",
                 T0003: "I should hurry to get inside!",
-                T0004: "Just quickly across the street...",
+                T0004: "Just quickly cross the street...",
                 T0005: "AHHH!!!"
           },
           scene4_1: {
@@ -92,7 +92,7 @@ namespace Template {
                 T0004: "I think so right?",
                 T0005: "Bo didn't bring me back to him. What am I supposed to do now?",
                 T0006: "...",
-                T0007: "“Living my life as I would usually do.”",
+                T0007: "<i>“Just live your life like you would usually do.”<i>",
                 T0008: "That means I have to go to school, right?",
                 T0009: "...",
                 T0010: "Oh my god! I have to go to school!",
@@ -103,15 +103,15 @@ namespace Template {
                 T0015: "Oh shoot! The first half of the lecture is already over!",
                 T0016: "I need to hurry up before I-",
                 T0017: "I'm sorry. I didn't see you there… ",
-                T0018: "Oh my god! Is that you?",
-                T0019: "It has to be, right? But why would he not recognize me? ",
+                T0018: "Oh my god! This can't be true!",
+                T0019: "It has to be him, right? But why would he not recognize me? ",
                 T0020: "I don't remember bumping into him like that… did I miss something? ",
                 T0021: "Did I do something wrong… Why would-",
                 T0022: "Oh, I didn't mean to say those things out loud.",
                 T0023: "Oh… yes… of course!",
                 T0024: "I'm sorry. I should have watched out. ",
                 T0025: "I'm just stressed because I'm to late to my class.",
-                T0026: "Oh I think it's called...",
+                T0026: "Oh ehm... I think it's called...",
                 T0027: "Oh really?! I didn't notice that.",
                 T0028: "Yes! That would be great!",
                 T0029: "No, it's fine! Don't worry! ",
@@ -292,7 +292,7 @@ namespace Template {
         },
        
         nat: {
-            scene3_1: {
+            scene3_2: {
                 T0001: "Ouch! You should watch where you're going!",
                 T0002: "What? Do I know you?",
                 T0003: "Hello? What are you talking about?!",
@@ -300,13 +300,14 @@ namespace Template {
                 T0005: "How do you know that?! I've never met you?!",
                 T0006: "Mhh okay… ",
                 T0007: "Well, sorry… I don't remember you. ",
-                T0008: "But must be true than!",
+                T0008: "But must be true then!",
                 T0009: "Listen, I didn't mean to be rude to you… I-",
-                T0010: "Hey, how 'bout we're not being sorry for each other and make it right by grabbing something to drink later in the evening?",
+                T0010: "Hey, how about we stop being sorry for each other and make it right by grabbing something to drink later tonight?",
                 T0011: "Sure! Let me just take your phone number and I'll text you the location later, okay?",
                 T0012: "'Kay, see ya!"
             },
             scene4_1: {
+                T0000: "Ehm anyway...",
                 T0001: "I'm Nathan… But well everyone calls me Nat, if that clears things up for you.",
                 T0002: "And yes, I don't recognize you, because I don't know you.",
                 T0003: "And at least you could apologize for running into me like that.",
@@ -319,7 +320,7 @@ namespace Template {
                 T0010: "'Kay, before we waste any more time… How 'bout we rush over there together?",
                 T0011: "Hey, was nice meeting you!",
                 T0012: "I'm sorry for being rude to you earlier. I didn't want –",
-                T0013: "Hey, how 'bout we're not being sorry for each other and just grab something to eat at the cafeteria together?"
+                T0013: "Hey, how 'bout we'll stop being sorry for each other and just grab something to eat at the cafeteria together?"
             },
             scene4_2: {
                 T0001: "Heya! How's it goin'?",
@@ -383,8 +384,8 @@ namespace Template {
 
         novelPage: {
             scene3_1: "Dear diary, <br><br> At first, I didn't know what to do today. Luckily, I found my To-Do-List. I thought, it would be the best to just stick to the tasks I would have done anyways. <br> Since I'm trusting Bo in his decisions, I will live my life as usually. But now I'm so exhausted from all the work, that I can't really search for Nat anymore. I hope that I'll still be in the memory tomorrow and get the chance of finally meeting him.",
-            scene3_2: "Dear diary, <br><br> You will never guess what just happened to me! I thought it would be best to stick to my To-Do-List for the day. So, I went grocery shopping as usually and I randomly run into Nat! He didn't recognize me unfortunately, but asked me out to grab a drink later. I'm so glad that Bo lets me relive those precious moments with Nat again. I believe that everything will turn out to be great from now on!",
-            scene4_1: "Dear diary, <br><br> Today I finally run into Nat while speeding to school. He asked me to go to the cafeteria with him and gave me his phone number. He wants to meet up so that we could study for our class together. It's a bit strange meeting him like that, because it doesn't feel like the way we met in my past life. But in the end, I don't care – as long as Bo would let me make more of those memories."
+            scene3_2: "Dear diary, <br><br> You will never guess what just happened to me! I thought it would be best to stick to my To-Do-List for the day. So, I went grocery shopping as usually and I randomly run into Nat! He didn't recognize me unfortunately, but asked me out to grab a drink later. I'm so glad that Bo lets me relive those precious moments with Nat again. I believe that everything will turn out great from now on!",
+            scene4_1: "Dear diary, <br><br> Today I finally ran into Nat while speeding to school. He asked me to go to the cafeteria with him and gave me his phone number. He wants to meet up so that we could study for our class together. It's a bit strange meeting him like that, because it doesn't feel like the way we met in my past life. But in the end, I don't care – as long as Bo would let me make more of those memories."
         }
     };
 }

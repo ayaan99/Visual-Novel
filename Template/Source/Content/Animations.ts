@@ -29,7 +29,7 @@ namespace Template {
         };
       }
 
-    export function leftToRight(): ƒS.AnimationDefinition {
+    export function introLeftBorder(): ƒS.AnimationDefinition {
         return {
           start: {
             translation: ƒS.positions.bottomleft
@@ -38,6 +38,84 @@ namespace Template {
             translation: ƒS.positionPercent(30, 100)
           },
           duration: 3,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+
+    export function outroLeftBorder(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(30, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(-30, 100)
+          },
+          duration: 3,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+
+    export function outroRightBorder(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(70, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(110, 100)
+          },
+          duration: 2,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+
+    export function leftToRightBorder(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(30, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(110, 100)
+          },
+          duration: 3,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+
+    export function outroRightToLeftBorder(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(70, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(-30, 100)
+          },
+          duration: 3,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+    
+    export function bumpingAnimationBonny(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(30, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(70, 100)
+          },
+          duration: 1.5,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
+      
+    export function bumpingAnimationNat(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(110, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(30, 100)
+          },
+          duration: 1.5,
           playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
       }
