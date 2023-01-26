@@ -85,7 +85,8 @@ namespace Template {
       // { scene: Scene3_1, name: "Scene3_1"},
       // { scene: Scene3_2, name: "Scene3_2"},
       // { scene: Scene3_3, name: "Scene3_3"},
-      { scene: Scene4_1, name: "Scene4"}
+      // { scene: Scene4_1, name: "Scene4_1"},
+      { scene: Scene4_2, name: "Scene4_2"}
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

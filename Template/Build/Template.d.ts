@@ -14,6 +14,7 @@ declare namespace Template {
     function boIntro(): ƒS.AnimationDefinition;
     function introLeftBorder(): ƒS.AnimationDefinition;
     function outroLeftBorder(): ƒS.AnimationDefinition;
+    function introRightBorder(): ƒS.AnimationDefinition;
     function outroRightBorder(): ƒS.AnimationDefinition;
     function leftToRightBorder(): ƒS.AnimationDefinition;
     function outroRightToLeftBorder(): ƒS.AnimationDefinition;
@@ -223,6 +224,7 @@ declare namespace Template {
                 T0014: string;
                 T0015: string;
                 T0016: string;
+                T0017: string;
             };
             scene5: {
                 T0001: string;
@@ -718,6 +720,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene4_1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene4_2(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Scene5(): ƒS.SceneReturn;

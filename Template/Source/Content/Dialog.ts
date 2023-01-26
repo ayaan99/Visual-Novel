@@ -121,8 +121,8 @@ namespace Template {
           scene4_2: {
                 T0001: "I'm so glad that I'm still in the memory to figure things out and spend more time with Nat.",
                 T0002: "But I'm also curious to finally find the mistake that caused all of this.",
-                T0003: "Maybe today I get the chance to connect better with Nat and rebuild our relationship.",
-                T0004: "Maybe… as long as Bo is going to let me… I could even make him fall in love with me again.",
+                T0003: "Maybe today I get the chance to connect with Nat and rebuild our relationship.",
+                T0004: "Maybe - as long as Bo is letting me - I could even make him fall in love with me again.",
                 T0005: "But how should I…",
                 T0006: "Huh?!",
                 T0007: "Oh… Hey… No… I mean yes… just a bit, but it's alright…",
@@ -134,7 +134,8 @@ namespace Template {
                 T0013: "You have a girlfriend?!",
                 T0014: "Isn't that obvious?! I'm supposed to be with you! ",
                 T0015: "Shoot! I didn't mean to say that out loud again!",
-                T0016: "Okay… you're right! We don't know each other… maybe we were never meant to be together! I should go know."
+                T0016: "Okay… you're right! We don't know each other… maybe we were never meant to be together! ",
+                T0017: "I should go know."
           },
           scene5: {
             T0001: "Huh?! What happened? Where am I?!",
@@ -326,8 +327,8 @@ namespace Template {
                 T0001: "Heya! How's it goin'?",
                 T0002: "Oh sorry! Did I scare you?",
                 T0003: "Haha 'kay! How 'bout we get startin' with our study session?",
-                T0004: "Well, that was fun! I felt like I did study more today than for the last past semesters, hahah!",
-                T0005: "Oh, that would sound great, but I'm actually meeting up with my girlfriend in a few minutes.",
+                T0004: "Well, that was fun! I felt like I did study more today then I ever did for the past semesters, hahah!",
+                T0005: "Oh, that would be great, but I'm actually meeting up with my girlfriend in a few minutes.",
                 T0006: "Yes, why are you so surprised about it?",
                 T0007: "What did you just say?! ",
                 T0008: "Well, but you did! We don't even know each other!",

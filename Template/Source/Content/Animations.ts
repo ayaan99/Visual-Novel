@@ -55,6 +55,18 @@ namespace Template {
         };
       }
 
+    export function introRightBorder(): ƒS.AnimationDefinition {
+        return {
+          start: {
+            translation: ƒS.positionPercent(110, 100)
+          },
+          end: {
+            translation: ƒS.positionPercent(70, 100)
+          },
+          duration: 2,
+          playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+      }
     export function outroRightBorder(): ƒS.AnimationDefinition {
         return {
           start: {
