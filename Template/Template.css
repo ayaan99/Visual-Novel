@@ -120,6 +120,11 @@ speech.Bonny name {
 speech.Nat name {
   background-color: rgb(21, 107, 174);
 }
+
+speech[class="Dr. Sherp"] name {
+  background-color: rgb(15, 145, 125);
+}
+
 speech.narrator name {
   display: none;
 }
@@ -136,6 +141,9 @@ speech content {
   display: block;
   margin-left: 3%;
 }
+.choices::backdrop {
+    backdrop-filter: blur(1.5px);
+}
 
 .choices, .gameMenu {
   border: none;
@@ -148,6 +156,7 @@ speech content {
   border: none;
   color: white;
   background-color: rgb(128, 104, 84);
+  box-shadow: 2px 2px 3px rgb(83, 68, 55);
   border-radius: 15px;
   margin: 0 10px 0 10px;
   padding: 10px;

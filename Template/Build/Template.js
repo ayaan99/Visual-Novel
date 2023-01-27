@@ -9,7 +9,8 @@ var Template;
         progressBar: 0,
         pickedMeterScene: false,
         class: "",
-        accidentScene: 0
+        accidentScene: 0,
+        ending: 0
     };
     let inGameMenuButtons = {
         save: "Save",
@@ -81,7 +82,11 @@ var Template;
             // { scene: Scene3_2, name: "Scene3_2"},
             // { scene: Scene3_3, name: "Scene3_3"},
             // { scene: Scene4_1, name: "Scene4_1"},
-            { scene: Template.Scene4_2, name: "Scene4_2" }
+            // { scene: Scene4_2, name: "Scene4_2"},
+            { scene: Template.Scene5, name: "Scene5" },
+            // { scene: Scene7, name: "Scene7"},
+            // { scene: EndingDenial, name: "Ending_Denial"},
+            // { scene: EndingAcceptance, name: "Ending_Acceptance"}
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -293,14 +298,6 @@ var Template;
                 thinking: "Images/Characters/bonny_thinking.png"
             }
         },
-        // unknownBo: {
-        //   name: "???",
-        //   origin: ƒS.ORIGIN.BOTTOMCENTER,
-        //   pose: {
-        //     neutral: "Images/Characters/bo.png",
-        //     irritated: "Images/Characters/bo_irritated.png"
-        //   }
-        // },
         bo: {
             name: "Bo",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
@@ -312,12 +309,11 @@ var Template;
                 frustrated: "Images/Characters/bo_frustrated.png"
             }
         },
-        unknownNat: {
-            name: "???",
+        drSherp: {
+            name: "Dr. Sherp",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "Images/Characters/nat_angry.png",
-                irritated: "Images/Characters/nat_irritated.png"
+                neutral: "Images/Characters/drSherp.png"
             }
         },
         nat: {
@@ -476,7 +472,8 @@ var Template;
                 T0017: "I should go know."
             },
             scene5: {
-                T0001: "Huh?! What happened? Where am I?!",
+                T0000: "Huh?! What happened? ",
+                T0001: "Where am I?!",
                 T0002: "Ouch!! Why does my leg hurt so much?",
                 T0003: "Accident? Is this how I died and ended up in the afterlife?",
                 T0004: "Doctor?",
@@ -519,8 +516,11 @@ var Template;
             },
             scene7: {
                 T0001: "I don' t understand!",
-                T0002: "Why is that happening?! What am I supposed to do now? Why is Bo doing this to me?",
-                T0003: "I need to get back home and rest… I feel so dizzy right now. Everything's getting blurry. I need to hurry before –"
+                T0002: "Why is that happening?!",
+                T0003: "What am I supposed to do now? Why is Bo doing this to me?",
+                T0004: "I need to get back home and rest…",
+                T0005: "I feel so dizzy right now. Everything's getting blurry.",
+                T0006: "I need to hurry before –"
             },
             ending: {
                 T0001: "HUH?! BO?! What happened?",
@@ -705,16 +705,21 @@ var Template;
         },
         drSherp: {
             scene5: {
-                T0001: "That should be the aftermath of your little accident you got caught up into.",
+                T0001: "That should be the aftermath of your little accident that you got caught up in.",
                 T0002: "I don't understand what you mean.",
-                T0003: "You seem pretty alive in my opinion... And I should approve of this the best - as your doctor.",
-                T0004: "Yes, I'm Dr. Sherp. The shock may have caused some kind of memory loss. I already told you everything. But it should get better in a few hours. ",
-                T0005: "You were involved in a little bike accident. Next time you should better watch out when you want to cross the street.",
-                T0006: "No, unfortunately. The driver didn't stop. The police is still searching for him.",
-                T0007: "Yes, luckily the driver called the ambulance and drove with them to the hospital to make sure you were alright. He should still be somewhere around the hospital.",
-                T0008: "I don't see a problem with that. Just make sure that you're resting your leg as soon as you're home.",
-                T0009: "He's a tall young man with orange hair and he wore a blue sweater.",
-                T0010: "Yes, of course. I think you're fine to leave the hospital."
+                T0003: "You seem pretty alive in my opinion... And I should know the best - as your doctor.",
+                T0004: "Yes, I'm Dr. Sherp.",
+                T0005: "The shock may have caused some kind of memory loss.",
+                T0006: "But it should get better in a few hours. ",
+                T0007: "You were involved in a minor car accident.",
+                T0008: "Next time you should better watch out when you want to cross the street.",
+                T0009: "No, unfortunately. The driver didn't stop. The police is still searching for him.",
+                T0010: "The police is still searching for him.",
+                T0011: "Yes, luckily the driver called the ambulance and drove with them to the hospital to make sure you were alright. He should still be somewhere around the hospital.",
+                T0012: "I don't see a problem with that. Just make sure that you're resting your leg as soon as you're home.",
+                T0013: "He's a tall young man with orange hair and he wore a blue sweater.",
+                T0014: "Yes, of course. I think you're fine to leave the hospital.",
+                T0015: "Just take some rest when your home."
             }
         },
         novelPage: {
@@ -967,6 +972,20 @@ var Template;
             edge: 0.2
         }
     };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function EndingAcceptance() {
+        console.log("Ending_Acceptance starting");
+    }
+    Template.EndingAcceptance = EndingAcceptance;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function EndingDenial() {
+        console.log("Ending_Denial starting");
+    }
+    Template.EndingDenial = EndingDenial;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1480,109 +1499,109 @@ var Template;
 (function (Template) {
     async function Scene4_1() {
         console.log("Scene4 starting");
-        // ƒS.Speech.hide();
-        // // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
-        // await ƒS.Location.show(locations.bonnysRoom);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
-        // await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0001);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0002);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0003);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0004);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.neutral, ƒS.positionPercent(30, 100));
-        // await ƒS.update(0.5);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0005);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0006);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0007);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0008);
-        // ƒS.Speech.hide();
-        // await ƒS.Progress.delay(1.5);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0010);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0011);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0012);
-        // await ƒS.update();
-        // let transportChoice = {
-        //     runToSchool: "run to school",
-        //     takeTheBike: "take the bike"
-        // };
-        // let choiceElement = await ƒS.Menu.getInput(transportChoice, "choices");
-        // switch (choiceElement) {
-        //     case transportChoice.runToSchool:
-        //         await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0013);
-        //         break;
-        //     case transportChoice.takeTheBike:
-        //         await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0014);
-        //         await ƒS.Character.hide(characters.bonny);
-        //         ƒS.Speech.hide();
-        //         ƒS.update(2);
-        //         dataForSave.accidentScene += 1;
-        //         return Scene3_3();
-        // }
+        Template.ƒS.Speech.hide();
+        // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(Template.transitions.lightbeam.duration, Template.transitions.lightbeam.alpha, Template.transitions.lightbeam.edge);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0004);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0008);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(1.5);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0010);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0011);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0012);
+        await Template.ƒS.update();
+        let transportChoice = {
+            runToSchool: "run to school",
+            takeTheBike: "take the bike"
+        };
+        let choiceElement = await Template.ƒS.Menu.getInput(transportChoice, "choices");
+        switch (choiceElement) {
+            case transportChoice.runToSchool:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0013);
+                break;
+            case transportChoice.takeTheBike:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0014);
+                await Template.ƒS.Character.hide(Template.characters.bonny);
+                Template.ƒS.Speech.hide();
+                Template.ƒS.update(2);
+                Template.dataForSave.accidentScene += 1;
+                return Template.Scene3_3();
+        }
         await Template.ƒS.Character.hide(Template.characters.bonny);
         Template.ƒS.Speech.hide();
         await Template.ƒS.Location.show(Template.locations.sidewalk);
         await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
-        // await ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, introLeftBorder());
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0015);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0016);
-        // ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, bumpingAnimationBonny());
-        // ƒS.Character.animate(characters.nat, characters.nat.pose.neutral, bumpingAnimationNat());
-        // await ƒS.Progress.delay(1.25);
-        // await ƒS.Character.hide(characters.nat);
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.angry, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.unknown, text.nat.scene3_2.T0001);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(70, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0003);
-        // await ƒS.Character.hide(characters.nat);   
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.neutral, ƒS.positionPercent(30, 100));
-        // await ƒS.update(0.5);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.thinking, ƒS.positionPercent(70, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0018);
-        // await ƒS.Character.hide(characters.nat);   
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.irritated, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.unknown, "What do you mean?");
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0019);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0020);
-        // await ƒS.Speech.tell(characters.unknown, "Hello?! What are you talking about?!");
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0022);
-        // await ƒS.Character.hide(characters.nat);   
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.neutral, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.unknown, text.nat.scene4_1.T0000);
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0001);
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0002);
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0003);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.neutral, ƒS.positionPercent(70, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0023);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0024);
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0025);
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0004);
-        // await ƒS.Character.hide(characters.nat);   
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.laughing, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0005);
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0006);
-        // await ƒS.Character.hide(characters.bonny);
-        // await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(70, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0026);
-        // dataForSave.class = await ƒS.Speech.getInput();
-        // await ƒS.Character.hide(characters.nat);   
-        // await ƒS.Character.show(characters.nat, characters.nat.pose.neutral, ƒS.positionPercent(30, 100));
-        // await ƒS.update();
-        // await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0007);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.introLeftBorder());
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0015);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0016);
+        Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.bumpingAnimationBonny());
+        Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.neutral, Template.bumpingAnimationNat());
+        await Template.ƒS.Progress.delay(1.25);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.angry, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene3_2.T0001);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene3_2.T0003);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.thinking, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0018);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, "What do you mean?");
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0019);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0020);
+        await Template.ƒS.Speech.tell(Template.characters.unknown, "Hello?! What are you talking about?!");
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0022);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.nat.scene4_1.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0003);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0023);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0024);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0025);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0004);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.laughing, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0006);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_1.T0026);
+        Template.dataForSave.class = await Template.ƒS.Speech.getInput();
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_1.T0007);
         await Template.ƒS.Character.hide(Template.characters.nat);
         await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.laughing, Template.ƒS.positionPercent(30, 100));
         await Template.ƒS.update();
@@ -1716,10 +1735,11 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_2.T0016);
         await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene4_2.T0017);
         Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.sad, Template.outroLeftBorder());
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene4_2.T0009);
         Template.ƒS.Speech.hide();
         Template.ƒS.Character.hideAll();
-        // return Scene7();
+        return Template.Scene7();
     }
     Template.Scene4_2 = Scene4_2;
 })(Template || (Template = {}));
@@ -1729,11 +1749,93 @@ var Template;
         console.log("Scene5 starting");
         Template.ƒS.Speech.hide();
         // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
-        await Template.ƒS.Location.show(Template.locations.bonnysRoom);
+        await Template.ƒS.Location.show(Template.locations.hospital);
         await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sleepy, Template.ƒS.positionPercent(30, 100));
         await Template.ƒS.update(Template.transitions.lightbeam.duration, Template.transitions.lightbeam.alpha, Template.transitions.lightbeam.edge);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0002);
+        await Template.ƒS.Character.animate(Template.characters.drSherp, Template.characters.drSherp.pose.neutral, Template.introRightBorder());
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.drSherp.scene5.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.drSherp.scene5.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.unknown, Template.text.drSherp.scene5.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0008);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated2, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0005);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        let hospitalChoice = {
+            needToGo: "But anyway... I really have to go now!",
+            askMore: "Do you know who hit me?"
+        };
+        let choiceElement = await Template.ƒS.Menu.getInput(hospitalChoice, "choices");
+        switch (choiceElement) {
+            case hospitalChoice.needToGo:
+                await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0009);
+                await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0010);
+                return Template.Scene7();
+            case hospitalChoice.askMore:
+                if (Template.dataForSave.accidentScene == 0) {
+                    await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0006);
+                    //return Scene5_2();
+                }
+                else {
+                    await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0007);
+                }
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0013);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene5.T0008);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0014);
+        await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0015);
+        Template.ƒS.Speech.hide();
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.Location.show(Template.locations.park);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
     }
     Template.Scene5 = Scene5;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene7() {
+        console.log("Scene7 starting");
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.emptyStreet.normal);
+        await Template.ƒS.update(Template.transitions.bigWipe.duration, Template.transitions.bigWipe.alpha, Template.transitions.bigWipe.edge);
+        await Template.ƒS.Progress.delay(3);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene7.T0006);
+        Template.ƒS.Speech.clear();
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(1);
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        switch (Template.dataForSave.ending) {
+            case 0:
+                return Template.EndingDenial();
+            case 1:
+                return Template.EndingAcceptance();
+        }
+    }
+    Template.Scene7 = Scene7;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {

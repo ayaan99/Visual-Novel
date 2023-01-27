@@ -105,11 +105,12 @@ namespace Template {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_2.T0017);
 
     ƒS.Character.animate(characters.bonny, characters.bonny.pose.sad, outroLeftBorder());
+    await ƒS.update();
     await ƒS.Speech.tell(characters.nat, text.nat.scene4_2.T0009);
     
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
+    ƒS.Character.hideAll(); 
 
-    // return Scene7();
+    return Scene7();
     }
 }

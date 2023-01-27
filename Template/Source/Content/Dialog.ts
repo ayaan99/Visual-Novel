@@ -138,7 +138,8 @@ namespace Template {
                 T0017: "I should go know."
           },
           scene5: {
-            T0001: "Huh?! What happened? Where am I?!",
+            T0000: "Huh?! What happened? ",
+            T0001: "Where am I?!",
             T0002: "Ouch!! Why does my leg hurt so much?",
             T0003: "Accident? Is this how I died and ended up in the afterlife?",
             T0004: "Doctor?",
@@ -181,8 +182,11 @@ namespace Template {
           },
           scene7: {
             T0001: "I don' t understand!",
-            T0002: "Why is that happening?! What am I supposed to do now? Why is Bo doing this to me?",
-            T0003: "I need to get back home and rest… I feel so dizzy right now. Everything's getting blurry. I need to hurry before –"
+            T0002: "Why is that happening?!",
+            T0003: "What am I supposed to do now? Why is Bo doing this to me?",
+            T0004: "I need to get back home and rest…",
+            T0005: "I feel so dizzy right now. Everything's getting blurry.",
+            T0006: "I need to hurry before –"
           },
           ending: {
             T0001: "HUH?! BO?! What happened?",
@@ -370,16 +374,21 @@ namespace Template {
 
         drSherp: {
             scene5: {
-                T0001: "That should be the aftermath of your little accident you got caught up into.",
+                T0001: "That should be the aftermath of your little accident that you got caught up in.",
                 T0002: "I don't understand what you mean.",
-                T0003: "You seem pretty alive in my opinion... And I should approve of this the best - as your doctor.",
-                T0004: "Yes, I'm Dr. Sherp. The shock may have caused some kind of memory loss. I already told you everything. But it should get better in a few hours. ",
-                T0005: "You were involved in a little bike accident. Next time you should better watch out when you want to cross the street.",
-                T0006: "No, unfortunately. The driver didn't stop. The police is still searching for him.",
-                T0007: "Yes, luckily the driver called the ambulance and drove with them to the hospital to make sure you were alright. He should still be somewhere around the hospital.",
-                T0008: "I don't see a problem with that. Just make sure that you're resting your leg as soon as you're home.",
-                T0009: "He's a tall young man with orange hair and he wore a blue sweater.",
-                T0010: "Yes, of course. I think you're fine to leave the hospital."
+                T0003: "You seem pretty alive in my opinion... And I should know the best - as your doctor.",
+                T0004: "Yes, I'm Dr. Sherp.",
+                T0005: "The shock may have caused some kind of memory loss.",
+                T0006: "But it should get better in a few hours. ",
+                T0007: "You were involved in a minor car accident.",
+                T0008: "Next time you should better watch out when you want to cross the street.",
+                T0009: "No, unfortunately. The driver didn't stop. The police is still searching for him.",
+                T0010: "The police is still searching for him.",
+                T0011: "Yes, luckily the driver called the ambulance and drove with them to the hospital to make sure you were alright. He should still be somewhere around the hospital.",
+                T0012: "I don't see a problem with that. Just make sure that you're resting your leg as soon as you're home.",
+                T0013: "He's a tall young man with orange hair and he wore a blue sweater.",
+                T0014: "Yes, of course. I think you're fine to leave the hospital.",
+                T0015: "Just take some rest when your home."
             }
         },
 

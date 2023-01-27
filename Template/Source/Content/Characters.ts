@@ -28,14 +28,6 @@ namespace Template {
             thinking: "Images/Characters/bonny_thinking.png"
           }
         },
-        // unknownBo: {
-        //   name: "???",
-        //   origin: ƒS.ORIGIN.BOTTOMCENTER,
-        //   pose: {
-        //     neutral: "Images/Characters/bo.png",
-        //     irritated: "Images/Characters/bo_irritated.png"
-        //   }
-        // },
         bo: {
           name: "Bo",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
@@ -47,13 +39,11 @@ namespace Template {
             frustrated: "Images/Characters/bo_frustrated.png"
           }
         },
-        unknownNat: {
-          name: "???",
+        drSherp: {
+          name: "Dr. Sherp",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            angry: "Images/Characters/nat_angry.png",
-            irritated: "Images/Characters/nat_irritated.png"
-          }
+            neutral: "Images/Characters/drSherp.png"}
         },
         nat: {
           name: "Nat",

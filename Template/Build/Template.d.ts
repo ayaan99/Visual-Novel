@@ -7,6 +7,7 @@ declare namespace Template {
         pickedMeterScene: boolean;
         class: string;
         accidentScene: number;
+        ending: number;
     };
 }
 declare namespace Template {
@@ -64,12 +65,11 @@ declare namespace Template {
                 frustrated: string;
             };
         };
-        unknownNat: {
+        drSherp: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                irritated: string;
+                neutral: string;
             };
         };
         nat: {
@@ -227,6 +227,7 @@ declare namespace Template {
                 T0017: string;
             };
             scene5: {
+                T0000: string;
                 T0001: string;
                 T0002: string;
                 T0003: string;
@@ -272,6 +273,9 @@ declare namespace Template {
                 T0001: string;
                 T0002: string;
                 T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
             };
             ending: {
                 T0001: string;
@@ -466,6 +470,11 @@ declare namespace Template {
                 T0008: string;
                 T0009: string;
                 T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
             };
         };
         novelPage: {
@@ -701,6 +710,12 @@ declare namespace Template {
     };
 }
 declare namespace Template {
+    function EndingAcceptance(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function EndingDenial(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function Scene1_1(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -726,6 +741,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene5(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene7(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Test(): ƒS.SceneReturn;
