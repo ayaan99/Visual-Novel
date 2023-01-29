@@ -1,6 +1,8 @@
 namespace Template {
     export async function Scene4_1(): ƒS.SceneReturn {
     console.log("Scene4 starting");
+
+    dataForSave.progressBar += 11.111;
     
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);

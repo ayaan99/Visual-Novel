@@ -2,7 +2,7 @@ namespace Template {
     export async function Scene3_1(): ƒS.SceneReturn {
     console.log("Scene3_1 starting");
 
-    dataForSave.progressBar += 8.333;
+    dataForSave.progressBar += 11.111;
 
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);

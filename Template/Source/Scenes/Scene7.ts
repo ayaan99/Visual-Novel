@@ -1,11 +1,14 @@
 namespace Template {
     export async function Scene7(): ƒS.SceneReturn {
     console.log("Scene7 starting");
+    
+    dataForSave.progressBar += 11.111;
 
     ƒS.Speech.hide();
+    ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.emptyStreet.normal);
-    await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+    await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
     await ƒS.Progress.delay(3);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0001);

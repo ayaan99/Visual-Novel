@@ -1,6 +1,8 @@
 namespace Template {
     export async function Scene5(): ƒS.SceneReturn {
     console.log("Scene5 starting");
+
+    dataForSave.progressBar += 11.111;
     
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
@@ -46,7 +48,7 @@ namespace Template {
     };
 
     let choiceElement = await ƒS.Menu.getInput(hospitalChoice, "choices");
-   
+    dataForSave.accidentScene = 1;
     switch (choiceElement) {
         case hospitalChoice.needToGo:
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0012);
@@ -56,29 +58,22 @@ namespace Template {
             if (dataForSave.accidentScene == 0) {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0009);
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0010);
-            //return Scene5_2();
             } else {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0011);
+            await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0006);
+            await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0007);
+
+            await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0013);
+
+            await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0008);
+
+            await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0014);
+            await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0015);
+            return Scene5_2();
             }
             break;
     }
 
-    await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0006);
-    await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0007);
-
-    await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0013);
-
-    await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0008);
-
-    await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0014);
-    await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0015);
-
-    ƒS.Speech.hide();
-    ƒS.Character.hideAll();
-
-    await ƒS.Location.show(locations.park);
-    await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-
-
+    return Scene7();
     }
 }

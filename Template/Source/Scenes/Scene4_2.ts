@@ -2,6 +2,8 @@ namespace Template {
     export async function Scene4_2(): ƒS.SceneReturn {
     console.log("Scene4_2 starting");
     
+    dataForSave.progressBar += 11.111;
+    
     ƒS.Speech.hide();
 
     await ƒS.Location.show(locations.library);

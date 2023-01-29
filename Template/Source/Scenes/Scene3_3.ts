@@ -2,6 +2,8 @@ namespace Template {
     export async function Scene3_3(): ƒS.SceneReturn {
     console.log("Scene3_3 starting");
 
+    dataForSave.progressBar += 11.111;
+
     switch (dataForSave.accidentScene) {
         case 0:
             break;

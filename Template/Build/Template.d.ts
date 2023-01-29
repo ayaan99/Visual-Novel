@@ -743,6 +743,12 @@ declare namespace Template {
     function Scene5(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function Scene5_2(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Scene6(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function Scene7(): ƒS.SceneReturn;
 }
 declare namespace Template {
