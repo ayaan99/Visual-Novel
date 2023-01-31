@@ -130,12 +130,12 @@ var Template;
     function introLeftBorder() {
         return {
             start: {
-                translation: Template.ƒS.positions.bottomleft
+                translation: Template.ƒS.positionPercent(-20, 100)
             },
             end: {
                 translation: Template.ƒS.positionPercent(30, 100)
             },
-            duration: 3,
+            duration: 3.5,
             playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
     }
@@ -499,11 +499,11 @@ var Template;
             },
             scene6: {
                 T0001: "Woah, he really did choose our favourite restaurant!",
-                T0002: "I really think that I got a chance of turning things the right way now!",
+                T0002: "I really think that I got a chance to turn things the right way now!",
                 T0003: "Hey, no problem. Glad you made it!",
-                T0004: "I was surprised that you chose this place to meet up. It has a really special meaning to me.",
+                T0004: "I was surprised that you chose this place to meet up.",
                 T0005: "What?! This one isn't your favourite one?",
-                T0006: "If you say so…",
+                T0006: "Hmm... if you say so...",
                 T0007: "Yeah… let's go…",
                 T0008: "Hey, it's quite busy in here. Let me see if I find someone to order our drinks.",
                 T0009: "Well, it's your favourite drink, right?",
@@ -627,6 +627,50 @@ var Template;
                 T0025: "Alright, as soon as you are in the memory, you can't communicate with me anymore. Just live your life like you would usually do.",
                 T0026: "As soon as we find the mistake, I will bring you back to me.",
                 T0027: "See you soon!"
+            },
+            ending: {
+                T0001: "Wow, take it slow! You're overflowing with questions right now!",
+                T0002: "Oh, now I understand!",
+                T0003: "You see, I brought you to a place where you could sort of rewrite your story. ",
+                T0004: "That means because of your memory loss, you didn't have any other chance than listening to your gut feeling.",
+                T0005: "Your choices – as small as they may seem – can have a huge impact on you and your environment. ",
+                T0006: "Somehow your everyday decisions altered your timeline so much that you and your beloved friend never were meant to be with each other.",
+                T0007: "No, I didn't say that! It's nobody's fault actually.",
+                T0008: "We all make decisions that make us end up at places we could've never think about.",
+                T0008_2: "In your case, Nat would also have to make certain choices so that you both could end up together.",
+                T0009: "Correct!",
+                T0010: "I couldn't.",
+                T0011: "You needed to see that for yourself so that you could make peace with all of it and transfer into the afterlife.",
+                T0012: "You're right. I think, now you deserve to know.",
+                T0013: "Let me ask you a question before that.",
+                T0014: "How did it make you feel, finding out that you both weren't together when I transferred you into your memories?",
+                T0015: "Mhh, just like I expected.",
+                T0016: "Would you say it even felt like a part of yourself just died in that moment?",
+                T0017: "You see, Bonny? The answer is right in front of you. ",
+                T0018: "When we experience that kind of heart break, it may cause us to lose ourselves.",
+                T0019: "We feel like we are slowly dying – unable to change anything about it.",
+                T0020: "You need to remember, Bonny.",
+                T0021: "I have to go now. I did everything to help you.",
+                T0022: "You have to decide now if you are coming with me to the other side.",
+                T0023: "No matter what you choose to do now, I'll always be with you.",
+                T0024: "Never forget that I'm your spirit animal.",
+                T0025: "And eventually, we will see each other again someday, Bonny."
+            },
+            ending2: {
+                T0001: "Not exactly… ",
+                T0002: "You kind of brought yourself back up here.",
+                T0003: "You're not surprised by that?!",
+                T0004: "Now it doesn't feel like it used to?",
+                T0005: "Okay I think, now I understand.",
+                T0006: "Somehow your everyday decisions altered your timeline so much that your beloved friend didn't end up being the person you wanted him to be.",
+                T0007: "I already told you… it seems like you brought yourself to me.",
+                T0008: "At first, I didn't see it, but now it feels like you reached out to your inner spirit to find answers.",
+                T0009: "I believe so.",
+                T0010: "Are you ready for it?",
+                T0011: "Glad to hear that.",
+                T0012: "Just close your eyes and remember…",
+                T0013: "I'll always be with you, because I'm your spirit animal. ",
+                T0014: "And someday, we will see each other again."
             }
         },
         nat: {
@@ -691,16 +735,16 @@ var Template;
                 T0001: "Heya! Sorry, I'm a bit late!",
                 T0002: "Oh really? What a coincidence!",
                 T0003: "Sadly, my favourite place was closed for today.",
-                T0004: "No. I mean I think it's fine to grab a drink, but nothing to make a big fuzz about, right?",
-                T0005: "Well… Should we get inside?",
+                T0004: "I mean I think it's fine to grab a drink, but nothing to make a big fuzz about, right?",
+                T0005: "Should we get inside?",
                 T0006: "Yeah, sure.",
                 T0007: "Hey! You don't even know what I want to drink!",
                 T0008: "Hello?! Ugh, nevermind…",
-                T0009: "What did you order?",
+                T0009: "So, what did you order?",
                 T0010: "Like always? How come you think I would like that?",
                 T0011: "No, it's not! I hate it. ",
                 T0012: "Why do you think that you already know everything about me?",
-                T0013: "I don't understand. What are you talking about?",
+                T0013: "I don't understand.",
                 T0014: "Wait! Don't run of like that!"
             }
         },
@@ -1786,7 +1830,6 @@ var Template;
             askMore: "Do you know who hit me?"
         };
         let choiceElement = await Template.ƒS.Menu.getInput(hospitalChoice, "choices");
-        Template.dataForSave.accidentScene = 1;
         switch (choiceElement) {
             case hospitalChoice.needToGo:
                 await Template.ƒS.Speech.tell(Template.characters.drSherp, Template.text.drSherp.scene5.T0012);
@@ -1901,8 +1944,108 @@ var Template;
         Template.dataForSave.progressBar += 11.111;
         Template.ƒS.Speech.hide();
         Template.ƒS.Character.hideAll();
-        await Template.ƒS.Location.show(Template.locations.emptyStreet.normal);
+        await Template.ƒS.Location.show(Template.locations.bar);
         await Template.ƒS.update(Template.transitions.bigWipe2.duration, Template.transitions.bigWipe2.alpha, Template.transitions.bigWipe2.edge);
+        // await ƒS.Progress.delay(1);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.happy, Template.introLeftBorder());
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0002);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(2);
+        await Template.ƒS.Character.animate(Template.characters.nat, Template.characters.nat.pose.laughing, Template.introRightBorder());
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0001);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0004);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, "It has a really special meaning to me.");
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0003);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.irritated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0005);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, "No.");
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0004);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0006);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, "Well...");
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0005);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0007);
+        Template.ƒS.Speech.hide();
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.Location.show(Template.locations.blackScreen);
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Location.show(Template.locations.barInside);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.neutral, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update(Template.transitions.noise.duration, Template.transitions.noise.alpha, Template.transitions.noise.edge);
+        await Template.ƒS.Progress.delay(1);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0008);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0006);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.outroLeftBorder());
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(1);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0007);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0008);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Progress.delay(1);
+        await Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.neutral, Template.introLeftBorder());
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0009);
+        let barChoice = {
+            milk: "A big cup of fresh milk",
+            same: "The same like me",
+            bubbleTea: "A matcha bubble tea"
+        };
+        let choiceElement = await Template.ƒS.Menu.getInput(barChoice, "choices");
+        switch (choiceElement) {
+            case barChoice.milk:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "I got my favourite choco milk shake and I thought you would love a big cup of fresh milk...");
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "Like always!");
+                break;
+            case barChoice.same:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "I got my favourite choco milk shake and I thought you would love the same...");
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "Like always!");
+                break;
+            case barChoice.bubbleTea:
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "I got my favourite choco milk shake and I thought you would love a matcha bubble tea...");
+                await Template.ƒS.Speech.tell(Template.characters.bonny, "Like always!");
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0010);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0009);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0011);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.frustrated, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0010);
+        await Template.ƒS.Character.hide(Template.characters.nat);
+        await Template.ƒS.Character.show(Template.characters.nat, Template.characters.nat.pose.irritated, Template.ƒS.positionPercent(70, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0012);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0011);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0012);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0013);
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0013);
+        await Template.ƒS.Speech.tell(Template.characters.nat, "What are you talking about?");
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        await Template.ƒS.Character.show(Template.characters.bonny, Template.characters.bonny.pose.sad, Template.ƒS.positionPercent(30, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0014);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0015);
+        await Template.ƒS.Speech.tell(Template.characters.bonny, Template.text.bonny.scene6.T0016);
+        await Template.ƒS.Character.hide(Template.characters.bonny);
+        Template.ƒS.Character.animate(Template.characters.bonny, Template.characters.bonny.pose.sad, Template.outroLeftBorder());
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.nat, Template.text.nat.scene6.T0014);
+        return Template.Scene7();
     }
     Template.Scene6 = Scene6;
 })(Template || (Template = {}));

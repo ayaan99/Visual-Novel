@@ -32,12 +32,12 @@ namespace Template {
     export function introLeftBorder(): ƒS.AnimationDefinition {
         return {
           start: {
-            translation: ƒS.positions.bottomleft
+            translation: ƒS.positionPercent(-20, 100)
           },
           end: {
             translation: ƒS.positionPercent(30, 100)
           },
-          duration: 3,
+          duration: 3.5,
           playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
       }

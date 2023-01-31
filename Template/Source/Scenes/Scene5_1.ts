@@ -48,7 +48,7 @@ namespace Template {
     };
 
     let choiceElement = await ƒS.Menu.getInput(hospitalChoice, "choices");
-    dataForSave.accidentScene = 1;
+   
     switch (choiceElement) {
         case hospitalChoice.needToGo:
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0012);

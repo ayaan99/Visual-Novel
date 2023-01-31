@@ -382,6 +382,50 @@ declare namespace Template {
                 T0026: string;
                 T0027: string;
             };
+            ending: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0008_2: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+                T0015: string;
+                T0016: string;
+                T0017: string;
+                T0018: string;
+                T0019: string;
+                T0020: string;
+                T0021: string;
+                T0022: string;
+                T0023: string;
+                T0024: string;
+                T0025: string;
+            };
+            ending2: {
+                T0001: string;
+                T0002: string;
+                T0003: string;
+                T0004: string;
+                T0005: string;
+                T0006: string;
+                T0007: string;
+                T0008: string;
+                T0009: string;
+                T0010: string;
+                T0011: string;
+                T0012: string;
+                T0013: string;
+                T0014: string;
+            };
         };
         nat: {
             scene3_2: {
