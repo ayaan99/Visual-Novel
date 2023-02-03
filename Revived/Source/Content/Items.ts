@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
     export let items = {
         bar: {
           name: "Nat and me grabing a drink.",

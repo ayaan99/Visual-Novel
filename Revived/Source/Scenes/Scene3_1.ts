@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
     export async function Scene3_1(): ƒS.SceneReturn {
     console.log("Scene3_1 starting");
 

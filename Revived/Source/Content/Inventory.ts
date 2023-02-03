@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
       // export let items = {
   //     item1: {
   //       name: "item1",

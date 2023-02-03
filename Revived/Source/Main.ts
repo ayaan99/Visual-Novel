@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
   console.log("FudgeStory template starting");

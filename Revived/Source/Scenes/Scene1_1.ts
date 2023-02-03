@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
   export async function Scene1_1(): ƒS.SceneReturn {
     console.log("FudgeStory Template Scene starting");
 

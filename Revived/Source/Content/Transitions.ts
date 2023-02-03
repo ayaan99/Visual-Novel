@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
     export let transitions = {
             lightbeam: {
               duration: 2.5,

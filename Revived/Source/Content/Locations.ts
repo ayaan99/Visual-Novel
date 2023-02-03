@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
     export let locations = {
         blackScreen: {
           name: "Black Screen",

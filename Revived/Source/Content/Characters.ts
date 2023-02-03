@@ -1,4 +1,4 @@
-namespace Template {
+namespace Revived {
     export let characters = {
         unknown: {
           name: "???"
