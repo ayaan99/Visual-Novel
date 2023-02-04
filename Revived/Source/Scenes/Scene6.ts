@@ -2,7 +2,8 @@ namespace Revived {
     export async function Scene6(): ƒS.SceneReturn {
     console.log("Scene6 starting");
     
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
+    dataForSave.ending = 1;
 
     ƒS.Speech.hide();
     ƒS.Character.hideAll();

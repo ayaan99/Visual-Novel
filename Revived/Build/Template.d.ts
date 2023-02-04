@@ -1,4 +1,4 @@
-declare namespace Template {
+declare namespace Revived {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
@@ -10,7 +10,7 @@ declare namespace Template {
         ending: number;
     };
 }
-declare namespace Template {
+declare namespace Revived {
     function bonnyIntro(): ƒS.AnimationDefinition;
     function boIntro(): ƒS.AnimationDefinition;
     function introLeftBorder(): ƒS.AnimationDefinition;
@@ -23,8 +23,10 @@ declare namespace Template {
     function bumpingAnimationNat(): ƒS.AnimationDefinition;
     function fadeIn(): ƒS.AnimationDefinition;
     function fadeOut(): ƒS.AnimationDefinition;
+    function horizontalShake(): Promise<void>;
+    function verticalShake(): Promise<void>;
 }
-declare namespace Template {
+declare namespace Revived {
     let characters: {
         unknown: {
             name: string;
@@ -87,7 +89,7 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Revived {
     let text: {
         bonny: {
             scene1: {
@@ -293,6 +295,7 @@ declare namespace Template {
                 T0013: string;
                 T0014: string;
                 T0015: string;
+                T0015_2: string;
                 T0016: string;
                 T0017: string;
                 T0018: string;
@@ -307,6 +310,7 @@ declare namespace Template {
                 T0027: string;
                 T0028: string;
                 T0029: string;
+                T0029_2: string;
                 T0030: string;
                 T0031: string;
                 T0032: string;
@@ -320,6 +324,7 @@ declare namespace Template {
                 T0040: string;
                 T0041: string;
                 T0042: string;
+                T0043: string;
             };
             ending2: {
                 T0001: string;
@@ -528,9 +533,9 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Revived {
 }
-declare namespace Template {
+declare namespace Revived {
     let items: {
         bar: {
             name: string;
@@ -606,7 +611,7 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Revived {
     let locations: {
         blackScreen: {
             name: string;
@@ -714,12 +719,12 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Revived {
     let sounds: {
         afterlifeSoundBeginning: string;
     };
 }
-declare namespace Template {
+declare namespace Revived {
     let transitions: {
         lightbeam: {
             duration: number;
@@ -753,48 +758,45 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Revived {
     function EndingAcceptance(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function EndingDenial(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene1_1(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene1_2(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene2(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene3_1(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene3_2(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene3_3(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene4_1(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene4_2(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene5(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene5_2(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene6(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Revived {
     function Scene7(): ƒS.SceneReturn;
-}
-declare namespace Template {
-    function Test(): ƒS.SceneReturn;
 }

@@ -2,13 +2,17 @@ namespace Revived {
     export async function Scene4_1(): ƒS.SceneReturn {
     console.log("Scene4 starting");
 
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
     
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
-    await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
+    await ƒS.update(3);
+
+    await ƒS.Speech.tell(characters.narrator, "The next day...");
+    ƒS.Speech.hide();
+    await ƒS.Progress.delay(1);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0001);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0002);
@@ -46,10 +50,8 @@ namespace Revived {
             break;
         case transportChoice.takeTheBike:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0014);
-            await ƒS.Character.hide(characters.bonny);
             ƒS.Speech.hide();
-            ƒS.update(2);
-            dataForSave.accidentScene += 1;
+            dataForSave.accidentScene = 1;
             return Scene3_3();
     }
 

@@ -15,7 +15,6 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0010);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0011);
 
-    //change emotion from bonny to angry:
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.angry, ƒS.positionPercent(30, 110));
     await ƒS.update(0.25);
@@ -36,7 +35,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0009);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0013);
     ƒS.Speech.hide();
-    await ƒS.Progress.delay(2.5);
+    await ƒS.Progress.delay(1.5);
 
     await ƒS.Character.hide(characters.bo);
     await ƒS.Character.show(characters.bo, characters.bo.pose.happy, ƒS.positionPercent(70, 100));
@@ -97,7 +96,11 @@ namespace Revived {
     await ƒS.Character.animate(characters.bo, characters.bo.pose.happy, fadeOut()); 
     
     ƒS.Character.hideAll();
-    await ƒS.update();
+
+    await ƒS.Location.show(locations.blackScreen);
+    await ƒS.update(3);
+
+    await ƒS.Progress.delay(1.5);
 
     return Scene2();
     }

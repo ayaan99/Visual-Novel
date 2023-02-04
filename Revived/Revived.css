@@ -74,6 +74,8 @@ dialog[type=inventory]>ul>li>description, dialog[type=inventory]>ul>li>amount {
 }
 
 dialog[type=inventory] {
+  width: 25%;
+  max-height: 500px;
   background-color: antiquewhite;
   padding: 15px 15px;
   border-radius: 15px;

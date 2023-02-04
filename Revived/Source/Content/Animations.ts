@@ -159,13 +159,34 @@ namespace Revived {
           playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
         };
       }
-      
-    // export function rightToLeft(): ƒS.AnimationDefinition {
-      //   return {
-      //   start: { translation: ƒS.positions.bottomleft, rotation: -20, scaling: new ƒS.Position(0.5, 1.5), color: ƒS.Color.CSS("white", 0.3) },
-      //   end: { translation: ƒS.positions.bottomright, rotation: 20, scaling: new ƒS.Position(1.5, 0.5), color: ƒS.Color.CSS("red") },
-      //   duration: 1,
-      //   playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-      //   };
-      //   }
+
+    export async function horizontalShake(): Promise<void> {
+        let scene: HTMLElement = <HTMLElement>document.getElementsByTagName("scene")[0];
+    
+        for (let i: number = 0; i < 15; i++) {
+          if (i % 2 == 0) {
+            scene.style.transform = `translateX(20px)`;
+          }
+          else {
+            scene.style.transform = `translateX(-20px)`;
+          }
+          await new Promise(resolve => setTimeout(resolve, 60));
+        }
+        scene.style.transform = `translateX(0px)`;
+      }
+    
+    export async function verticalShake(): Promise<void> {
+        let scene: HTMLElement = <HTMLElement>document.getElementsByTagName("scene")[0];
+    
+        for (let i: number = 0; i < 15; i++) {
+          if (i % 2 == 0) {
+            scene.style.transform = `translateY(20px)`;
+          }
+          else {
+            scene.style.transform = `translateY(-20px)`;
+          }
+          await new Promise(resolve => setTimeout(resolve, 40));
+        }
+        scene.style.transform = `translateY(0px)`;
+      }
 }

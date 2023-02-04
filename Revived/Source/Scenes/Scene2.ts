@@ -2,15 +2,17 @@ namespace Revived {
     export async function Scene2(): ƒS.SceneReturn {
     console.log("Scene2_1 starting");
 
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
 
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
     await ƒS.Location.show(locations.bonnysRoom);
-    await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
-    await ƒS.Character.animate(characters.bonny, characters.bonny.pose.sleepy, fadeIn()); 
+    await ƒS.update(3);
+
+    await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100)); 
+    await ƒS.update(2.5);
+
     await ƒS.Character.hide(characters.bonny);
-    await ƒS.update();
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 100));
     await ƒS.update();
 
@@ -49,7 +51,8 @@ namespace Revived {
     await ƒS.update(0.25);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0014);
-    await ƒS.update();
+
+    console.log(dataForSave.pickedChoice); //true
 
     let roomChoices = {
         lookAtPictures: "Look at the pictures",
@@ -57,47 +60,32 @@ namespace Revived {
         lookAtDesk: "Look at the desk"
       };
 
-    let pickedPics: boolean;
-    let pickedWindow: boolean;
-    let pickedDesk: boolean;
-
     do {
-        if (pickedPics) {
-            delete roomChoices.lookAtPictures;
-        } 
-        else if (pickedWindow) {
-            delete roomChoices.lookOutWindow;
-        }
-        else if (pickedDesk) {
-            delete roomChoices.lookAtDesk;
-        }
-  
+        
         let roomChoiceElement = await ƒS.Menu.getInput(roomChoices, "choices");
    
         switch (roomChoiceElement) {
         case roomChoices.lookAtDesk:
             ƒS.Speech.hide();
-            await ƒS.Character.hide(characters.bonny);
+            ƒS.Character.hideAll();
             await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0015);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0016);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0017);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0018);
-            pickedDesk = true;
-            dataForSave.pickedChoice = true;
+            dataForSave.pickedChoice = false;
             break;
         case roomChoices.lookAtPictures:
-            pickedPics = true;
+            await ƒS.Inventory.open();
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0019);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0020);
             break;
         case roomChoices.lookOutWindow:
-            pickedWindow = true;
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0021);
             break;
       }
-    } while (!dataForSave.pickedChoice);
+    } while (dataForSave.pickedChoice);
 
     
     let toDoListChoices = {
@@ -113,15 +101,15 @@ namespace Revived {
 
     do {
     if (pickedErrands && !pickedProject && !pickedCooking) {
-        dataForSave.pickedChoice = false;
+        dataForSave.pickedChoice = true;
         return Scene3_1();
     } 
     else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
-        dataForSave.pickedChoice = false;
+        dataForSave.pickedChoice = true;
         return Scene3_2();
     }
     else if (pickedErrands && pickedProject && pickedCooking) {
-        dataForSave.pickedChoice = false;
+        dataForSave.pickedChoice = true;
         return Scene3_3();
     } 
 
@@ -130,6 +118,7 @@ namespace Revived {
     switch (toDoListChoiceElements) {
         case toDoListChoices.runErrands:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0022);
+            ƒS.Speech.hide();
             pickedErrands = true;
             break;
         case toDoListChoices.finishProject:
@@ -157,7 +146,7 @@ namespace Revived {
             pickedCooking = true;
             break;
     }
-    } while (dataForSave.pickedChoice); //pickedChoices == false
+    } while (!dataForSave.pickedChoice); //pickedChoices == true
     
     }
 }

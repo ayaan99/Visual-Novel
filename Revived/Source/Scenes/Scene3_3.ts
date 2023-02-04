@@ -2,18 +2,20 @@ namespace Revived {
     export async function Scene3_3(): ƒS.SceneReturn {
     console.log("Scene3_3 starting");
 
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
 
     switch (dataForSave.accidentScene) {
         case 0:
             break;
         case 1:
             ƒS.Speech.hide();
+            ƒS.Character.hideAll();
             await ƒS.Location.show(locations.busyStreet.normal);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, "I just need to quickly cross the street...");
             ƒS.Speech.hide();
-            await ƒS.Progress.delay(2);
+            await ƒS.Progress.delay(1.25);
+            horizontalShake();
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0005);
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.blackScreen);
@@ -34,13 +36,14 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0003);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0004);
     ƒS.Speech.hide();
-    await ƒS.Progress.delay(2);
+    await ƒS.Progress.delay(1.25);
 
+    horizontalShake();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0005);
     ƒS.Speech.hide();
 
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
+    await ƒS.update(3);
     await ƒS.Progress.delay(3);
 
     return Scene5();

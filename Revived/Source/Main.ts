@@ -79,19 +79,18 @@ namespace Revived {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      // { scene: Test, name: "test"},
-      // { scene: Scene1_1, name: "Scene1_1" },
+      { scene: Scene1_1, name: "Scene1_1" },
       // { scene: Scene1_2, name: "Scene1_2" },
-      // { scene: Scene2, name: "Scene2"},
-      // { scene: Scene3_1, name: "Scene3_1"},
-      // { scene: Scene3_2, name: "Scene3_2"},
-      // { scene: Scene3_3, name: "Scene3_3"},
-      // { scene: Scene4_1, name: "Scene4_1"},
-      // { scene: Scene4_2, name: "Scene4_2"},
-      // { scene: Scene5, name: "Scene5"},
-      // { scene: Scene7, name: "Scene7"},
+      { scene: Scene2, name: "Scene2"},
+      { scene: Scene3_1, name: "Scene3_1"},
+      { scene: Scene3_2, name: "Scene3_2"},
+      { scene: Scene3_3, name: "Scene3_3"},
+      { scene: Scene4_1, name: "Scene4_1"},
+      { scene: Scene4_2, name: "Scene4_2"},
+      { scene: Scene5, name: "Scene5"},
       { scene: Scene6, name: "Scene6"},
-      // { scene: EndingDenial, name: "Ending_Denial"},
+      { scene: Scene7, name: "Scene7"},
+      { scene: EndingDenial, name: "Ending_Denial"},
       // { scene: EndingAcceptance, name: "Ending_Acceptance"}
 
     ];

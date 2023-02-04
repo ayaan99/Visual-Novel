@@ -2,7 +2,7 @@ namespace Revived {
     export async function Scene3_2(): ƒS.SceneReturn {
     console.log("Scene3_2 starting");
 
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
 
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
@@ -168,6 +168,6 @@ namespace Revived {
     await ƒS.Progress.delay(2);
     await ƒS.Text.print(text.novelPage.scene3_2);
 
-    //return Scene6();
+    return Scene6();
     }
 }

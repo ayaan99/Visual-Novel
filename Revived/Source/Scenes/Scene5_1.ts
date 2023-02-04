@@ -2,7 +2,7 @@ namespace Revived {
     export async function Scene5(): ƒS.SceneReturn {
     console.log("Scene5 starting");
 
-    dataForSave.progressBar += 11.111;
+    dataForSave.progressBar += 10;
     
     ƒS.Speech.hide();
     // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
@@ -52,12 +52,14 @@ namespace Revived {
     switch (choiceElement) {
         case hospitalChoice.needToGo:
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0012);
-            
+            dataForSave.ending = 0;
             return Scene7();
         case hospitalChoice.askMore:
             if (dataForSave.accidentScene == 0) {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0009);
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0010);
+
+            dataForSave.ending = 0;
             } else {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0011);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene5.T0006);
@@ -69,6 +71,8 @@ namespace Revived {
 
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0014);
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0015);
+
+            dataForSave.ending = 1;
             return Scene5_2();
             }
             break;
