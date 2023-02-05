@@ -339,7 +339,9 @@ declare namespace Revived {
                 T0010: string;
                 T0011: string;
                 T0012: string;
+                T0012_2: string;
                 T0013: string;
+                T0013_2: string;
                 T0014: string;
                 T0015: string;
                 T0016: string;
@@ -349,11 +351,14 @@ declare namespace Revived {
                 T0020: string;
                 T0021: string;
                 T0022: string;
+                T0022_2: string;
                 T0023: string;
                 T0024: string;
                 T0025: string;
                 T0026: string;
                 T0027: string;
+                T0028: string;
+                T0029: string;
             };
         };
         bo: {
@@ -418,6 +423,7 @@ declare namespace Revived {
             ending2: {
                 T0001: string;
                 T0002: string;
+                T0002_2: string;
                 T0003: string;
                 T0004: string;
                 T0005: string;

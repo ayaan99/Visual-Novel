@@ -74,19 +74,19 @@ var Revived;
         gameMenu = Revived.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
         buttonFunctionalities("Close");
         let scenes = [
-            { scene: Revived.Scene1_1, name: "Scene1_1" },
+            // { scene: Scene1_1, name: "Scene1_1" },
             // { scene: Scene1_2, name: "Scene1_2" },
-            { scene: Revived.Scene2, name: "Scene2" },
-            { scene: Revived.Scene3_1, name: "Scene3_1" },
-            { scene: Revived.Scene3_2, name: "Scene3_2" },
-            { scene: Revived.Scene3_3, name: "Scene3_3" },
-            { scene: Revived.Scene4_1, name: "Scene4_1" },
-            { scene: Revived.Scene4_2, name: "Scene4_2" },
-            { scene: Revived.Scene5, name: "Scene5" },
-            { scene: Revived.Scene6, name: "Scene6" },
-            { scene: Revived.Scene7, name: "Scene7" },
-            { scene: Revived.EndingDenial, name: "Ending_Denial" },
-            // { scene: EndingAcceptance, name: "Ending_Acceptance"}
+            // { scene: Scene2, name: "Scene2"},
+            // { scene: Scene3_1, name: "Scene3_1"},
+            // { scene: Scene3_2, name: "Scene3_2"},
+            // { scene: Scene3_3, name: "Scene3_3"},
+            // { scene: Scene4_1, name: "Scene4_1"},
+            // { scene: Scene4_2, name: "Scene4_2"},
+            // { scene: Scene5, name: "Scene5"},
+            // { scene: Scene6, name: "Scene6"},
+            // { scene: Scene7, name: "Scene7"},
+            // { scene: EndingDenial, name: "Ending_Denial"},
+            { scene: Revived.EndingAcceptance, name: "Ending_Acceptance" }
         ];
         let uiElement = document.querySelector("[type=interface]");
         Revived.dataForSave = Revived.ƒS.Progress.setData(Revived.dataForSave, uiElement);
@@ -568,7 +568,7 @@ var Revived;
                 T0022: "*zzz* *zzz*",
                 T0023: "Oh shoot! I overslept real bad. At least I don't have any lectures today.",
                 T0024: "Man, I had the weirdest dream this night and strangely it felt so real.",
-                T0025: "“You need to remember, Bonny.”",
+                T0025: "<i>“You need to remember, Bonny.”<i>",
                 T0026: "Only this sentence seems so vivid right now.",
                 T0027: "What should I remember?",
                 T0028: "Ohh, I also feel like the dream focused awfully a lot on Nat.",
@@ -601,22 +601,27 @@ var Revived;
                 T0009: "So, there isn't really a mistake that brought me here to you?",
                 T0010: "But do I still need to go with you?",
                 T0011: "To the other side?",
-                T0012: "I wouldn't think that I'll say this, but yes! I'm ready to let go of everything.",
-                T0013: "What do you mean? I thought I'll be with you when I'm on the other side!",
+                T0012: "I wouldn't think that I'll say this, but yes!",
+                T0012_2: "I'm ready to let go of everything.",
+                T0013: "What do you mean?",
+                T0013_2: "I thought I'll be with you when I'm on the other side!",
                 T0014: "Bo?!",
                 T0015: "Hello?!",
                 T0016: "Don't leave me alone, Bo!",
-                T0017: "“Someday we will see each other again.”",
+                T0017: "<i>“Someday we will see each other again.”<i>",
                 T0018: "But I don't remember who said it to me.",
                 T0019: "And I also feel like the dream focused a lot on Nat. But why now all of the sudden? ",
                 T0020: "We broke up so long ago and never spoke again since.",
                 T0021: "Thinking about him feels so different right now. ",
-                T0022: "Like I just got rid of all the anger and sadness inside me. As if I left my past with him behind me.",
+                T0022: "Like I just got rid of all the anger and sadness inside me.",
+                T0022_2: "As if I left my past with him behind me.",
                 T0023: "Woah! My room looks different as well!",
-                T0024: "Those pictures… I should take a closer look.",
+                T0024: "Those pictures on my wall...",
                 T0025: "How strange! I could swear that these weren't there yesterday.",
                 T0026: "But this bunny… He feels so familiar, although I never had a pet in my life.",
-                T0027: "Maybe this wasn't just a random dream."
+                T0027: "Maybe I know him from somewhere else…",
+                T0028: "The comfort, that I feel right now, was what I needed for so long.",
+                T0029: "Now, I somehow feel like this wasn't just a random dream…"
             }
         },
         bo: {
@@ -681,6 +686,7 @@ var Revived;
             ending2: {
                 T0001: "Not exactly… ",
                 T0002: "You kind of brought yourself back up here.",
+                T0002_2: "And I can't quite explain how.",
                 T0003: "You're not surprised by that?!",
                 T0004: "Now it doesn't feel like it used to?",
                 T0005: "Okay I think, now I understand.",
@@ -1029,6 +1035,151 @@ var Revived;
 (function (Revived) {
     async function EndingAcceptance() {
         console.log("Ending_Acceptance starting");
+        Revived.dataForSave.progressBar += 10;
+        Revived.ƒS.Speech.hide();
+        // await ƒS.Progress.delay(2);
+        await Revived.ƒS.Location.show(Revived.locations.afterlife);
+        await Revived.ƒS.update(Revived.transitions.lightbeam.duration, Revived.transitions.lightbeam.alpha, Revived.transitions.lightbeam.edge);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.neutral, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sleepy, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update(3);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.irritated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0001);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0002);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0001);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0002);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0002_2);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.neutral, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0003);
+        await Revived.ƒS.Character.hide(Revived.characters.bo);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.irritated, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0003);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sad, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update(0.25);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0004);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0005);
+        await Revived.ƒS.Character.hide(Revived.characters.bo);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.neutral, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0004);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.neutral, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0006);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0007);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0005);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0005);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0003);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0006);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0005);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0006);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0007);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0007);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0008);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0008_2);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0008);
+        await Revived.ƒS.Character.hide(Revived.characters.bo);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.happy, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0009);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0009);
+        await Revived.ƒS.Character.hide(Revived.characters.bo);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.neutral, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0010);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0011);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0008);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0009);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0007);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0008);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0010);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0011);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0009);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0010);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.happy, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update(0.25);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0012);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0012_2);
+        await Revived.ƒS.Character.hide(Revived.characters.bo);
+        await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.happy, Revived.ƒS.positionPercent(70, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0011);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0012);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0013);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending2.T0014);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.irritated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0013);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0013_2);
+        Revived.ƒS.Character.animate(Revived.characters.bo, Revived.characters.bo.pose.happy, Revived.fadeOut());
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0014);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0015);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0016);
+        //bonny wake up scene:
+        Revived.ƒS.Speech.clear();
+        Revived.ƒS.Speech.hide();
+        await Revived.ƒS.Progress.delay(1);
+        Revived.ƒS.Character.hideAll();
+        await Revived.ƒS.Location.show(Revived.locations.blackScreen);
+        await Revived.ƒS.update(3);
+        await Revived.ƒS.Progress.delay(1.5);
+        await Revived.ƒS.Location.show(Revived.locations.bonnysRoom);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sleepy, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update(3);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0022);
+        Revived.ƒS.Speech.hide();
+        await Revived.ƒS.Progress.delay(1.5);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.irritated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0023);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0024);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0017);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0026);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0018);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0019);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0020);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.happy, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0021);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0022);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0022_2);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.irritated, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0023);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0024);
+        await Revived.ƒS.Inventory.open();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0025);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0026);
+        await Revived.ƒS.Character.hide(Revived.characters.bonny);
+        await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.happy, Revived.ƒS.positionPercent(30, 100));
+        await Revived.ƒS.update();
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0027);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0028);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0029);
+        Revived.ƒS.Character.hideAll();
+        Revived.ƒS.Speech.hide();
+        await Revived.ƒS.Location.show(Revived.locations.blackScreen);
+        await Revived.ƒS.update(3);
     }
     Revived.EndingAcceptance = EndingAcceptance;
 })(Revived || (Revived = {}));
