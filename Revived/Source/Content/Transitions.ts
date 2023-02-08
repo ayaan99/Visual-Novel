@@ -1,7 +1,7 @@
 namespace Revived {
     export let transitions = {
             lightbeam: {
-              duration: 2.5,
+              duration: 5,
               alpha: "Images/Transitions/lightbeam.jpg",
               edge: 0.1
             },

@@ -2,13 +2,15 @@ namespace Revived {
     export async function Scene4_2(): ƒS.SceneReturn {
     console.log("Scene4_2 starting");
     
-    dataForSave.progressBar += 10;
     dataForSave.ending = 0;
     
     ƒS.Speech.hide();
 
     await ƒS.Location.show(locations.library);
-    await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
+    await ƒS.update(3);
+
+    ƒS.Sound.play(sounds.themes.library, 0, true);
+    ƒS.Sound.fade(sounds.themes.library, 0.02, 3);
 
     await ƒS.Speech.tell(characters.narrator, "The next day...");
 
@@ -76,8 +78,12 @@ namespace Revived {
     await ƒS.update();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_2.T0011);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_2.T0012);
+    ƒS.Sound.fade(sounds.themes.library, 0, 2);
 
     await ƒS.Speech.tell(characters.nat, text.nat.scene4_2.T0005);
+
+    ƒS.Sound.play(sounds.themes.park, 0, true);
+    ƒS.Sound.fade(sounds.themes.park, 0.07, 1);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated2, ƒS.positionPercent(30, 100));
@@ -114,6 +120,8 @@ namespace Revived {
     ƒS.Speech.hide();
     ƒS.Character.hideAll(); 
 
-    return Scene7();
+    ƒS.Inventory.add(items.library);
+    dataForSave.progressBar += 16.7;
+    return "Scene7";
     }
 }

@@ -1,11 +1,16 @@
 namespace Revived {
     export async function Scene2(): ƒS.SceneReturn {
-    console.log("Scene2_1 starting");
-
-    dataForSave.progressBar += 10;
+    console.log("Scene2 starting");
 
     ƒS.Speech.hide();
-    // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+    ƒS.Character.hideAll();
+    
+    await ƒS.Location.show(locations.blackScreen);
+    await ƒS.update(3);
+    
+    ƒS.Sound.play(sounds.themes.bonnysRoom, 0, true);
+    ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.007, 3);
+
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.update(3);
 
@@ -68,8 +73,10 @@ namespace Revived {
         case roomChoices.lookAtDesk:
             ƒS.Speech.hide();
             ƒS.Character.hideAll();
+            await ƒS.Location.show(locations.blackScreen);
+            await ƒS.update(0.5);
             await ƒS.Location.show(locations.toDoList.empty);
-            await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+            await ƒS.update(0.5);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0015);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0016);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0017);
@@ -88,6 +95,7 @@ namespace Revived {
     } while (dataForSave.pickedChoice);
 
     
+    
     let toDoListChoices = {
         runErrands: "run errands",
         finishProject: "finish school project",
@@ -102,15 +110,19 @@ namespace Revived {
     do {
     if (pickedErrands && !pickedProject && !pickedCooking) {
         dataForSave.pickedChoice = true;
-        return Scene3_1();
+        dataForSave.progressBar += 12.5;
+        ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.0, 5);
+        return "Scene3_1";
     } 
     else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
         dataForSave.pickedChoice = true;
-        return Scene3_2();
+        dataForSave.progressBar += 12.5;
+        return "Scene3_2";
     }
     else if (pickedErrands && pickedProject && pickedCooking) {
         dataForSave.pickedChoice = true;
-        return Scene3_3();
+        dataForSave.progressBar += 12.5;
+        return "Scene3_3";
     } 
 
     let toDoListChoiceElements = await ƒS.Menu.getInput(toDoListChoices, "choices");
@@ -118,12 +130,12 @@ namespace Revived {
     switch (toDoListChoiceElements) {
         case toDoListChoices.runErrands:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0022);
-            ƒS.Speech.hide();
+            // ƒS.Speech.hide();
             pickedErrands = true;
             break;
         case toDoListChoices.finishProject:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0023);
-            ƒS.Speech.hide();
+            ƒS.Speech.hide();            
             await ƒS.Location.show(locations.cutScenes.study);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Progress.delay(5);
@@ -132,6 +144,8 @@ namespace Revived {
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, "What should I do next?");
             pickedProject = true;
+            delete toDoListChoices.finishProject;
+            ƒS.Inventory.add(items.study);
             break;
         case toDoListChoices.cooking:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0025);
@@ -144,6 +158,8 @@ namespace Revived {
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             await ƒS.Speech.tell(characters.bonny, "What else do I have to finish?");
             pickedCooking = true;
+            delete toDoListChoices.cooking;
+            ƒS.Inventory.add(items.cooking);
             break;
     }
     } while (!dataForSave.pickedChoice); //pickedChoices == true

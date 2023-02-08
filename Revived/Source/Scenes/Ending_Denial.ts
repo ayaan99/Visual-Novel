@@ -2,10 +2,10 @@ namespace Revived {
     export async function EndingDenial(): ƒS.SceneReturn {
     console.log("Ending_Denial starting");
 
-    dataForSave.progressBar += 10;
-
     ƒS.Speech.hide();
     // await ƒS.Progress.delay(2);
+    ƒS.Sound.play(sounds.themes.afterlifeOutro, 0, true);
+    ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0.02, 1);
 
     await ƒS.Location.show(locations.afterlife);
     await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
@@ -151,9 +151,12 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0020);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0021);
 
+    ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0, 3);
+
     //bonny wake up scene:
     ƒS.Speech.clear();
     ƒS.Speech.hide();
+    ƒS.Inventory.add(items.bo);
 
     await ƒS.Progress.delay(1);
     ƒS.Character.hideAll();
@@ -165,6 +168,9 @@ namespace Revived {
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
     await ƒS.update(3);
+
+    ƒS.Sound.play(sounds.themes.wakeUpEnding, 0, true);
+    ƒS.Sound.fade(sounds.themes.wakeUpEnding, 0.02, 6);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0022);
     ƒS.Speech.hide();
@@ -195,6 +201,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0033);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0034);
     await ƒS.Inventory.open();
+    ƒS.update();
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0035);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0036);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0037);
@@ -213,11 +220,22 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0042);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0043);
 
+    if (dataForSave.progressBar == 75) {
+        dataForSave.progressBar += 25;
+    } else if (dataForSave.progressBar == 83.4) {
+        dataForSave.progressBar += 16.7;
+    } else if (dataForSave.progressBar == 87.5) {
+        dataForSave.progressBar += 12.5;
+    }
+
+    dataForSave.theEnd = 1;
+
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
 
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3);
 
+    return "Credits";
     }
 }

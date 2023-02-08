@@ -2,10 +2,7 @@ namespace Revived {
     export async function Scene7(): ƒS.SceneReturn {
     console.log("Scene7 starting");
     
-    dataForSave.progressBar += 10;
-
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.emptyStreet.normal);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
@@ -23,14 +20,25 @@ namespace Revived {
 
     await ƒS.Progress.delay(1);
 
-    await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
+    if (dataForSave.progressBar == 50) {
+        dataForSave.progressBar += 25;
+    } else if (dataForSave.progressBar == 66.7) {
+        dataForSave.progressBar += 16.7;
+    } else if (dataForSave.progressBar == 75) {
+        dataForSave.progressBar += 12.5;
+    }
 
     switch (dataForSave.ending) {
         case 0:
-            return EndingDenial();
+            await ƒS.Location.show(locations.blackScreen);
+            await ƒS.update(3);
+            ƒS.Sound.fade(sounds.themes.park, 0, 3);
+            return "EndingDenial";
         case 1:
-            return EndingAcceptance();
+            await ƒS.Location.show(locations.blackScreen);
+            await ƒS.update(3);
+            ƒS.Sound.fade(sounds.themes.park, 0, 3);
+            return "EndingAcceptance";
     }
  
     }

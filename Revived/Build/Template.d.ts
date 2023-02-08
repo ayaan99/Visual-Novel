@@ -8,6 +8,7 @@ declare namespace Revived {
         class: string;
         accidentScene: number;
         ending: number;
+        theEnd: number;
     };
 }
 declare namespace Revived {
@@ -555,7 +556,7 @@ declare namespace Revived {
             image: string;
             static: boolean;
         };
-        classromm: {
+        classroom: {
             name: string;
             description: string;
             image: string;
@@ -610,6 +611,12 @@ declare namespace Revived {
             static: boolean;
         };
         study: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        bo: {
             name: string;
             description: string;
             image: string;
@@ -727,7 +734,19 @@ declare namespace Revived {
 }
 declare namespace Revived {
     let sounds: {
-        afterlifeSoundBeginning: string;
+        themes: {
+            afterlifeIntro: string;
+            afterlifeOutro: string;
+            supermarket: string;
+            meetingNat: string;
+            wakeUpEnding: string;
+            library: string;
+            carCrash: string;
+            park: string;
+            bonnysRoom: string;
+            hospital: string;
+            bar: string;
+        };
     };
 }
 declare namespace Revived {
@@ -765,16 +784,16 @@ declare namespace Revived {
     };
 }
 declare namespace Revived {
+    function Credits(): ƒS.SceneReturn;
+}
+declare namespace Revived {
     function EndingAcceptance(): ƒS.SceneReturn;
 }
 declare namespace Revived {
     function EndingDenial(): ƒS.SceneReturn;
 }
 declare namespace Revived {
-    function Scene1_1(): ƒS.SceneReturn;
-}
-declare namespace Revived {
-    function Scene1_2(): ƒS.SceneReturn;
+    function Scene1(): ƒS.SceneReturn;
 }
 declare namespace Revived {
     function Scene2(): ƒS.SceneReturn;
@@ -795,7 +814,7 @@ declare namespace Revived {
     function Scene4_2(): ƒS.SceneReturn;
 }
 declare namespace Revived {
-    function Scene5(): ƒS.SceneReturn;
+    function Scene5_1(): ƒS.SceneReturn;
 }
 declare namespace Revived {
     function Scene5_2(): ƒS.SceneReturn;

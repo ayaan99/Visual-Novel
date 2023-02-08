@@ -2,15 +2,16 @@ namespace Revived {
     export async function Scene6(): ƒS.SceneReturn {
     console.log("Scene6 starting");
     
-    dataForSave.progressBar += 10;
     dataForSave.ending = 1;
 
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.bar);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
     // await ƒS.Progress.delay(1);
+
+    ƒS.Sound.play(sounds.themes.bar, 0, true);
+    ƒS.Sound.fade(sounds.themes.bar, 0.02, 3);
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.happy, introLeftBorder());
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0001);
@@ -108,10 +109,14 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0009);
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0011);
 
+    ƒS.Sound.fade(sounds.themes.bar, 0, 3);
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(30, 100));
     await ƒS.update();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0010);
+
+    ƒS.Sound.play(sounds.themes.park, 0, true);
+    ƒS.Sound.fade(sounds.themes.park, 0.02, 2);
 
     await ƒS.Character.hide(characters.nat);
     await ƒS.Character.show(characters.nat, characters.nat.pose.irritated, ƒS.positionPercent(70, 100));
@@ -138,6 +143,11 @@ namespace Revived {
 
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0014);
 
-    return Scene7();
+    ƒS.Character.hideAll();
+
+    ƒS.Inventory.add(items.bar);
+    ƒS.Inventory.add(items.barOutside);
+    dataForSave.progressBar += 12.5;
+    return "Scene7";
     }
 }

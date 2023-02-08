@@ -1,14 +1,15 @@
 namespace Revived {
     export async function Scene4_1(): ƒS.SceneReturn {
-    console.log("Scene4 starting");
-
-    dataForSave.progressBar += 10;
+    console.log("Scene4_1 starting");
     
     ƒS.Speech.hide();
-    // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+    
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
     await ƒS.update(3);
+
+    ƒS.Sound.play(sounds.themes.meetingNat, 0, true);
+    ƒS.Sound.fade(sounds.themes.meetingNat, 0.07, 0.5);
 
     await ƒS.Speech.tell(characters.narrator, "The next day...");
     ƒS.Speech.hide();
@@ -30,7 +31,7 @@ namespace Revived {
     await ƒS.Progress.delay(1.5);
 
     await ƒS.Character.hide(characters.bonny);
-    await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 100));
+    await ƒS.Character.show(characters.bonny, characters.bonny.pose.shocked, ƒS.positionPercent(30, 100));
     await ƒS.update();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0010);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0011);
@@ -47,18 +48,18 @@ namespace Revived {
     switch (choiceElement) {
         case transportChoice.runToSchool:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0013);
+            ƒS.Character.hide(characters.bonny);
+            ƒS.Speech.hide();
+            await ƒS.Location.show(locations.sidewalk);
+            await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             break;
         case transportChoice.takeTheBike:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0014);
             ƒS.Speech.hide();
             dataForSave.accidentScene = 1;
-            return Scene3_3();
+            ƒS.Sound.fade(sounds.themes.carCrash, 0, 0.5);
+            return "Scene3_3";
     }
-
-    await ƒS.Character.hide(characters.bonny);
-    ƒS.Speech.hide();
-    await ƒS.Location.show(locations.sidewalk );
-    await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, introLeftBorder());
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0015);
@@ -148,16 +149,13 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0028);
     
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
+    ƒS.Character.hide(characters.nat);
     // await ƒS.update();
 
-    ƒS.Character.animate(characters.nat, characters.nat.pose.happy, outroLeftBorder());
-    ƒS.Character.animate(characters.bonny, characters.bonny.pose.happy, outroRightToLeftBorder());
-    ƒS.Character.hideAll();
+    await ƒS.Character.animate(characters.nat, characters.nat.pose.happy, outroLeftBorder());
+    await ƒS.Character.animate(characters.bonny, characters.bonny.pose.happy, outroRightToLeftBorder());
 
-    await ƒS.Progress.delay(2.5);
-    await ƒS.update(2);
-
+    await ƒS.Progress.delay(3.5);
     await ƒS.Location.show(locations.cutScenes.class);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
     await ƒS.Progress.delay(2); //increase time
@@ -195,6 +193,13 @@ namespace Revived {
     await ƒS.Text.print(text.novelPage.scene4_1);
     await ƒS.Progress.delay(2);
 
-    return Scene4_2();
+    ƒS.Sound.fade(sounds.themes.carCrash, 0, 2);
+    ƒS.Inventory.add(items.classroom);
+
+    await ƒS.Location.show(locations.blackScreen);
+    await ƒS.update(2);
+    
+    dataForSave.progressBar += 12.5;
+    return "Scene4_2";
     }
 }

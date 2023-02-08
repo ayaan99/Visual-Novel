@@ -2,18 +2,19 @@ namespace Revived {
     export async function Scene3_2(): ƒS.SceneReturn {
     console.log("Scene3_2 starting");
 
-    dataForSave.progressBar += 10;
-
     ƒS.Speech.hide();
-    // ƒS.Sound.play(sounds.afterlifeSoundBeginning, 0.1, true);
+
     await ƒS.Location.show(locations.busyStreet.normal);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
     await ƒS.Progress.delay(3); 
 
+    ƒS.Sound.play(sounds.themes.supermarket, 0, true);
+    ƒS.Sound.fade(sounds.themes.supermarket, 0.007, 3);
+
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
+    await ƒS.update(2);
     await ƒS.Location.show(locations.supermarket);
-    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
+    await ƒS.update(2);
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, introLeftBorder());
     await ƒS.update();
@@ -159,6 +160,8 @@ namespace Revived {
     await ƒS.Location.show(locations.busyStreet.rain);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
     await ƒS.Progress.delay(3); //increase time
+
+    ƒS.Sound.fade(sounds.themes.supermarket, 0, 3);
    
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
@@ -167,7 +170,11 @@ namespace Revived {
 
     await ƒS.Progress.delay(2);
     await ƒS.Text.print(text.novelPage.scene3_2);
+    await ƒS.Progress.delay(2);
 
-    return Scene6();
+    ƒS.Inventory.add(items.shopping);
+
+    dataForSave.progressBar += 12.5;
+    return "Scene6";
     }
 }
