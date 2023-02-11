@@ -8,8 +8,7 @@ namespace Revived {
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
     await ƒS.update(3);
 
-    ƒS.Sound.play(sounds.themes.meetingNat, 0, true);
-    ƒS.Sound.fade(sounds.themes.meetingNat, 0.07, 0.5);
+    ƒS.Sound.fade(sounds.themes.meetingNat, 0.02, 0.5);
 
     await ƒS.Speech.tell(characters.narrator, "The next day...");
     ƒS.Speech.hide();
@@ -57,7 +56,7 @@ namespace Revived {
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0014);
             ƒS.Speech.hide();
             dataForSave.accidentScene = 1;
-            ƒS.Sound.fade(sounds.themes.carCrash, 0, 0.5);
+            ƒS.Sound.fade(sounds.themes.meetingNat, 0, 0.5);
             return "Scene3_3";
     }
 
@@ -137,6 +136,7 @@ namespace Revived {
     await ƒS.Character.hide(characters.nat);   
     await ƒS.Character.show(characters.nat, characters.nat.pose.laughing, ƒS.positionPercent(30, 100));
     await ƒS.update();
+    //whitespace restrain!
     await ƒS.Speech.tell(characters.nat, "I'm supposed to be in" + dataForSave.class + " right now!");
     await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0009);
 
@@ -158,7 +158,13 @@ namespace Revived {
     await ƒS.Progress.delay(3.5);
     await ƒS.Location.show(locations.cutScenes.class);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
-    await ƒS.Progress.delay(2); //increase time
+    ƒS.Sound.play(sounds.sfx.classroom, 0.02, false);
+    ƒS.Sound.play(sounds.sfx.classroomPeople, 0.02, false);    
+    await ƒS.Progress.delay(9);
+    ƒS.Sound.fade(sounds.sfx.classroom, 0, 1);
+    ƒS.Sound.fade(sounds.sfx.classroomPeople, 0, 1);
+
+    ƒS.Sound.play(sounds.sfx.schoolBell, 0.01, false);    
     await ƒS.update(1);
 
     await ƒS.Location.show(locations.blackScreen);
@@ -189,11 +195,14 @@ namespace Revived {
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
 
-    await ƒS.Progress.delay(3);
+    ƒS.Sound.play(sounds.sfx.door, 0.02, false);
+
+    await ƒS.Progress.delay(2);
+    ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
     await ƒS.Text.print(text.novelPage.scene4_1);
     await ƒS.Progress.delay(2);
 
-    ƒS.Sound.fade(sounds.themes.carCrash, 0, 2);
+    ƒS.Sound.fade(sounds.themes.meetingNat, 0, 2);
     ƒS.Inventory.add(items.classroom);
 
     await ƒS.Location.show(locations.blackScreen);

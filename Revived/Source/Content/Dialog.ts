@@ -82,7 +82,7 @@ namespace Revived {
                 T0001: "Ugh shoot, I forgot to bring an umbrella!",
                 T0002: "I hate the rain!",
                 T0003: "I should hurry to get inside!",
-                T0004: "Just quickly cross the street...",
+                T0004: "Just quickly across the street...",
                 T0005: "AHHH!!!"
           },
           scene4_1: {

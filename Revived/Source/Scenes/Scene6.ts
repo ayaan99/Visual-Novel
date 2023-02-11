@@ -10,7 +10,6 @@ namespace Revived {
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
     // await ƒS.Progress.delay(1);
 
-    ƒS.Sound.play(sounds.themes.bar, 0, true);
     ƒS.Sound.fade(sounds.themes.bar, 0.02, 3);
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.happy, introLeftBorder());
@@ -64,7 +63,8 @@ namespace Revived {
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.neutral, ƒS.positionPercent(30, 100));
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
 
-    await ƒS.Progress.delay(1);
+    ƒS.Sound.play(sounds.sfx.bar, 0.02, false);
+    await ƒS.Progress.delay(2);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0008);
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0006);
@@ -142,6 +142,8 @@ namespace Revived {
     await ƒS.update();
 
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0014);
+
+    ƒS.Sound.fade(sounds.sfx.bar, 0, 1);
 
     ƒS.Character.hideAll();
 

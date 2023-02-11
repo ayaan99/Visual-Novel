@@ -4,7 +4,6 @@ namespace Revived {
 
     ƒS.Speech.hide();
     // await ƒS.Progress.delay(2);
-    ƒS.Sound.play(sounds.themes.afterlifeOutro, 0, true);
     ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0.02, 1);
 
     await ƒS.Location.show(locations.afterlife);

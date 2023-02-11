@@ -8,7 +8,6 @@ namespace Revived {
     await ƒS.Location.show(locations.afterlife);
     await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
 
-    ƒS.Sound.play(sounds.themes.afterlifeOutro, 0, true);
     ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0.02, 3);
 
     await ƒS.Character.show(characters.bo, characters.bo.pose.neutral, ƒS.positionPercent(70, 100));

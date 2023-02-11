@@ -9,7 +9,6 @@ namespace Revived {
     await ƒS.Location.show(locations.library);
     await ƒS.update(3);
 
-    ƒS.Sound.play(sounds.themes.library, 0, true);
     ƒS.Sound.fade(sounds.themes.library, 0.02, 3);
 
     await ƒS.Speech.tell(characters.narrator, "The next day...");
@@ -59,7 +58,13 @@ namespace Revived {
     await ƒS.Location.show(locations.cutScenes.library);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
 
-    await ƒS.Progress.delay(3);
+    ƒS.Sound.play(sounds.sfx.library, 0.02, false);
+    await ƒS.Progress.delay(2);
+    ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+    await ƒS.Progress.delay(2);
+    ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
+    await ƒS.Progress.delay(4);
+    ƒS.Sound.fade(sounds.sfx.library, 0, 1);
 
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);

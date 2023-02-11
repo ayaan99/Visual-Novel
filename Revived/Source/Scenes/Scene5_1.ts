@@ -3,7 +3,7 @@ namespace Revived {
     console.log("Scene5_1 starting");
     
     ƒS.Speech.hide();    
-    ƒS.Sound.play(sounds.themes.hospital, 0, true);
+
     ƒS.Sound.fade(sounds.themes.hospital, 0.01, 3);
 
     await ƒS.Location.show(locations.hospital);

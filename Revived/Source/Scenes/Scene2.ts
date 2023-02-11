@@ -8,7 +8,6 @@ namespace Revived {
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3);
     
-    ƒS.Sound.play(sounds.themes.bonnysRoom, 0, true);
     ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.007, 3);
 
     await ƒS.Location.show(locations.bonnysRoom);
@@ -76,6 +75,7 @@ namespace Revived {
             await ƒS.Location.show(locations.blackScreen);
             await ƒS.update(0.5);
             await ƒS.Location.show(locations.toDoList.empty);
+            ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
             await ƒS.update(0.5);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0015);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0016);
@@ -111,7 +111,7 @@ namespace Revived {
     if (pickedErrands && !pickedProject && !pickedCooking) {
         dataForSave.pickedChoice = true;
         dataForSave.progressBar += 12.5;
-        ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.0, 5);
+        ƒS.Sound.fade(sounds.themes.bonnysRoom, 0, 5);
         return "Scene3_1";
     } 
     else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
@@ -138,10 +138,17 @@ namespace Revived {
             ƒS.Speech.hide();            
             await ƒS.Location.show(locations.cutScenes.study);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            await ƒS.Progress.delay(5);
+            ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+            await ƒS.Progress.delay(3);
+            ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
+            await ƒS.Progress.delay(3);
+            ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+            await ƒS.Progress.delay(3);
+            await ƒS.Speech.tell(characters.narrator, "after a long time of studying..."),
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0024);
             await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+            ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
             await ƒS.Speech.tell(characters.bonny, "What should I do next?");
             pickedProject = true;
             delete toDoListChoices.finishProject;
@@ -152,10 +159,13 @@ namespace Revived {
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.cutScenes.cooking);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            await ƒS.Progress.delay(5);
+            ƒS.Sound.play(sounds.sfx.cooking, 0.02, false);
+            await ƒS.Progress.delay(8);
+            ƒS.Sound.fade(sounds.sfx.cooking, 0, 2);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0026);
             await ƒS.Location.show(locations.toDoList.empty);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+            ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
             await ƒS.Speech.tell(characters.bonny, "What else do I have to finish?");
             pickedCooking = true;
             delete toDoListChoices.cooking;

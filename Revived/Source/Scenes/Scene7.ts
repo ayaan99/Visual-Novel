@@ -6,7 +6,8 @@ namespace Revived {
 
     await ƒS.Location.show(locations.emptyStreet.normal);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
-    await ƒS.Progress.delay(3);
+    ƒS.Sound.play(sounds.sfx.footstepsConcrete, 0.2, false);
+    await ƒS.Progress.delay(5);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0001);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0002);
@@ -14,6 +15,8 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0004);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0005);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0006);
+
+    ƒS.Sound.fade(sounds.sfx.footstepsConcrete, 0, 1);
 
     ƒS.Speech.clear();
     ƒS.Speech.hide();
