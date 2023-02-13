@@ -1,5 +1,5 @@
-# FUDGE_Story
-A FUDGE module for the easy development of interactive stories, visual novels and simple adventure games
+# Revived
+Diese Visual Novel ist im Rahmen des WPM "Visual Novel" im Wintersemester 2022/23 an der Hochschule Furtwangen entstanden.
 
 
 # Abgabe
