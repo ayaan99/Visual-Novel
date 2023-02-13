@@ -6,7 +6,7 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 - [Github-Repository](https://github.com/ayaan99/Visual-Novel)
 - [Pages-Link](https://ayaan99.github.io/Visual-Novel/Revived/Revived.html)
 - [Quellcode](https://github.com/ayaan99/Visual-Novel/tree/main/Revived/Source)
-- [Konzept-Dokument]()
+- [Konzept-Dokument](https://github.com/ayaan99/Visual-Novel/blob/main/Konzept/VisualNovel_Gesamtkonzept_Ayaan_Wirth.pdf)
 - [Projekt-Archiv]()
 
 
