@@ -139,7 +139,7 @@ namespace Revived {
     await ƒS.Character.hide(characters.nat);   
     await ƒS.Character.show(characters.nat, characters.nat.pose.laughing, ƒS.positionPercent(30, 100));
     await ƒS.update();
-    await ƒS.Speech.tell(characters.nat, "I'm supposed to be in" + "'" + dataForSave.class + "'" + "right now!");
+    await ƒS.Speech.tell(characters.nat, "I'm supposed to be in '" + dataForSave.class + "' right now!");
     await ƒS.Speech.tell(characters.nat, text.nat.scene4_1.T0009);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene4_1.T0027);

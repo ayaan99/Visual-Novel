@@ -73,7 +73,6 @@ var Revived;
         gameMenu = Revived.ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
         buttonFunctionalities("Close");
         let scenes = [
-            // { id: "test", scene: test, name: "test"},
             { id: "Scene1", scene: Revived.Scene1, name: "Scene1" },
             { id: "Scene2", scene: Revived.Scene2, name: "Scene2" },
             { id: "Scene3_1", scene: Revived.Scene3_1, name: "Scene3_1" },
@@ -578,7 +577,7 @@ var Revived;
                 T0023: "Oh shoot! I overslept real bad. At least I don't have any lectures today.",
                 T0024: "Man, I had the weirdest dream this night and strangely it felt so real.",
                 T0025: "<i>“You need to remember, Bonny.”<i>",
-                T0026: "Only this sentence seems so vivid right now.",
+                T0026: "Only this sentence seems so clear right now.",
                 T0027: "What should I remember?",
                 T0028: "Ohh, I also feel like the dream focused awfully a lot on Nat.",
                 T0029: "Why now all of the sudden?",
@@ -992,7 +991,7 @@ var Revived;
             },
             cooking: {
                 name: "Cooking Cut-Scene",
-                background: "Images/Backgrounds/cooking_CutScene.png"
+                background: "Images/Backgrounds/cooking_cutScene.png"
             },
             shopping: {
                 name: "Shopping Cut-Scene",
@@ -1086,7 +1085,8 @@ var Revived;
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(Revived.transitions.bigWipe2.duration, Revived.transitions.bigWipe2.alpha, Revived.transitions.bigWipe2.edge);
         Revived.ƒS.Text.addClass("start");
-        await Revived.ƒS.Text.print("<h2>Credits</h2>For the visual novel 'Revived' created in WiSe22/23, all visual content was drawn by myself. <br><br> Transitions by Kia <br> (https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=37628)<br><br> Music: <br> bensound.com/royalty-free-music <br> sivermansound.com <br><br> Audio: <br> zapsplat.com <br> library.prosoundeffects.com");
+        // tslint:disable-next-line: quotemark
+        await Revived.ƒS.Text.print('<h2>Credits</h2>For the visual novel "Revived" created in WiSe22/23, all visual content was drawn by myself. <br><br> Transitions by Kia <br> (https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=37628)<br><br> Music: <br> bensound.com/royalty-free-music <br> sivermansound.com <br><br> Audio: <br> zapsplat.com <br> library.prosoundeffects.com');
         await Revived.ƒS.update(2);
         Revived.ƒS.Sound.fade(Revived.sounds.themes.wakeUpEnding, 0, 5);
     }
@@ -1234,7 +1234,7 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0023);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0024);
         await Revived.ƒS.Inventory.open();
-        Revived.ƒS.update();
+        await Revived.ƒS.Progress.delay(1.5);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0025);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending2.T0026);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
@@ -1615,7 +1615,7 @@ var Revived;
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(3);
         Revived.ƒS.Sound.play(Revived.sounds.themes.bonnysRoom, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.bonnysRoom, 0.007, 3);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.bonnysRoom, 0.02, 3);
         await Revived.ƒS.Location.show(Revived.locations.bonnysRoom);
         await Revived.ƒS.update(3);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sleepy, Revived.ƒS.positionPercent(30, 100));
@@ -1651,6 +1651,7 @@ var Revived;
         await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene2.T0014);
         console.log(Revived.dataForSave.pickedChoice); //true
+        await Revived.ƒS.update();
         let roomChoices = {
             lookAtPictures: "Look at the pictures",
             lookOutWindow: "Look out the window.",
@@ -1683,6 +1684,7 @@ var Revived;
                     break;
             }
         } while (Revived.dataForSave.pickedChoice);
+        await Revived.ƒS.update();
         let toDoListChoices = {
             runErrands: "run errands",
             finishProject: "finish school project",
@@ -1886,7 +1888,7 @@ var Revived;
         await Revived.ƒS.Character.show(Revived.characters.nat, Revived.characters.nat.pose.neutral, Revived.ƒS.positionPercent(30, 100));
         await Revived.ƒS.update();
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene3_2.T0006);
-        await Revived.ƒS.Speech.tell(Revived.characters.nat, "Well, sorry… I don't remember you or a class called " + Revived.dataForSave.class + ".");
+        await Revived.ƒS.Speech.tell(Revived.characters.nat, "Well, sorry… I don't remember you or a class called '" + Revived.dataForSave.class + "'.");
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene3_2.T0008);
         await Revived.ƒS.Speech.tell(Revived.characters.narrator, "...");
         await Revived.ƒS.Character.hide(Revived.characters.nat);
@@ -1920,7 +1922,7 @@ var Revived;
         await Revived.ƒS.Character.animate(Revived.characters.nat, Revived.characters.nat.pose.happy, Revived.outroLeftBorder());
         await Revived.ƒS.Character.hide(Revived.characters.nat);
         await Revived.ƒS.update();
-        await Revived.ƒS.Progress.delay(1.5);
+        await Revived.ƒS.Progress.delay(0.5);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(70, 100));
         await Revived.ƒS.update();
@@ -2138,7 +2140,7 @@ var Revived;
         await Revived.ƒS.Character.hide(Revived.characters.nat);
         await Revived.ƒS.Character.show(Revived.characters.nat, Revived.characters.nat.pose.laughing, Revived.ƒS.positionPercent(30, 100));
         await Revived.ƒS.update();
-        await Revived.ƒS.Speech.tell(Revived.characters.nat, "I'm supposed to be in" + "'" + Revived.dataForSave.class + "'" + "right now!");
+        await Revived.ƒS.Speech.tell(Revived.characters.nat, "I'm supposed to be in '" + Revived.dataForSave.class + "' right now!");
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene4_1.T0009);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene4_1.T0027);
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene4_1.T0010);
@@ -2465,6 +2467,7 @@ var Revived;
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Character.animate(Revived.characters.nat, Revived.characters.nat.pose.neutral, Revived.outroRightBorder());
         await Revived.ƒS.Progress.delay(2.5);
+        Revived.ƒS.Character.hideAll();
         Revived.ƒS.Inventory.add(Revived.items.park);
         Revived.dataForSave.progressBar += 16.7;
         return "Scene7";
@@ -2535,6 +2538,7 @@ var Revived;
         await Revived.ƒS.Progress.delay(1);
         await Revived.ƒS.Character.animate(Revived.characters.bonny, Revived.characters.bonny.pose.neutral, Revived.introLeftBorder());
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0009);
+        await Revived.ƒS.update();
         let barChoice = {
             milk: "A big cup of fresh milk",
             same: "The same like me",
@@ -2583,7 +2587,7 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0014);
         Revived.ƒS.Sound.fade(Revived.sounds.sfx.bar, 0, 1);
         Revived.ƒS.Character.hideAll();
-        Revived.ƒS.update();
+        await Revived.ƒS.update();
         Revived.ƒS.Inventory.add(Revived.items.bar);
         Revived.ƒS.Inventory.add(Revived.items.barOutside);
         Revived.dataForSave.progressBar += 12.5;
@@ -2607,7 +2611,6 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene7.T0005);
         Revived.ƒS.Sound.fade(Revived.sounds.sfx.footstepsConcrete, 0, 3);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene7.T0006);
-        Revived.ƒS.Speech.clear();
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Progress.delay(1);
         if (Revived.dataForSave.progressBar == 50) {

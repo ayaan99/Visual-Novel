@@ -89,7 +89,7 @@ namespace Revived {
           },
           cooking: {
             name: "Cooking Cut-Scene",
-            background: "Images/Backgrounds/cooking_CutScene.png"
+            background: "Images/Backgrounds/cooking_cutScene.png"
           },
           shopping: {
             name: "Shopping Cut-Scene",

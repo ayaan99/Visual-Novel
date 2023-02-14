@@ -78,7 +78,6 @@ namespace Revived {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      // { id: "test", scene: test, name: "test"},
       { id: "Scene1", scene: Scene1, name: "Scene1"},
       { id: "Scene2", scene: Scene2, name: "Scene2"},
       { id: "Scene3_1", scene: Scene3_1, name: "Scene3_1"},

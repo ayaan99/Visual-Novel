@@ -17,7 +17,6 @@ namespace Revived {
     ƒS.Sound.fade(sounds.sfx.footstepsConcrete, 0, 3);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene7.T0006);
 
-    ƒS.Speech.clear();
     ƒS.Speech.hide();
 
     await ƒS.Progress.delay(1);

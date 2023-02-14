@@ -221,7 +221,7 @@ namespace Revived {
             T0023: "Oh shoot! I overslept real bad. At least I don't have any lectures today.",
             T0024: "Man, I had the weirdest dream this night and strangely it felt so real.",
             T0025: "<i>“You need to remember, Bonny.”<i>",
-            T0026: "Only this sentence seems so vivid right now.",
+            T0026: "Only this sentence seems so clear right now.",
             T0027: "What should I remember?",
             T0028: "Ohh, I also feel like the dream focused awfully a lot on Nat.",
             T0029: "Why now all of the sudden?",

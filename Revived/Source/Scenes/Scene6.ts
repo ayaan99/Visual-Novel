@@ -81,6 +81,7 @@ namespace Revived {
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.neutral, introLeftBorder());
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0009);
+    await ƒS.update();
 
     let barChoice = {
         milk: "A big cup of fresh milk",
@@ -101,6 +102,7 @@ namespace Revived {
             await ƒS.Speech.tell(characters.bonny, "I got my favourite choco milk shake and I thought you would love a matcha bubble tea...");
             break;
             }
+
     await ƒS.Speech.tell(characters.bonny, "Like always!");
     
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0010);
@@ -142,7 +144,7 @@ namespace Revived {
     ƒS.Sound.fade(sounds.sfx.bar, 0, 1);
 
     ƒS.Character.hideAll();
-    ƒS.update();
+    await ƒS.update();
 
     ƒS.Inventory.add(items.bar);
     ƒS.Inventory.add(items.barOutside);

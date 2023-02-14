@@ -100,6 +100,8 @@ namespace Revived {
     await ƒS.Character.animate(characters.nat, characters.nat.pose.neutral, outroRightBorder());
     await ƒS.Progress.delay(2.5);
 
+    ƒS.Character.hideAll();
+
     ƒS.Inventory.add(items.park);
     dataForSave.progressBar += 16.7;
     return "Scene7";

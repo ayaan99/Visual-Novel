@@ -93,7 +93,7 @@ namespace Revived {
     await ƒS.update(); 
 
     await ƒS.Speech.tell(characters.nat, text.nat.scene3_2.T0006);
-    await ƒS.Speech.tell(characters.nat, "Well, sorry… I don't remember you or a class called " + dataForSave.class + "." );
+    await ƒS.Speech.tell(characters.nat, "Well, sorry… I don't remember you or a class called '" + dataForSave.class + "'." );
     await ƒS.Speech.tell(characters.nat, text.nat.scene3_2.T0008);
     await ƒS.Speech.tell(characters.narrator, "...");
    
@@ -138,7 +138,7 @@ namespace Revived {
     await ƒS.Character.animate(characters.nat, characters.nat.pose.happy, outroLeftBorder());
     await ƒS.Character.hide(characters.nat);
     await ƒS.update();
-    await ƒS.Progress.delay(1.5);
+    await ƒS.Progress.delay(0.5);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(70, 100));    

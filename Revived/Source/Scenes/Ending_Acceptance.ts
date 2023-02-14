@@ -181,7 +181,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0023);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0024);
     await ƒS.Inventory.open();
-    ƒS.update();
+    await ƒS.Progress.delay(1.5);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0025);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0026);
 
@@ -202,8 +202,6 @@ namespace Revived {
 
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
-
-
 
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3);

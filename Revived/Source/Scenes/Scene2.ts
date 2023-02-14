@@ -8,7 +8,7 @@ namespace Revived {
     await ƒS.update(3);
     
     ƒS.Sound.play(sounds.themes.bonnysRoom, 0, true);
-    ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.007, 3);
+    ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.02, 3);
 
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.update(3);
@@ -57,6 +57,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0014);
 
     console.log(dataForSave.pickedChoice); //true
+    await ƒS.update();
 
     let roomChoices = {
         lookAtPictures: "Look at the pictures",
@@ -94,6 +95,7 @@ namespace Revived {
       }
     } while (dataForSave.pickedChoice);
 
+    await ƒS.update();
     
     let toDoListChoices = {
         runErrands: "run errands",
@@ -173,6 +175,6 @@ namespace Revived {
             break;
     }
     } while (!dataForSave.pickedChoice); //pickedChoices == true
-    
+
     }
 }
