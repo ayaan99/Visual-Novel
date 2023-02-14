@@ -8,11 +8,11 @@ namespace Revived {
     // tslint:disable-next-line: quotemark
     await ƒS.Text.print('Welcome to "Revived"! <br><br>This is a short visual novel made during the winter semester 2022/23 at Hochschule Furtwangen University.\ <br><br>Before you start a few notes on how to use the menu:\
     <p><b>Open menu:</b> press "M"</p><p><b>Save progress:</b> press "F8"</p><p><b>Load file:</b> press "F9"</p><p><b>Next:</b> Spacebar or Left-Mouse-Click</p> \ <p>Much fun while playing!</p>');
-    ƒS.Text.close();
-    await ƒS.Progress.delay(0.5);
-    
+
     ƒS.Sound.play(sounds.themes.afterlifeIntro, 0, true);
     ƒS.Sound.fade(sounds.themes.afterlifeIntro, 0.05, 3);
+    await ƒS.Progress.delay(1.5);
+  
     await ƒS.Location.show(locations.afterlife);
     await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
     await ƒS.Progress.delay(3);
@@ -104,19 +104,27 @@ namespace Revived {
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0008);
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0009);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0009_2);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0009_3);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0009_4);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0013);
     ƒS.Speech.hide();
     await ƒS.Progress.delay(1.5);
 
     await ƒS.Character.hide(characters.bo);
     await ƒS.Character.show(characters.bo, characters.bo.pose.happy, ƒS.positionPercent(70, 100));
-    await ƒS.update(0.25);
+    await ƒS.update(0.5);
 
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0014);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0015);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0016);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0017);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0017_2);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0017_3);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0018);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0018_2);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0018_3);
+
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.neutral, ƒS.positionPercent(30, 110));
@@ -146,19 +154,25 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0022);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0023);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0024);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0024_2);
+
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.happyAnimation, ƒS.positionPercent(30, 110));
     await ƒS.update(0.25);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0012);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0012_2);
     await ƒS.Character.hide(characters.bo);
     await ƒS.Character.show(characters.bo, characters.bo.pose.happyAnimation, ƒS.positionPercent(70, 100));
     await ƒS.update(0.25);
 
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0025);
+    await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0025_2);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0026);
     await ƒS.Speech.tell(characters.bo, text.bo.scene1.T0027);
+
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene1.T0013);
     
     ƒS.Speech.hide();
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.happyAnimation, fadeOut()); 

@@ -6,7 +6,7 @@ namespace Revived {
 
     ƒS.Speech.hide();
     ƒS.Sound.play(sounds.themes.bar, 0, true);
-    ƒS.Sound.fade(sounds.themes.bar, 0.02, 3);
+    ƒS.Sound.fade(sounds.themes.bar, 0.02, 1);
 
     await ƒS.Location.show(locations.bar);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
@@ -93,30 +93,27 @@ namespace Revived {
     switch (choiceElement) {
         case barChoice.milk:
             await ƒS.Speech.tell(characters.bonny, "I got my favourite choco milk shake and I thought you would love a big cup of fresh milk...");
-            await ƒS.Speech.tell(characters.bonny, "Like always!");
             break;
         case barChoice.same:
             await ƒS.Speech.tell(characters.bonny, "I got my favourite choco milk shake and I thought you would love the same...");
-            await ƒS.Speech.tell(characters.bonny, "Like always!");
             break;
         case barChoice.bubbleTea:
             await ƒS.Speech.tell(characters.bonny, "I got my favourite choco milk shake and I thought you would love a matcha bubble tea...");
-            await ƒS.Speech.tell(characters.bonny, "Like always!");
             break;
             }
+    await ƒS.Speech.tell(characters.bonny, "Like always!");
     
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0010);
-    await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0009);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0009);    
+    ƒS.Sound.fade(sounds.themes.bar, 0, 3);    
+    ƒS.Sound.play(sounds.themes.park, 0, true);
+    ƒS.Sound.fade(sounds.themes.park, 0.02, 2);
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0011);
 
-    ƒS.Sound.fade(sounds.themes.bar, 0, 3);
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(30, 100));
     await ƒS.update();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0010);
-
-    ƒS.Sound.play(sounds.themes.park, 0, true);
-    ƒS.Sound.fade(sounds.themes.park, 0.02, 2);
 
     await ƒS.Character.hide(characters.nat);
     await ƒS.Character.show(characters.nat, characters.nat.pose.irritated, ƒS.positionPercent(70, 100));
@@ -139,13 +136,13 @@ namespace Revived {
 
     await ƒS.Character.hide(characters.bonny);
     ƒS.Character.animate(characters.bonny, characters.bonny.pose.sad, outroLeftBorder());
-    await ƒS.update();
 
     await ƒS.Speech.tell(characters.nat, text.nat.scene6.T0014);
 
     ƒS.Sound.fade(sounds.sfx.bar, 0, 1);
 
     ƒS.Character.hideAll();
+    ƒS.update();
 
     ƒS.Inventory.add(items.bar);
     ƒS.Inventory.add(items.barOutside);

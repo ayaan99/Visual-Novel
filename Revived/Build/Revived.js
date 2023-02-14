@@ -369,11 +369,16 @@ var Revived;
                 T0007_1: "That can't be true! How can it be?",
                 T0007_2: "You said there must have been a mistake! So just take me back!",
                 T0008: "Please... Listen...",
-                T0009: "Finally, for once in my life I was happy. I found the love of my life. I can't lose him so soon. I need to see him again. I beg you...",
+                T0009: "Finally, for once in my life I was happy.",
+                T0009_2: "I found the love of my life. ",
+                T0009_3: "I can't lose him so soon. I need to see him again.",
+                T0009_4: "I beg you, please...",
                 T0010: "Why are you telling me all of this? How does that help me now?",
                 T0011_1: "Okay, sounds good! But how do I know, which memory to choose? There are so many...",
                 T0011_2: "...and I somehow feel like I forgot most of them.",
-                T0012: "Alright, Bo. I trust you! I am ready."
+                T0012: "Alright, Bo. I trust you! I am ready.",
+                T0012_2: "I am ready.",
+                T0013: "See you!"
             },
             scene2: {
                 T0000: "...",
@@ -647,15 +652,21 @@ var Revived;
                 T0014: "Oh, there might actually be a small chance of this working.",
                 T0015: "You probably heard about the myth, that you see your life flashing by when you're dying...",
                 T0016: "...well, it's kind of true.",
-                T0017: "Here in the afterlife, we can revisit our dearest memories. Watching our lives passing by from a distance. Seeing those memories can help us to find closure and get ready to let go of everything.",
-                T0018: "Sometimes though we regret certain decisions we made in the past. Here you could also make different desicions to see what would have happened instead. Just like in a simulation.",
+                T0017: "Here in the afterlife, we can revisit our dearest memories.",
+                T0017_2: "Watching our lives passing by from a distance.",
+                T0017_3: "Seeing those memories can help us to find closure and get ready to let go of everything.",
+                T0018: "Sometimes though we regret certain decisions we made in the past.",
+                T0018_2: "Here you could also make different desicions to see what would have happened instead.",
+                T0018_3: "Just like in a simulation.",
                 T0019: " It would help you a lot actually! If I transfer you back in your memories, you could relive everything and find out what brought you here.",
                 T0020: "If we find the mistake, you don't need to stay here any longer and I will bring you back to life.",
                 T0021: "Yeah, ironically memory loss is one of the side effects of being in the afterlife.",
                 T0022: "That's why you don't get to choose the memories to relive.",
                 T0023: "Remember? I am you.",
-                T0024: "I know you. Your wishes, your dreams, your desires... That's why I am here with you. You just have to trust me.",
-                T0025: "Alright, as soon as you are in the memory, you can't communicate with me anymore. Just live your life like you would usually do.",
+                T0024: "I know you. Your wishes, your dreams, your desires...",
+                T0024_2: "That's why I am here with you. You just have to trust me.",
+                T0025: "Alright, as soon as you are in the memory, you can't communicate with me anymore.",
+                T0025_2: "Just live your life like you would usually do.",
                 T0026: "As soon as we find the mistake, I will bring you back to me.",
                 T0027: "See you soon!"
             },
@@ -790,7 +801,7 @@ var Revived;
                 T0006: "But it should get better in a few hours. ",
                 T0007: "You were involved in a minor car accident.",
                 T0008: "Next time you should better watch out when you want to cross the street.",
-                T0009: "No, unfortunately. The driver didn't stop. The police is still searching for him.",
+                T0009: "No, unfortunately. The driver didn't stop.",
                 T0010: "The police is still searching for him.",
                 T0011: "Yes, luckily the driver called the ambulance and drove with them to the hospital to make sure you were alright. He should still be somewhere around the hospital.",
                 T0012: "I don't see a problem with that. Just make sure that you're resting your leg as soon as you're home.",
@@ -1331,7 +1342,7 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0014);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sad, Revived.ƒS.positionPercent(30, 100));
-        await Revived.ƒS.update(0.5);
+        await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0012);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, "It somehow felt like I lost something...");
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.ending.T0015);
@@ -1382,11 +1393,11 @@ var Revived;
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(3); //transition wrong
         await Revived.ƒS.Progress.delay(1.5);
+        Revived.ƒS.Sound.play(Revived.sounds.themes.wakeUpEnding, 0, true);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.wakeUpEnding, 0.02, 4);
         await Revived.ƒS.Location.show(Revived.locations.bonnysRoom);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.sleepy, Revived.ƒS.positionPercent(30, 100));
         await Revived.ƒS.update(3);
-        Revived.ƒS.Sound.play(Revived.sounds.themes.wakeUpEnding, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.wakeUpEnding, 0.02, 6);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0022);
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Progress.delay(1.5);
@@ -1413,7 +1424,7 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0033);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0034);
         await Revived.ƒS.Inventory.open();
-        Revived.ƒS.update();
+        await Revived.ƒS.Progress.delay(1.5);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0035);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0036);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.ending.T0037);
@@ -1455,10 +1466,9 @@ var Revived;
         // tslint:disable-next-line: quotemark
         await Revived.ƒS.Text.print('Welcome to "Revived"! <br><br>This is a short visual novel made during the winter semester 2022/23 at Hochschule Furtwangen University.\ <br><br>Before you start a few notes on how to use the menu:\
     <p><b>Open menu:</b> press "M"</p><p><b>Save progress:</b> press "F8"</p><p><b>Load file:</b> press "F9"</p><p><b>Next:</b> Spacebar or Left-Mouse-Click</p> \ <p>Much fun while playing!</p>');
-        Revived.ƒS.Text.close();
-        await Revived.ƒS.Progress.delay(0.5);
         Revived.ƒS.Sound.play(Revived.sounds.themes.afterlifeIntro, 0, true);
         Revived.ƒS.Sound.fade(Revived.sounds.themes.afterlifeIntro, 0.05, 3);
+        await Revived.ƒS.Progress.delay(1.5);
         await Revived.ƒS.Location.show(Revived.locations.afterlife);
         await Revived.ƒS.update(Revived.transitions.lightbeam.duration, Revived.transitions.lightbeam.alpha, Revived.transitions.lightbeam.edge);
         await Revived.ƒS.Progress.delay(3);
@@ -1534,17 +1544,24 @@ var Revived;
         await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0008);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0009);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0009_2);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0009_3);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0009_4);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0013);
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Progress.delay(1.5);
         await Revived.ƒS.Character.hide(Revived.characters.bo);
         await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.happy, Revived.ƒS.positionPercent(70, 100));
-        await Revived.ƒS.update(0.25);
+        await Revived.ƒS.update(0.5);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0014);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0015);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0016);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0017);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0017_2);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0017_3);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0018);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0018_2);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0018_3);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.neutral, Revived.ƒS.positionPercent(30, 110));
         await Revived.ƒS.update(0.25);
@@ -1566,16 +1583,20 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0022);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0023);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0024);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0024_2);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.happyAnimation, Revived.ƒS.positionPercent(30, 110));
         await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0012);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0012_2);
         await Revived.ƒS.Character.hide(Revived.characters.bo);
         await Revived.ƒS.Character.show(Revived.characters.bo, Revived.characters.bo.pose.happyAnimation, Revived.ƒS.positionPercent(70, 100));
         await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0025);
+        await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0025_2);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0026);
         await Revived.ƒS.Speech.tell(Revived.characters.bo, Revived.text.bo.scene1.T0027);
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene1.T0013);
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Character.animate(Revived.characters.bonny, Revived.characters.bonny.pose.happyAnimation, Revived.fadeOut());
         await Revived.ƒS.Character.animate(Revived.characters.bo, Revived.characters.bo.pose.happyAnimation, Revived.fadeOut());
@@ -1701,11 +1722,11 @@ var Revived;
                     Revived.ƒS.Speech.hide();
                     await Revived.ƒS.Location.show(Revived.locations.cutScenes.study);
                     await Revived.ƒS.update(Revived.transitions.bigWipe.duration, Revived.transitions.bigWipe.alpha, Revived.transitions.bigWipe.edge);
-                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pen, 0.02, false);
+                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pen, 0.05, false);
                     await Revived.ƒS.Progress.delay(3);
-                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pageTurn, 0.02, false);
+                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pageTurn, 0.05, false);
                     await Revived.ƒS.Progress.delay(3);
-                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pen, 0.02, false);
+                    Revived.ƒS.Sound.play(Revived.sounds.sfx.pen, 0.05, false);
                     await Revived.ƒS.Progress.delay(3);
                     await Revived.ƒS.Speech.tell(Revived.characters.narrator, "after a long time of studying..."),
                         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene2.T0024);
@@ -1746,11 +1767,11 @@ var Revived;
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Location.show(Revived.locations.emptyStreet.normal);
         await Revived.ƒS.update(Revived.transitions.bigWipe.duration, Revived.transitions.bigWipe.alpha, Revived.transitions.bigWipe.edge); //transition doesn't work because of animations
-        Revived.ƒS.Sound.play(Revived.sounds.sfx.footsteps, 0.03, false);
+        Revived.ƒS.Sound.play(Revived.sounds.sfx.footsteps, 0.05, false);
         await Revived.ƒS.Progress.delay(5);
         Revived.ƒS.Sound.fade(Revived.sounds.sfx.footsteps, 0, 1);
         Revived.ƒS.Sound.play(Revived.sounds.themes.supermarket, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.supermarket, 0.007, 3);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.supermarket, 0.02, 3);
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(2);
         await Revived.ƒS.Location.show(Revived.locations.supermarket);
@@ -1798,11 +1819,11 @@ var Revived;
         Revived.ƒS.Speech.hide();
         await Revived.ƒS.Location.show(Revived.locations.busyStreet.normal);
         await Revived.ƒS.update(Revived.transitions.bigWipe.duration, Revived.transitions.bigWipe.alpha, Revived.transitions.bigWipe.edge); //transition doesn't work because of animations
-        Revived.ƒS.Sound.play(Revived.sounds.sfx.traffic, 0.03, false);
+        Revived.ƒS.Sound.play(Revived.sounds.sfx.traffic, 0.05, false);
         await Revived.ƒS.Progress.delay(5);
         Revived.ƒS.Sound.fade(Revived.sounds.sfx.traffic, 0, 1);
         Revived.ƒS.Sound.play(Revived.sounds.themes.supermarket, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.supermarket, 0.007, 3);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.supermarket, 0.02, 3);
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(2); //transition doesn't work because of animations
         await Revived.ƒS.Location.show(Revived.locations.supermarket);
@@ -1895,9 +1916,11 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene3_2.T0018);
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene3_2.T0012);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene3_2.T0019);
+        Revived.ƒS.Speech.hide();
         await Revived.ƒS.Character.animate(Revived.characters.nat, Revived.characters.nat.pose.happy, Revived.outroLeftBorder());
         await Revived.ƒS.Character.hide(Revived.characters.nat);
         await Revived.ƒS.update();
+        await Revived.ƒS.Progress.delay(1.5);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(70, 100));
         await Revived.ƒS.update();
@@ -1953,7 +1976,7 @@ var Revived;
                 await Revived.ƒS.update(Revived.transitions.bigWipe.duration, Revived.transitions.bigWipe.alpha, Revived.transitions.bigWipe.edge);
                 Revived.ƒS.Sound.play(Revived.sounds.themes.carCrash, 0, true);
                 Revived.ƒS.Sound.fade(Revived.sounds.themes.carCrash, 0.02, 0.5);
-                Revived.ƒS.update();
+                // ƒS.update();
                 Revived.ƒS.Sound.play(Revived.sounds.sfx.traffic, 0.07, false);
                 await Revived.ƒS.Progress.delay(5);
                 await Revived.ƒS.Speech.tell(Revived.characters.bonny, "I just need to quickly cross the street...");
@@ -2455,7 +2478,7 @@ var Revived;
         Revived.dataForSave.ending = 1;
         Revived.ƒS.Speech.hide();
         Revived.ƒS.Sound.play(Revived.sounds.themes.bar, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.bar, 0.02, 3);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.bar, 0.02, 1);
         await Revived.ƒS.Location.show(Revived.locations.bar);
         await Revived.ƒS.update(Revived.transitions.bigWipe2.duration, Revived.transitions.bigWipe2.alpha, Revived.transitions.bigWipe2.edge);
         await Revived.ƒS.Progress.delay(1);
@@ -2521,27 +2544,25 @@ var Revived;
         switch (choiceElement) {
             case barChoice.milk:
                 await Revived.ƒS.Speech.tell(Revived.characters.bonny, "I got my favourite choco milk shake and I thought you would love a big cup of fresh milk...");
-                await Revived.ƒS.Speech.tell(Revived.characters.bonny, "Like always!");
                 break;
             case barChoice.same:
                 await Revived.ƒS.Speech.tell(Revived.characters.bonny, "I got my favourite choco milk shake and I thought you would love the same...");
-                await Revived.ƒS.Speech.tell(Revived.characters.bonny, "Like always!");
                 break;
             case barChoice.bubbleTea:
                 await Revived.ƒS.Speech.tell(Revived.characters.bonny, "I got my favourite choco milk shake and I thought you would love a matcha bubble tea...");
-                await Revived.ƒS.Speech.tell(Revived.characters.bonny, "Like always!");
                 break;
         }
+        await Revived.ƒS.Speech.tell(Revived.characters.bonny, "Like always!");
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0010);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene6.T0009);
-        await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0011);
         Revived.ƒS.Sound.fade(Revived.sounds.themes.bar, 0, 3);
+        Revived.ƒS.Sound.play(Revived.sounds.themes.park, 0, true);
+        Revived.ƒS.Sound.fade(Revived.sounds.themes.park, 0.02, 2);
+        await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0011);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         await Revived.ƒS.Character.show(Revived.characters.bonny, Revived.characters.bonny.pose.frustrated, Revived.ƒS.positionPercent(30, 100));
         await Revived.ƒS.update();
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene6.T0010);
-        Revived.ƒS.Sound.play(Revived.sounds.themes.park, 0, true);
-        Revived.ƒS.Sound.fade(Revived.sounds.themes.park, 0.02, 2);
         await Revived.ƒS.Character.hide(Revived.characters.nat);
         await Revived.ƒS.Character.show(Revived.characters.nat, Revived.characters.nat.pose.irritated, Revived.ƒS.positionPercent(70, 100));
         await Revived.ƒS.update();
@@ -2559,10 +2580,10 @@ var Revived;
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene6.T0016);
         await Revived.ƒS.Character.hide(Revived.characters.bonny);
         Revived.ƒS.Character.animate(Revived.characters.bonny, Revived.characters.bonny.pose.sad, Revived.outroLeftBorder());
-        await Revived.ƒS.update();
         await Revived.ƒS.Speech.tell(Revived.characters.nat, Revived.text.nat.scene6.T0014);
         Revived.ƒS.Sound.fade(Revived.sounds.sfx.bar, 0, 1);
         Revived.ƒS.Character.hideAll();
+        Revived.ƒS.update();
         Revived.ƒS.Inventory.add(Revived.items.bar);
         Revived.ƒS.Inventory.add(Revived.items.barOutside);
         Revived.dataForSave.progressBar += 12.5;

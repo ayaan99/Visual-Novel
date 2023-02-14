@@ -138,11 +138,11 @@ namespace Revived {
             ƒS.Speech.hide();            
             await ƒS.Location.show(locations.cutScenes.study);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+            ƒS.Sound.play(sounds.sfx.pen, 0.05, false);
             await ƒS.Progress.delay(3);
-            ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
+            ƒS.Sound.play(sounds.sfx.pageTurn, 0.05, false);
             await ƒS.Progress.delay(3);
-            ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+            ƒS.Sound.play(sounds.sfx.pen, 0.05, false);
             await ƒS.Progress.delay(3);
             await ƒS.Speech.tell(characters.narrator, "after a long time of studying..."),
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0024);

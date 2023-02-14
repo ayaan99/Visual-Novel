@@ -104,10 +104,15 @@ declare namespace Revived {
                 T0007_2: string;
                 T0008: string;
                 T0009: string;
+                T0009_2: string;
+                T0009_3: string;
+                T0009_4: string;
                 T0010: string;
                 T0011_1: string;
                 T0011_2: string;
                 T0012: string;
+                T0012_2: string;
+                T0013: string;
             };
             scene2: {
                 T0000: string;
@@ -382,14 +387,20 @@ declare namespace Revived {
                 T0015: string;
                 T0016: string;
                 T0017: string;
+                T0017_2: string;
+                T0017_3: string;
                 T0018: string;
+                T0018_2: string;
+                T0018_3: string;
                 T0019: string;
                 T0020: string;
                 T0021: string;
                 T0022: string;
                 T0023: string;
                 T0024: string;
+                T0024_2: string;
                 T0025: string;
+                T0025_2: string;
                 T0026: string;
                 T0027: string;
             };

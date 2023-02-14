@@ -6,12 +6,12 @@ namespace Revived {
 
     await ƒS.Location.show(locations.emptyStreet.normal);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge); //transition doesn't work because of animations
-    ƒS.Sound.play(sounds.sfx.footsteps, 0.03, false);
+    ƒS.Sound.play(sounds.sfx.footsteps, 0.05, false);
     await ƒS.Progress.delay(5);
     ƒS.Sound.fade(sounds.sfx.footsteps, 0, 1);
 
     ƒS.Sound.play(sounds.themes.supermarket, 0, true);
-    ƒS.Sound.fade(sounds.themes.supermarket, 0.007, 3);
+    ƒS.Sound.fade(sounds.themes.supermarket, 0.02, 3);
 
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(2);

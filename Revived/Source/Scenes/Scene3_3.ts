@@ -13,7 +13,7 @@ namespace Revived {
             
             ƒS.Sound.play(sounds.themes.carCrash, 0, true);
             ƒS.Sound.fade(sounds.themes.carCrash, 0.02, 0.5);
-            ƒS.update();
+            // ƒS.update();
             ƒS.Sound.play(sounds.sfx.traffic, 0.07, false);
             await ƒS.Progress.delay(5);
 

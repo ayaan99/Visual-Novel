@@ -6,12 +6,12 @@ namespace Revived {
 
     await ƒS.Location.show(locations.busyStreet.normal);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge); //transition doesn't work because of animations
-    ƒS.Sound.play(sounds.sfx.traffic, 0.03, false);
+    ƒS.Sound.play(sounds.sfx.traffic, 0.05, false);
     await ƒS.Progress.delay(5);
     ƒS.Sound.fade(sounds.sfx.traffic, 0, 1); 
 
     ƒS.Sound.play(sounds.themes.supermarket, 0, true);
-    ƒS.Sound.fade(sounds.themes.supermarket, 0.007, 3);
+    ƒS.Sound.fade(sounds.themes.supermarket, 0.02, 3);
 
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(2); //transition doesn't work because of animations
@@ -133,10 +133,12 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0018);
     await ƒS.Speech.tell(characters.nat, text.nat.scene3_2.T0012);    
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_2.T0019);
+    ƒS.Speech.hide();
 
     await ƒS.Character.animate(characters.nat, characters.nat.pose.happy, outroLeftBorder());
     await ƒS.Character.hide(characters.nat);
     await ƒS.update();
+    await ƒS.Progress.delay(1.5);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(70, 100));    

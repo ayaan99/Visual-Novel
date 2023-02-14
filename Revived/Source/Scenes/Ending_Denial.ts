@@ -100,7 +100,7 @@ namespace Revived {
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sad, ƒS.positionPercent(30, 100));
-    await ƒS.update(0.5);
+    await ƒS.update(0.25);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0012);
     await ƒS.Speech.tell(characters.bonny, "It somehow felt like I lost something...");
 
@@ -164,13 +164,12 @@ namespace Revived {
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3); //transition wrong
     await ƒS.Progress.delay(1.5);
+    ƒS.Sound.play(sounds.themes.wakeUpEnding, 0, true);
+    ƒS.Sound.fade(sounds.themes.wakeUpEnding, 0.02, 4);
 
     await ƒS.Location.show(locations.bonnysRoom);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
     await ƒS.update(3);
-
-    ƒS.Sound.play(sounds.themes.wakeUpEnding, 0, true);
-    ƒS.Sound.fade(sounds.themes.wakeUpEnding, 0.02, 6);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0022);
     ƒS.Speech.hide();
@@ -201,7 +200,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0033);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0034);
     await ƒS.Inventory.open();
-    ƒS.update();
+    await ƒS.Progress.delay(1.5);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0035);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0036);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0037);
