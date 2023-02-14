@@ -24,9 +24,9 @@ namespace Revived {
             horizontalShake();
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0005);
             ƒS.Speech.hide();            
-            ƒS.Sound.fade(sounds.sfx.traffic, 0, 1);        
             await ƒS.Location.show(locations.blackScreen);
-            await ƒS.update(3);
+            await ƒS.update(3); 
+            ƒS.Sound.fade(sounds.sfx.traffic, 0, 1);   
             ƒS.Sound.fade(sounds.themes.carCrash, 0, 2);
             await ƒS.Progress.delay(3);
             ƒS.Inventory.add(items.busyStreet);
@@ -55,10 +55,10 @@ namespace Revived {
     horizontalShake();
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene3_3.T0005);
     ƒS.Speech.hide();
-
-    ƒS.Sound.fade(sounds.sfx.traffic, 0, 1);        
+       
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3);
+    ƒS.Sound.fade(sounds.sfx.traffic, 0, 1); 
     ƒS.Sound.fade(sounds.themes.carCrash, 0, 2);
     await ƒS.Progress.delay(3);    
 

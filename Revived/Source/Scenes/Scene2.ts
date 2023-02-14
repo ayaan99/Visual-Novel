@@ -57,7 +57,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0014);
 
     console.log(dataForSave.pickedChoice); //true
-    await ƒS.update();
+    // await ƒS.update();
 
     let roomChoices = {
         lookAtPictures: "Look at the pictures",
@@ -95,7 +95,7 @@ namespace Revived {
       }
     } while (dataForSave.pickedChoice);
 
-    await ƒS.update();
+    // await ƒS.update();
     
     let toDoListChoices = {
         runErrands: "run errands",
@@ -161,7 +161,7 @@ namespace Revived {
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.cutScenes.cooking);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
-            ƒS.Sound.play(sounds.sfx.cooking, 0.02, false);
+            ƒS.Sound.play(sounds.sfx.cooking, 0.05, false);
             await ƒS.Progress.delay(8);
             ƒS.Sound.fade(sounds.sfx.cooking, 0, 2);
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0026);

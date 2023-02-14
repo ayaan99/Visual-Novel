@@ -1651,7 +1651,7 @@ var Revived;
         await Revived.ƒS.update(0.25);
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene2.T0014);
         console.log(Revived.dataForSave.pickedChoice); //true
-        await Revived.ƒS.update();
+        // await ƒS.update();
         let roomChoices = {
             lookAtPictures: "Look at the pictures",
             lookOutWindow: "Look out the window.",
@@ -1684,7 +1684,7 @@ var Revived;
                     break;
             }
         } while (Revived.dataForSave.pickedChoice);
-        await Revived.ƒS.update();
+        // await ƒS.update();
         let toDoListChoices = {
             runErrands: "run errands",
             finishProject: "finish school project",
@@ -1745,7 +1745,7 @@ var Revived;
                     Revived.ƒS.Speech.hide();
                     await Revived.ƒS.Location.show(Revived.locations.cutScenes.cooking);
                     await Revived.ƒS.update(Revived.transitions.bigWipe.duration, Revived.transitions.bigWipe.alpha, Revived.transitions.bigWipe.edge);
-                    Revived.ƒS.Sound.play(Revived.sounds.sfx.cooking, 0.02, false);
+                    Revived.ƒS.Sound.play(Revived.sounds.sfx.cooking, 0.05, false);
                     await Revived.ƒS.Progress.delay(8);
                     Revived.ƒS.Sound.fade(Revived.sounds.sfx.cooking, 0, 2);
                     await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene2.T0026);
@@ -1988,9 +1988,9 @@ var Revived;
                 Revived.horizontalShake();
                 await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene3_3.T0005);
                 Revived.ƒS.Speech.hide();
-                Revived.ƒS.Sound.fade(Revived.sounds.sfx.traffic, 0, 1);
                 await Revived.ƒS.Location.show(Revived.locations.blackScreen);
                 await Revived.ƒS.update(3);
+                Revived.ƒS.Sound.fade(Revived.sounds.sfx.traffic, 0, 1);
                 Revived.ƒS.Sound.fade(Revived.sounds.themes.carCrash, 0, 2);
                 await Revived.ƒS.Progress.delay(3);
                 Revived.ƒS.Inventory.add(Revived.items.busyStreet);
@@ -2014,9 +2014,9 @@ var Revived;
         Revived.horizontalShake();
         await Revived.ƒS.Speech.tell(Revived.characters.bonny, Revived.text.bonny.scene3_3.T0005);
         Revived.ƒS.Speech.hide();
-        Revived.ƒS.Sound.fade(Revived.sounds.sfx.traffic, 0, 1);
         await Revived.ƒS.Location.show(Revived.locations.blackScreen);
         await Revived.ƒS.update(3);
+        Revived.ƒS.Sound.fade(Revived.sounds.sfx.traffic, 0, 1);
         Revived.ƒS.Sound.fade(Revived.sounds.themes.carCrash, 0, 2);
         await Revived.ƒS.Progress.delay(3);
         Revived.ƒS.Inventory.add(Revived.items.busyStreetRain);
