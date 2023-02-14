@@ -15,6 +15,7 @@ namespace Revived {
           pose: {
             neutral: "Images/Characters/bonny.png",
             happy: "Images/Characters/bonny_happy.png",
+            happyAnimation: "Images/Characters/bonny_happyAnimation.png",
             sleepy: "Images/Characters/bonny_sleepy.png",
             irritated: "Images/Characters/bonny_irritated.png",
             irritated2: "Images/Characters/bonny_irritated2.png",
@@ -34,6 +35,7 @@ namespace Revived {
           pose: {
             neutral: "Images/Characters/bo.png",
             happy: "Images/Characters/bo_happy.png",
+            happyAnimation: "Images/Characters/bo_happyAnimation.png",
             irritated: "Images/Characters/bo_irritated.png",
             upset: "Images/Characters/bo_upset.png",
             frustrated: "Images/Characters/bo_frustrated.png"

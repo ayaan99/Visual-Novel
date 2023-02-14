@@ -1,4 +1,5 @@
 namespace Revived {
+
     export function bonnyIntro(): ƒS.AnimationDefinition {
         return {
           start: {

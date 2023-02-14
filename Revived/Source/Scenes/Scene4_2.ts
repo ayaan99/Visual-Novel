@@ -9,6 +9,7 @@ namespace Revived {
     await ƒS.Location.show(locations.library);
     await ƒS.update(3);
 
+    ƒS.Sound.play(sounds.themes.library, 0, true);
     ƒS.Sound.fade(sounds.themes.library, 0.02, 3);
 
     await ƒS.Speech.tell(characters.narrator, "The next day...");
@@ -56,20 +57,20 @@ namespace Revived {
     ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.cutScenes.library);
-    await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
+    await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge); //transition wrong
 
-    ƒS.Sound.play(sounds.sfx.library, 0.02, false);
+    ƒS.Sound.play(sounds.sfx.library, 0.07, false);
     await ƒS.Progress.delay(2);
-    ƒS.Sound.play(sounds.sfx.pen, 0.02, false);
+    ƒS.Sound.play(sounds.sfx.pen, 0.05, false);
     await ƒS.Progress.delay(2);
-    ƒS.Sound.play(sounds.sfx.pageTurn, 0.02, false);
+    ƒS.Sound.play(sounds.sfx.pageTurn, 0.05, false);
     await ƒS.Progress.delay(4);
     ƒS.Sound.fade(sounds.sfx.library, 0, 1);
 
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
+    await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge); //transition wrong
     await ƒS.Character.show(characters.nat, characters.nat.pose.laughing, ƒS.positionPercent(70, 100));
-    await ƒS.Character.show(characters.bonny, characters.bonny.pose.happy, ƒS.positionPercent(30, 100));
+    await ƒS.Character.show(characters.bonny, characters.bonny.pose.happy, ƒS.positionPercent(30, 100)); 
     await ƒS.Location.show(locations.library);
     await ƒS.update(transitions.noise.duration, transitions.noise.alpha, transitions.noise.edge);
 

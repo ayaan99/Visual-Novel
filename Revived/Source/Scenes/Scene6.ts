@@ -5,12 +5,12 @@ namespace Revived {
     dataForSave.ending = 1;
 
     ƒS.Speech.hide();
+    ƒS.Sound.play(sounds.themes.bar, 0, true);
+    ƒS.Sound.fade(sounds.themes.bar, 0.02, 3);
 
     await ƒS.Location.show(locations.bar);
     await ƒS.update(transitions.bigWipe2.duration, transitions.bigWipe2.alpha, transitions.bigWipe2.edge);
-    // await ƒS.Progress.delay(1);
-
-    ƒS.Sound.fade(sounds.themes.bar, 0.02, 3);
+    await ƒS.Progress.delay(1);
 
     await ƒS.Character.animate(characters.bonny, characters.bonny.pose.happy, introLeftBorder());
     await ƒS.Speech.tell(characters.bonny, text.bonny.scene6.T0001);

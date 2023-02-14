@@ -4,11 +4,12 @@ namespace Revived {
     
     ƒS.Speech.hide();    
 
+    ƒS.Sound.play(sounds.themes.hospital, 0, true);
     ƒS.Sound.fade(sounds.themes.hospital, 0.01, 3);
 
     await ƒS.Location.show(locations.hospital);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
-    await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
+    await ƒS.update(3);
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.irritated, ƒS.positionPercent(30, 100));
@@ -53,6 +54,8 @@ namespace Revived {
         case hospitalChoice.needToGo:
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0012);
             dataForSave.ending = 0;
+            dataForSave.progressBar += 12.5;
+
             ƒS.Inventory.add(items.hospital);
             ƒS.Speech.hide();
             ƒS.Character.hideAll(); 
@@ -61,12 +64,12 @@ namespace Revived {
             ƒS.Sound.fade(sounds.themes.hospital, 0, 3);
             ƒS.Sound.play(sounds.themes.park, 0, true);
             ƒS.Sound.fade(sounds.themes.park, 0.07, 3);
-            return "Scene7";
+            return "Scene7"; 
         case hospitalChoice.askMore:
             if (dataForSave.accidentScene == 1) {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0009);
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0010);
-
+            ƒS.Character.hideAll(); 
             dataForSave.ending = 0;
             break;
             } else {
@@ -82,7 +85,9 @@ namespace Revived {
             await ƒS.Speech.tell(characters.drSherp, text.drSherp.scene5.T0015);
             ƒS.Inventory.add(items.hospital);
             dataForSave.ending = 1;
-
+            dataForSave.progressBar += 12.5;
+        
+            ƒS.Character.hideAll();
             ƒS.Sound.fade(sounds.themes.hospital, 0, 3);
             ƒS.Sound.play(sounds.themes.park, 0, true);
             ƒS.Sound.fade(sounds.themes.park, 0.07, 3);

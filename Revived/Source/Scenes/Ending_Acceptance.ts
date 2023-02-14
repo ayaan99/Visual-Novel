@@ -3,11 +3,12 @@ namespace Revived {
     console.log("Ending_Acceptance starting");
 
     ƒS.Speech.hide();
-    // await ƒS.Progress.delay(2);
+    await ƒS.Progress.delay(2);
    
     await ƒS.Location.show(locations.afterlife);
-    await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
+    await ƒS.update(3);
 
+    ƒS.Sound.play(sounds.themes.afterlifeOutro, 0, true);
     ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0.02, 3);
 
     await ƒS.Character.show(characters.bo, characters.bo.pose.neutral, ƒS.positionPercent(70, 100));
@@ -88,7 +89,7 @@ namespace Revived {
 
     await ƒS.Character.hide(characters.bonny);
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.frustrated, ƒS.positionPercent(30, 100));
-    await ƒS.update();
+    await ƒS.update(); //bonny disappears
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0008);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0009);
 
@@ -96,7 +97,7 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bo, text.bo.ending2.T0008);
 
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0010);
-    await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0011);
+    await ƒS.Speech.tell(characters.bonny, text.bonny.ending2.T0011); //bo disappears
 
     await ƒS.Speech.tell(characters.bo, text.bo.ending2.T0009);
     await ƒS.Speech.tell(characters.bo, text.bo.ending2.T0010);
@@ -138,7 +139,7 @@ namespace Revived {
     ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(3);
+    await ƒS.update(3); //transition wrong
     await ƒS.Progress.delay(1.5);
 
     await ƒS.Location.show(locations.bonnysRoom);
@@ -198,8 +199,6 @@ namespace Revived {
     } else if (dataForSave.progressBar == 87.5)  {
         dataForSave.progressBar += 12.5;
     }
-
-    dataForSave.theEnd = 1;
 
     ƒS.Character.hideAll();
     ƒS.Speech.hide();

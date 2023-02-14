@@ -6,11 +6,9 @@ namespace Revived {
   export let dataForSave = {
     pickedChoice: false,
     progressBar: 0,
-    pickedMeterScene: false,
-    class: "like that",
+    class: "",
     accidentScene: 0,
-    ending: 0,
-    theEnd: 0
+    ending: 0
     };
 
   let inGameMenuButtons = {
@@ -24,7 +22,7 @@ namespace Revived {
   let menuIsOpen: boolean = true; //true entspricht Menü ist offen, false = Menü ist zu
 
   function credits(): void {
-    ƒS.Text.print("");
+    ƒS.Text.print("<h2>Credits</h2>For the visual novel 'Revived' created in WiSe22/23, all visual content was drawn by myself. <br><br> Transitions by Kia <br> (https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=37628)<br><br> Music: <br> bensound.com/royalty-free-music <br> sivermansound.com <br><br> Audio: <br> zapsplat.com <br> library.prosoundeffects.com");
   }
 
   async function buttonFunctionalities(_option: string): Promise<void> {
@@ -80,6 +78,7 @@ namespace Revived {
     gameMenu = ƒS.Menu.create(inGameMenuButtons, buttonFunctionalities, "gameMenu");
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
+      // { id: "test", scene: test, name: "test"},
       { id: "Scene1", scene: Scene1, name: "Scene1"},
       { id: "Scene2", scene: Scene2, name: "Scene2"},
       { id: "Scene3_1", scene: Scene3_1, name: "Scene3_1"},
@@ -93,7 +92,8 @@ namespace Revived {
       { id: "Scene7", scene: Scene7, name: "Scene7"},
       { id: "EndingDenial", scene: EndingDenial, name: "Ending_Denial"},
       { id: "EndingAcceptance", scene: EndingAcceptance, name: "Ending_Acceptance"},
-      { id: "Credits", scene: Credits, name: "Credits"}
+      { id: "Credits", scene: Credits, name: "Credits", next: "stop"},
+      { id: "stop", scene: stop, name: "stopTheNovel"}
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

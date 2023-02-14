@@ -4,11 +4,9 @@ declare namespace Revived {
     let dataForSave: {
         pickedChoice: boolean;
         progressBar: number;
-        pickedMeterScene: boolean;
         class: string;
         accidentScene: number;
         ending: number;
-        theEnd: number;
     };
 }
 declare namespace Revived {
@@ -44,6 +42,7 @@ declare namespace Revived {
             pose: {
                 neutral: string;
                 happy: string;
+                happyAnimation: string;
                 sleepy: string;
                 irritated: string;
                 irritated2: string;
@@ -63,6 +62,7 @@ declare namespace Revived {
             pose: {
                 neutral: string;
                 happy: string;
+                happyAnimation: string;
                 irritated: string;
                 upset: string;
                 frustrated: string;
@@ -840,4 +840,7 @@ declare namespace Revived {
 }
 declare namespace Revived {
     function Scene7(): ƒS.SceneReturn;
+}
+declare namespace Revived {
+    function stop(): ƒS.SceneReturn;
 }

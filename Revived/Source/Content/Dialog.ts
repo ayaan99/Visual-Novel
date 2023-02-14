@@ -227,10 +227,10 @@ namespace Revived {
             T0034: "Those pictures on my wall...",
             T0035: "How strange! I could swear that these weren't there yesterday.",
             T0036: "But this bunny… He feels so familiar, although I never had a pet in my life.",
-            T0037: "Maybe this wasn't a random dream.",
+            T0037: "But the connection towards him feels so strong...",
             T0038: "OHH! Now I know what I've should have done all this time!",
-            T0039: "It did hurt a lot back then, but I never told him.",
-            T0040: "Nat was living his happy life, while I felt like I was already dead. ",
+            T0039: "It did hurt a lot back then, but I never told Nat how I felt.",
+            T0040: "He was living his best life, while I felt like I was already dead.",
             T0041: "I think that I should tell him that, so that I can finally find the closure I deserve!",
             T0042: "Remembering the pain... that's what the bunny wanted from me.",
             T0043: "Now, I feel like this wasn't just a random dream..."

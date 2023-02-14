@@ -5,7 +5,6 @@ namespace Revived {
     dataForSave.ending = 1;
     
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.park);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);

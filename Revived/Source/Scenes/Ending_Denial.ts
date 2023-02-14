@@ -3,11 +3,12 @@ namespace Revived {
     console.log("Ending_Denial starting");
 
     ƒS.Speech.hide();
-    // await ƒS.Progress.delay(2);
+    await ƒS.Progress.delay(2);
+    ƒS.Sound.play(sounds.themes.afterlifeOutro, 0, true);
     ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0.02, 1);
 
     await ƒS.Location.show(locations.afterlife);
-    await ƒS.update(transitions.lightbeam.duration, transitions.lightbeam.alpha, transitions.lightbeam.edge);
+    await ƒS.update(3);
 
     await ƒS.Character.show(characters.bo, characters.bo.pose.neutral, ƒS.positionPercent(70, 100));
     await ƒS.Character.show(characters.bonny, characters.bonny.pose.sleepy, ƒS.positionPercent(30, 100));
@@ -150,18 +151,18 @@ namespace Revived {
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0020);
     await ƒS.Speech.tell(characters.bonny, text.bonny.ending.T0021);
 
+    ƒS.Inventory.add(items.bo);
     ƒS.Sound.fade(sounds.themes.afterlifeOutro, 0, 3);
 
     //bonny wake up scene:
     ƒS.Speech.clear();
     ƒS.Speech.hide();
-    ƒS.Inventory.add(items.bo);
-
-    await ƒS.Progress.delay(1);
+    
+    // await ƒS.Progress.delay(1);
     ƒS.Character.hideAll();
 
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(3);
+    await ƒS.update(3); //transition wrong
     await ƒS.Progress.delay(1.5);
 
     await ƒS.Location.show(locations.bonnysRoom);
@@ -227,13 +228,11 @@ namespace Revived {
         dataForSave.progressBar += 12.5;
     }
 
-    dataForSave.theEnd = 1;
-
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
 
     await ƒS.Location.show(locations.blackScreen);
-    await ƒS.update(3);
+    await ƒS.update(3); //transition wrong
 
     return "Credits";
     }

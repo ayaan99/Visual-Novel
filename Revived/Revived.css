@@ -13,7 +13,6 @@ html, body {
   background-color: black;
   overflow: hidden;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
 }
 
 canvas {
@@ -44,7 +43,7 @@ dialog[type=splash]>img#FudgeStoryLogo, img#gameTitle {
   box-shadow: 5px 4px rgb(66, 53, 42);
 }
 
-dialog[type=text] {
+dialog.novelPage[type=text] {
   font-family: tekton-pro,sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -68,6 +67,20 @@ dialog[type=text] {
     rgb(255, 241, 223)
   );
   background-size: 100% 30px;
+}
+
+dialog.start[type=text] {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 50%;
+  max-height: 500px;
+  padding: 25px 35px;
+  border-radius: 15px;
+  border-color:rgb(108, 86, 67);
+  border-width: 25px;
+  background-color: antiquewhite;
+  color: black;
+  box-shadow: 5px 4px rgb(65, 52, 39);
+  font-size: 3vh;
 }
 
 dialog[type=inventory]>ul>li>description, dialog[type=inventory]>ul>li>amount, dialog[type=inventory]>ul>li>name {

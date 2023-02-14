@@ -11,6 +11,7 @@ namespace Revived {
             await ƒS.Location.show(locations.busyStreet.normal);
             await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
             
+            ƒS.Sound.play(sounds.themes.carCrash, 0, true);
             ƒS.Sound.fade(sounds.themes.carCrash, 0.02, 0.5);
             ƒS.update();
             ƒS.Sound.play(sounds.sfx.traffic, 0.07, false);
@@ -29,7 +30,7 @@ namespace Revived {
             ƒS.Sound.fade(sounds.themes.carCrash, 0, 2);
             await ƒS.Progress.delay(3);
             ƒS.Inventory.add(items.busyStreet);
-            return "Scene5_1";
+            return "Scene5_1"; //transition wrong
     }
     
     ƒS.Speech.hide();
@@ -37,6 +38,7 @@ namespace Revived {
     await ƒS.Location.show(locations.busyStreet.rain);
     await ƒS.update(transitions.bigWipe.duration, transitions.bigWipe.alpha, transitions.bigWipe.edge);
 
+    ƒS.Sound.play(sounds.themes.carCrash, 0, true);
     ƒS.Sound.fade(sounds.themes.carCrash, 0.02, 0.5);
     await ƒS.Progress.delay(1);
     ƒS.Sound.play(sounds.sfx.traffic, 0.07, false);
@@ -62,6 +64,6 @@ namespace Revived {
 
     ƒS.Inventory.add(items.busyStreetRain);
     dataForSave.progressBar += 12.5;
-    return "Scene5_1";
+    return "Scene5_1"; //transition wrong
     }
 }

@@ -3,11 +3,11 @@ namespace Revived {
     console.log("Scene2 starting");
 
     ƒS.Speech.hide();
-    ƒS.Character.hideAll();
     
     await ƒS.Location.show(locations.blackScreen);
     await ƒS.update(3);
     
+    ƒS.Sound.play(sounds.themes.bonnysRoom, 0, true);
     ƒS.Sound.fade(sounds.themes.bonnysRoom, 0.007, 3);
 
     await ƒS.Location.show(locations.bonnysRoom);
@@ -95,7 +95,6 @@ namespace Revived {
     } while (dataForSave.pickedChoice);
 
     
-    
     let toDoListChoices = {
         runErrands: "run errands",
         finishProject: "finish school project",
@@ -117,11 +116,13 @@ namespace Revived {
     else if (pickedErrands && pickedProject && !pickedCooking || pickedErrands && pickedCooking && !pickedProject) {
         dataForSave.pickedChoice = true;
         dataForSave.progressBar += 12.5;
+        ƒS.Sound.fade(sounds.themes.bonnysRoom, 0, 5);
         return "Scene3_2";
     }
     else if (pickedErrands && pickedProject && pickedCooking) {
         dataForSave.pickedChoice = true;
         dataForSave.progressBar += 12.5;
+        ƒS.Sound.fade(sounds.themes.bonnysRoom, 0, 5);
         return "Scene3_3";
     } 
 
@@ -130,10 +131,9 @@ namespace Revived {
     switch (toDoListChoiceElements) {
         case toDoListChoices.runErrands:
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0022);
-            // ƒS.Speech.hide();
             pickedErrands = true;
             break;
-        case toDoListChoices.finishProject:
+        case toDoListChoices.finishProject: //transition doesn't work correctly because of animation
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0023);
             ƒS.Speech.hide();            
             await ƒS.Location.show(locations.cutScenes.study);
@@ -154,7 +154,7 @@ namespace Revived {
             delete toDoListChoices.finishProject;
             ƒS.Inventory.add(items.study);
             break;
-        case toDoListChoices.cooking:
+        case toDoListChoices.cooking: //transition doesn't work correctly because of animation
             await ƒS.Speech.tell(characters.bonny, text.bonny.scene2.T0025);
             ƒS.Speech.hide();
             await ƒS.Location.show(locations.cutScenes.cooking);
