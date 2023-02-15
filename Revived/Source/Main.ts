@@ -1,7 +1,7 @@
 namespace Revived {
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
-  console.log("FudgeStory template starting");
+  console.log("FudgeStory template starting v. 1.2");
 
   export let dataForSave = {
     pickedChoice: false,

@@ -3,7 +3,7 @@ var Revived;
 (function (Revived) {
     Revived.ƒ = FudgeCore;
     Revived.ƒS = FudgeStory;
-    console.log("FudgeStory template starting");
+    console.log("FudgeStory template starting v. 1.2");
     Revived.dataForSave = {
         pickedChoice: false,
         progressBar: 0,
